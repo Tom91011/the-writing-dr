@@ -13,9 +13,21 @@ app.get('/', (req, res) => {
   res.render("home")
 })
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'pages/index.html'))
-// })
+app.get('/about', (req, res) => {
+  res.render("about")
+})
+
+app.get('/services', (req, res) => {
+  res.render("services")
+})
+
+app.get('/blogs', (req, res) => {
+  res.render("blogs")
+})
+
+app.get('/contact', (req, res) => {
+  res.render("contact")
+})
 
 // app.get('/about', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'pages/about.html'))
