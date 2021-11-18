@@ -3,7 +3,7 @@
   font-family: "Josefin-Sans-300";
   font-style: normal;
   font-weight: 300;
-  src: local(""), url("../fonts/josefin-sans-v17-latin-300.woff2") format("woff2"), url("../fonts/josefin-sans-v17-latin-300.woff") format("woff");
+  src: local(""), url("./fonts/josefin-sans-v17-latin-300.woff2") format("woff2"), url("./fonts/josefin-sans-v17-latin-300.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* josefin-sans-regular - latin */
@@ -11,7 +11,7 @@
   font-family: "Josefin-Sans-regular";
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../fonts/josefin-sans-v17-latin-regular.woff2") format("woff2"), url("../fonts/josefin-sans-v17-latin-regular.woff") format("woff");
+  src: local(""), url("./fonts/josefin-sans-v17-latin-regular.woff2") format("woff2"), url("./fonts/josefin-sans-v17-latin-regular.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* josefin-sans-700 - latin */
@@ -19,28 +19,28 @@
   font-family: "Josefin-Sans-7";
   font-style: normal;
   font-weight: 700;
-  src: local(""), url("../fonts/josefin-sans-v17-latin-700.woff2") format("woff2"), url("../fonts/josefin-sans-v17-latin-700.woff") format("woff");
+  src: local(""), url("./fonts/josefin-sans-v17-latin-700.woff2") format("woff2"), url("./fonts/josefin-sans-v17-latin-700.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @font-face {
   font-family: "Argent-CF";
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../fonts/ArgentCF-Regular.woff2") format("woff2"), url("../fonts/ArgentCF-Regular.woff") format("woff");
+  src: local(""), url("./fonts/ArgentCF-Regular.woff2") format("woff2"), url("./fonts/ArgentCF-Regular.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @font-face {
   font-family: "Lovelo-LineLight";
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../fonts/Lovelo-LineLight.woff2") format("woff2"), url("../fonts/Lovelo-LineLight.woff") format("woff");
+  src: local(""), url("./fonts/Lovelo-LineLight.woff2") format("woff2"), url("./fonts/Lovelo-LineLight.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 @font-face {
   font-family: "Lovelo-LineBold";
   font-style: normal;
   font-weight: 400;
-  src: local(""), url("../fonts/Lovelo-LineBold.woff2") format("woff2"), url("../fonts/Lovelo-LineBold.woff") format("woff");
+  src: local(""), url("./fonts/Lovelo-LineBold.woff2") format("woff2"), url("./fonts/Lovelo-LineBold.woff") format("woff");
   /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 body {
@@ -149,21 +149,21 @@ main .content-section .middle-p {
 .signup-container {
   color: white;
 }
-.signup-container signup-component {
+.signup-container .signup-component {
   background-color: #1fcda8;
 }
-.signup-container signup-component .signup-inner {
+.signup-container .signup-component .signup-inner {
   font-family: Argent-CF, sans-serif;
   font-weight: 200;
   font-size: 1.5em;
   text-align: center;
 }
-.signup-container signup-component .signup-inner .tips {
+.signup-container .signup-component .signup-inner .tips {
   padding: 10px 0;
   font-family: Josefin-Sans-Regular, sans-serif;
   font-size: 0.6em;
 }
-.signup-container signup-component .signup-inner .button {
+.signup-container .signup-component .signup-inner .button {
   font-size: 1em;
 }
 .signup-container .book {
@@ -440,17 +440,17 @@ header .navigation a {
   width: 50em;
   height: 180px;
 }
-.signup-container signup-component {
+.signup-container .signup-component {
   width: 58%;
   height: 100%;
 }
-.signup-container signup-component .signup-inner {
+.signup-container .signup-component .signup-inner {
   padding: 35px 20px;
 }
-.signup-container signup-component .signup-inner p {
+.signup-container .signup-component .signup-inner p {
   margin: 0;
 }
-.signup-container signup-component .signup-inner .button {
+.signup-container .signup-component .signup-inner .button {
   margin: auto;
   padding: 2px;
   border: solid 1px white;

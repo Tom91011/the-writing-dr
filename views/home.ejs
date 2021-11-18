@@ -5,7 +5,7 @@
   <div class="site-wrapper">
     <header class="on-load">
       <a name=#top></a>
-      <img class="header-logo" src="./images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
+      <img class="header-logo" src="./public/images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
       <%- include("partials/nav-bar") -%>
     </header>
 
@@ -30,7 +30,7 @@
             <h2>Bespoke content and copywriting</h2>
           </div>
           <div class="hero-image">
-            <img class="silohoutte" src="./images/homepage/man_standing_silohoutte.png" alt="Man Standing Silohouette">
+            <img class="silohoutte" src="./public/images/homepage/man_standing_silohoutte.png" alt="Man Standing Silohouette">
           </div>
         </div>
 
@@ -69,9 +69,9 @@
         </div>
         <div class="brands">
 
-          <img src="./images/homepage/beard_sorcery_logo.png" alt="Beard Sorcery Logo" loading="lazy">
-          <img src="./images/homepage/teonan_logo.png" alt="Beard Sorcery Logo">
-          <img src="./images/homepage/big_picture_logo.png" alt="Beard Sorcery Logo">
+          <img src="./public/images/homepage/beard_sorcery_logo.png" alt="Beard Sorcery Logo" loading="lazy">
+          <img src="./public/images/homepage/teonan_logo.png" alt="Beard Sorcery Logo">
+          <img src="./public/images/homepage/big_picture_logo.png" alt="Beard Sorcery Logo">
         </div>
 
       </div>
@@ -153,11 +153,11 @@
       </div>
 
       <div class="signup-container">
-        <signup-component class="container"></signup-component>
+        <%- include("partials/signup") -%>
         <div class="book container">
           <div class="book-inner">
             <h2 class="book-today">Book <br> Today</h2>
-            <img src="./images/homepage/book.png" alt="Book Picture">
+            <img src="./public/images/homepage/book.png" alt="Book Picture">
           </div>
         </div>
 

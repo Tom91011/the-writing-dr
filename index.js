@@ -7,7 +7,7 @@ const PORT = 9090
 
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
-app.use('./fonts', express.static('./node_modules/font-awesome/fonts'))
+
 
 app.get('/', (req, res) => {
   res.render("home")
