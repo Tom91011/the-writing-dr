@@ -29,22 +29,6 @@ app.get('/contact', (req, res) => {
   res.render("contact")
 })
 
-// app.get('/about', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'pages/about.html'))
-// })
-//
-// app.get('/blogs', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'pages/blogs.html'))
-// })
-//
-// app.get('/contact', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'pages/contact.html'))
-// })
-//
-// app.get('/services', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'pages/services.html'))
-// })
-
 
 
 app.listen(PORT, () => {

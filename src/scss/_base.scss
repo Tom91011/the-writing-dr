@@ -26,10 +26,14 @@ header {
       color: $primaryYellow;
       cursor: pointer;
     }
+    a:visited { text-decoration: none; color:red; }
+    a:hover { text-decoration: none; color:blue; }
+    a:focus { text-decoration: none; color:yellow; }
+    a:hover, a:active { text-decoration: none; color:black }
   }
 }
 
-footer-component {
+.footer-container {
   text-align: center;
 }
 
@@ -137,7 +141,7 @@ main {
   }
 }
 
-footer-component {
+.footer-container {
   .footer-social {
     font-family: $argentRegular;
     font-weight: 300;
