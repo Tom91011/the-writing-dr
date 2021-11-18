@@ -2,7 +2,7 @@
   "name": "the-writing-dr",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "concurrently npm:watch:*",
     "start": "node .",

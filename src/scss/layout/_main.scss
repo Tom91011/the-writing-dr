@@ -232,7 +232,7 @@ header {
   }
 }
 
-footer-component {
+.footer-container {
   margin-top: auto;
    min-height: 210px;
   @include flex-row (column, center);

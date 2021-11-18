@@ -479,7 +479,7 @@ header .navigation a {
   max-width: 40%;
 }
 
-footer-component {
+.footer-container {
   margin-top: auto;
   min-height: 210px;
   display: flex;
@@ -487,10 +487,10 @@ footer-component {
   justify-content: center;
   align-items: center;
 }
-footer-component .footer-social {
+.footer-container .footer-social {
   margin: 10px auto;
 }
-footer-component .social-icons {
+.footer-container .social-icons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -499,10 +499,10 @@ footer-component .social-icons {
   padding-bottom: 20px;
   width: 150px;
 }
-footer-component .social-icons svg {
+.footer-container .social-icons svg {
   margin: 0 2px;
 }
-footer-component .footer-policy {
+.footer-container .footer-policy {
   width: 150px;
   margin: auto;
   padding-bottom: 5px;
