@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  @include flex-row(column, space-between);
+  z-index: 1;
+  background-color: $primaryWhite;
+  img {
+    padding-top: 15px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .navigation {
+    width: 100%;
+    padding: 1em;
+    left: 0;
+    background-color: white;
+    text-align: center;
+    padding: 10px 0;
+    a {
+      padding: 0 5px ;
+    }
+  }
+}
+
+@keyframes high-nav {
+  from {top:0 ;}
+  to {top: -120px;}
+}
+
+@keyframes low-nav {
+  from {top:-120px ;}
+  to {top: 0;}
+}
+
+.low-nav {
+  animation-name: low-nav;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.high-nav {
+  animation-name: high-nav;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.on-load {
+  animation-name: high-nav;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+}
+
+@keyframes font-size {
+  from {font-size:1em ;}
+  to {font-size: 1.1em;}
+}
+
+.hero {
+  box-sizing: border-box;
+  @include flex-row(column, centre);
+  padding: 0 300px;
+  height: 85vh;
+  min-height: 850px;
+  background-color:  $primaryGreen;
+  transform: skewY(-3deg);
+}
+
+.hero-main {
+  margin: 0;
+  width: 76.25em;
+  position: relative;
+  top: 140px;
+  @include flex-row(row, center);
+  transform: skewY(3deg);
+  .hero-slogan {
+    position: relative;
+    top: -40px;
+    h1 {
+      margin: 50px 0 10px 0;
+    }
+  }
+  .hero-image {
+    position: relative;
+    top: 90px;
+    .silohoutte {
+      max-width: 100%;
+      filter: drop-shadow(16px 16px 10px $additionalSlate);
+    }
+  }
+}
+
+.alive-container {
+  height: 110px;
+  .alive {
+    box-sizing: border-box;
+    animation-name: font-size;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+}
+
+.line {
+  position: relative;
+  top: -25px;
+  border: solid $primaryGreen 1px;
+  background-color: $primaryGreen;
+  margin: auto;
+  width: 0;
+  height: 50px;
+  z-index: 2
+}
+
+.content-section {
+  position: relative;
+  top: -50px;
+  padding-bottom: 40px;
+  background-color: $secondayMint;
+  transform: skewY(-3deg);
+  .content {
+    margin: auto;
+    width: calc(100% - 2rem);
+    max-width: 50em;
+    transform: skewY(3deg);
+    P {
+      padding: 10px 0S
+    }
+  }
+}
+
+.logo-section {
+  position: relative;
+  top: -50px;
+  .brands {
+    @include flex-row(row, space-between);
+
+    top: -40px;
+    width: 50em;
+    margin: auto;
+    img {
+      width: 10em;
+    }
+  }
+}
+
+.bottom-section {
+  top: 0;
+    transform: skewY(0);
+    .content {
+        transform: skewY(0);
+    }
+}
+
+.container {
+  border-radius: 3px;
+}
+
+.carousel-testimonials {
+  margin: 0 auto 20px auto ;
+  padding: 10px 50px;
+  box-sizing: border-box;
+  width: 50em;
+  .testimonial-title {
+    margin: 10px;
+  }
+  .testimonials-inner {
+    margin: auto;
+    @include flex-row(row, center);
+    width: 100%;
+    min-height: 160px;
+    .carousel-item {
+      padding: 0 50px;
+      width: 100%;
+    }
+  }
+}
+
+.arrows {
+  @include flex-row(row, center);
+}
+
+.signup-container {
+  @include flex-row(row, space-between);
+  margin: auto;
+  width: 50em;
+  height: 180px;
+  signup-component {
+    width: 58%;
+    height: 100%;
+    .signup-inner {
+      padding: 35px 20px;
+      p {
+        margin: 0;
+      }
+      .button {
+        margin:auto;
+        padding: 2px;
+        border: solid 1px $primaryWhite;
+        width: 30%;
+      }
+    }
+  }
+}
+
+.book {
+  width: 40%;
+  height: 100%;
+  .book-inner {
+    @include flex-row(row, center);
+    margin-top: 20px;
+    max-width: 100%;
+    .book-today {
+      position: relative;
+      top: -15px;
+      right: -12px;
+    }
+    img {
+      padding-top: 5px;
+      max-width: 40%;
+    }
+  }
+}
+
+footer-component {
+  margin-top: auto;
+   min-height: 210px;
+  @include flex-row (column, center);
+  .footer-social {
+    margin: 10px auto;
+  }
+  .social-icons {
+    @include flex-row (row, space-between);
+    margin: auto;
+    padding-bottom: 20px;
+    width: 150px;
+    svg {
+      margin: 0 2px;
+    }
+  }
+  .footer-policy {
+    width: 150px;
+    margin: auto;
+    padding-bottom: 5px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#loadOverlay{display: none;}

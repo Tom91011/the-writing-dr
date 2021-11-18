@@ -1,0 +1,60 @@
+.hero-services {
+  background-color: $primaryBlue;
+}
+
+.top-section-services {
+  background-color: $secondarySkyBlue;
+  h3 {
+    font-size: 1.7em;
+    font-weight: bolder;
+  }
+}
+
+.middle-section-services {
+  background-color: transparent;
+  .text-align-center {
+    text-align: center;
+  }
+}
+
+.treatment {
+  background-color: $primaryWhite;
+  .treatment-description {
+    line-height: 1.2em;
+  }
+}
+
+.contact-inner-container{
+  h3 {
+    font-size: 1.8em;
+    text-align: center;
+    line-height: 1.3em;
+    font-weight: bold;
+  }
+  form {
+    margin-bottom: 20px;
+  }
+  p {
+    line-height: 1.5em;
+  }
+  textarea, input {
+    font-family: $josefinSansRegular;
+    color: black;
+    font-weight: 400;
+    line-height: 1.5em;
+    ::placeholder {
+      color: red;
+      font-weight: 400;
+    }
+  }
+  .max-character-message {
+    font-size: 0.7em;
+    color: $additionalSlate;
+  }
+}
+
+
+.line-services {
+  border: solid $primaryBlue 1px;
+  background-color: $primaryBlue;
+}

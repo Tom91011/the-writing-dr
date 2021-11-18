@@ -1,0 +1,22 @@
+.hero-contact {
+  background-color: $primaryTurquise;
+  .hero-slogan {
+    text-align: center;
+    h1 {
+      font-size: 4em;
+    }
+    h3 {
+      font-family: $argentRegular;
+      font-size: 3.5em;
+    }
+  }
+}
+
+.line {
+  border: solid $primaryTurquise 1px;
+  background-color: $primaryTurquise;
+}
+
+.top-section-contact {
+  background-color: $secondaryAqua;
+}

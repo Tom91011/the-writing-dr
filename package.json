@@ -1,0 +1,32 @@
+{
+  "name": "the-writing-dr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "concurrently npm:watch:*",
+    "start": "node .",
+    "watch:dev": "nodemon",
+    "watch:scss": "sass --watch src/scss/main.scss public/styles/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tom91011/the-writing-dr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tom91011/the-writing-dr/issues"
+  },
+  "homepage": "https://github.com/Tom91011/the-writing-dr#readme",
+  "dependencies": {
+    "concurrently": "^6.4.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.15",
+    "sass": "^1.43.4"
+  }
+}

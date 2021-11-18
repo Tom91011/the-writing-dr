@@ -1,0 +1,173 @@
+body{
+  font-family: $josefinSansRegular;
+  background-color: rgb(255,255,255);
+  font-size: 16px;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-family: $argentRegular;
+}
+
+h3 {
+  font-family: $josefinSansRegular;
+  font-size: 1.5em;
+}
+
+
+
+header {
+  color: $primaryBlue;
+  font-size: 1.3em;
+  a {
+    text-decoration: none;
+    color: $primaryBlue;
+    &:hover {
+      color: $primaryYellow;
+      cursor: pointer;
+    }
+  }
+}
+
+footer-component {
+  text-align: center;
+}
+
+main {
+  .hero {
+    color: $primaryWhite;
+    text-align: right;
+    h1 {
+        font-family: $josefinSansBold;
+        font-size: 6em;
+    }
+    h2 {
+      font-family: $josefinSansLight;
+      font-weight: 300;
+      font-size: 1.5em;
+    }
+  }
+  .content-section {
+    .headings {
+      font-family: $argentRegular;
+      text-align: center;
+      font-size: 1.6em;
+    }
+    p {
+      font-size: 1.3em;
+    }
+    h2 {
+      text-align: center;
+    }
+    .middle-p {
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+}
+
+.bottom-section {
+  background-color: $primaryWhite !important;
+}
+
+.highlight-blue {
+  color: $primaryBlue;
+}
+
+.highlight-green {
+  color: $primaryGreen;
+}
+
+.highlight-yellow {
+  color: $primaryYellow;
+}
+
+.highlight-pink {
+  color: $primaryPink;
+}
+
+.handwriting {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.carousel-testimonials {
+  background-color: $primaryYellow;
+  color: $primaryWhite;
+  text-align: center;
+  user-select: none;
+  .testimonial-title {
+    font-family: $argentRegular;
+    font-size: 2em;
+    letter-spacing: 0.05em;
+  }
+  svg {
+    font-size: 3em;
+    font-weight: lighter;
+  }
+}
+
+.signup-container {
+  color: $primaryWhite;
+  signup-component {
+    background-color: $primaryGreen;
+    .signup-inner {
+      font-family: $argentRegular;
+      font-weight: 200;;
+      font-size: 1.5em;
+      text-align: center;
+      .tips {
+        padding: 10px 0;
+        font-family: $josefinSansRegular;
+        font-size: 0.6em;
+      }
+      .button {
+        font-size: 1em;
+      }
+    }
+  }
+  .book {
+    background-color: $primaryPink;
+    .book-inner {
+      text-align: right;
+      .book-today {
+        font-size: 2.2em;
+      }
+    }
+  }
+}
+
+footer-component {
+  .footer-social {
+    font-family: $argentRegular;
+    font-weight: 300;
+    font-size: 2.2em;
+  }
+  .social-icons {
+      font-size: 2em !important;
+  }
+  .footer-policy {
+    text-decoration: underline;
+    color: black;
+  }
+  a {
+    color: $primaryYellow;
+    text-decoration: none;
+  }
+  h3 {
+    font-size: 0.8em;
+  }
+}
+.creative-credits,
+.to-top,
+.arrows,
+.footer-policy  {
+  cursor: pointer;
+  &:hover {
+    color: $primaryBlue;
+  }
+}
+
+.align-left {
+  text-align: left;
+}

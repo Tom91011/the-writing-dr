@@ -1,0 +1,76 @@
+.hero-services {
+  height: 85vh;
+  max-height: 800px;
+}
+
+.top-section-services {
+  h3 {
+    margin-top: 60px;
+  }
+}
+
+.bottom-section-services {
+  background-color: $secondarySkyBlue;
+}
+
+.treatment-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.treatments {
+  @include flex-row(column, centre);
+  .treatment {
+    @include flex-row(row, centre);
+    margin-bottom: 20px;
+    .treatment-description {
+      padding: 0 20px;
+      width:  60%;
+      p {
+        margin: 0;
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+.contact-outer-container {
+  margin: auto;
+  .contact-inner-container {
+    margin: auto;
+    max-width: 50em;
+    .contact-top-row {
+      @include flex-row(row, space-between);
+      input {
+        width: 32%;
+        border: solid 2px;
+        box-sizing: border-box;
+      }
+    }
+    textarea {
+      margin-top: 5px;
+      border: solid 2px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+  .max-character-message {
+    margin-top: 2px;
+  }
+  .submit-row {
+    @include flex-row(row, space-between);
+    button {
+      padding: 10px 20px;
+      background-color: $primaryBlue;
+      color: $primaryWhite;
+      border: none;
+      border-radius: 5px;
+      &:hover {
+        background-color: $additionalNavy;
+        cursor: pointer;
+
+      }
+
+    }
+  }
+}

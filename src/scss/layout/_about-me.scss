@@ -1,0 +1,60 @@
+.hero-about {
+  height: 85vh;
+  max-height: 800px;
+}
+
+.top-section-about {
+  padding-bottom: 80px;
+}
+
+.middle-section-about {
+  margin: auto;
+  position: relative;
+  height: 700px;
+  max-width: 50em;
+  z-index: 1;
+  .content-about-top {
+  right: 0;
+  top: 100px;
+  width: 65% !important;
+  }
+  .content-about-bottom {
+    bottom: 40px;
+    width: 65% !important;
+  }
+  img {
+    top: -15px;
+    right: -100px;
+    height: 750px;
+    transform: rotate(15deg);
+    z-index: 10;
+  }
+  .content-about-top,
+  .content-about-bottom,
+  img {
+    position: absolute;
+  }
+}
+
+.carousel-promises {
+  margin: auto;
+  .line {
+    position: relative;
+    z-index: 11;
+  }
+  h2 {
+    margin: 50px 250px 0;
+    font-size: 1.9em;
+  }
+  .promises-inner {
+    @include flex-row(row, center);
+  }
+  img {
+    max-width: 50em;
+  }
+}
+
+.bottom-section-about {
+  margin: auto;
+  // max-width: 50em;
+}

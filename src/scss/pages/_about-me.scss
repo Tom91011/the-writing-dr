@@ -1,0 +1,41 @@
+.hero-about {
+  background-color: $primaryYellow;
+}
+
+.top-section-about {
+  background-color: $secondayBeige;
+}
+
+.middle-section-about {
+  background-color: transparent;
+  .text-align-center {
+    text-align: center;
+  }
+}
+
+.carousel-promises {
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: $secondayBeige;
+  user-select: none;
+}
+
+.bottom-section-about {
+  background-color: $primaryWhite;
+  .headline {
+    font-family: $argentRegular;
+  }
+  li {
+    margin-bottom: 1.5em;
+    font-size: 1.3em;
+  }
+  h3 {
+    font-size: 2em;
+  }
+
+}
+
+.line-about-me {
+  border: solid $primaryYellow 1px;
+  background-color: $primaryYellow;
+}
