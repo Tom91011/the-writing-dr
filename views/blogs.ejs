@@ -8,6 +8,8 @@
       <img class="header-logo" src="./public/images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
       <%- include("partials/nav-bar") -%>
     </header>
+
+
       <div class="blogs-container">
         <div class="blogs-hero-title">
           <h1>KEEP YOUR FINGER ON THE PULSE<span class="highlight-green">.</span> </h1>
@@ -16,17 +18,20 @@
           <div class="blog-info-headline">
             <div class="blog-info-headline-inner">
               <div class="blog-title-headline">
-                <h2>5 Reasons why you need a blog</h2>
+                <h2><%=foundItems[0].title%></h2>
               </div>
               <div class="blog-date-headline">
-                <h3 blog-date>3 January 2022</h3>
+                <h3 class="blog-date"><%=foundItems[0].date%></h3>
               </div>
             </div>
           </div>
           <div class="blog-image-headline">
-            <img class="" src="./public/images/blogs/etienne-girardet-EP6_VZhzXM8-unsplash.jpg" alt="What Is Your Story?">
+            <img class="" src=<%=foundItems[0].image%> alt="What Is Your Story?">
           </div>
 
+        </div>
+        <div class="">
+          <h1> <%=foundItems[1].title%> </h1>
         </div>
         <div class="blog-grid">
 
@@ -60,7 +65,7 @@
                 <div class="blog-info">
 
                   <div class="blog-title">
-                    <h2>How to keep your content natural</h2>
+                    <h2>The Secret to Engaging New Customers</h2>
                   </div>
                   <div class="blog-date">
                     24 November 2021
