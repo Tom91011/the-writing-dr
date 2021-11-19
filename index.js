@@ -24,7 +24,8 @@ const blogSchema = new Schema ({
   },
   content: String,
   date: String,
-  image: String
+  image: String,
+  imageAlt: String
 })
 
 const Blog = mongoose.model("Blog", blogSchema)
@@ -46,7 +47,9 @@ app.get('/blogs', (req, res) => {
   // res.render("blogs")
 
   Blog.find({}, (err, foundItems) => {
-    // console.log(foundItems);
+    console.log(foundItems);
+    blogArray = foundItems
+    console.log(blogArray);
   res.render("blogs", {
       foundItems: foundItems
     })

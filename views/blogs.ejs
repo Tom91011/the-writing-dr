@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="blog-image-headline">
-            <img class="" src=<%=foundItems[0].image%> alt="What Is Your Story?">
+            <img class="" src=<%=foundItems[0].image%> alt=<%= foundItems[0].imageAlt %>">
           </div>
 
         </div>
@@ -34,6 +34,22 @@
           <h1> <%=foundItems[1].title%> </h1>
         </div>
         <div class="blog-grid">
+
+          <% foundItems.forEach((post) => {%>
+            <div class="blog-container">
+              <div class="blog">
+                <a href="./blog.html">
+                  <div class="blog-image">
+                    <img class="" src=<%= post.image %> alt="Typewriter with flowers">
+                  </div>
+                  <div class="blog-info">
+                    <h2> <%= post.title %> </h2>
+                    <p> <%= post.date %> </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+          <% }) %>
 
           <div class="blog-container">
             <div class="blog">
