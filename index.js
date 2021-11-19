@@ -1,13 +1,17 @@
 const express = require('express')
+const https = require("https")
 const path = require('path')
 const app = express()
+const _ = require("lodash")
 const PORT = 9090
+const mongoose = require('mongoose')
+const mongoDB = 'mongodb://127.0.0.1/blogs_database';
+
 
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
+app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms, without it you will get ***undefined
 
-const mongoose = require('mongoose')
-const mongoDB = 'mongodb://127.0.0.1/blogs_database';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -47,9 +51,9 @@ app.get('/blogs', (req, res) => {
   // res.render("blogs")
 
   Blog.find({}, (err, foundItems) => {
-    console.log(foundItems);
+    // console.log(foundItems);
     blogArray = foundItems
-    console.log(blogArray);
+    // console.log(blogArray);
   res.render("blogs", {
       foundItems: foundItems
     })
@@ -58,6 +62,30 @@ app.get('/blogs', (req, res) => {
 
 app.get('/contact', (req, res) => {
   res.render("contact")
+})
+
+app.get('/compose', (req, res) => {
+  res.render("compose")
+})
+
+app.post("/compose", (req, res) => {
+
+  const newBlog = {
+    blogTitle: req.body.blogTitle,
+    blogDate: req.body.blogDate,
+    blogImageFilePath: req.body.blogImageFilePath,
+    blogImageAlt: req.body.blogImageAlt,
+    blogContent: req.body.blogContent
+  }
+  const newBlogForDb = new Blog ({
+    title: newBlog.blogTitle,
+    content: newBlog.blogContent,
+    date: newBlog.blogDate,
+    image: newBlog.blogImageFilePath,
+    imageAlt: newBlog.blogImageAlt,
+  })
+  newBlogForDb.save()
+  res.redirect("/blogs")
 })
 
 
