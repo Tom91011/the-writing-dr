@@ -30,9 +30,6 @@
           </div>
 
         </div>
-        <div class="">
-          <h1> <%=foundItems[1].title%> </h1>
-        </div>
         <div class="blog-grid">
 
           <% foundItems.forEach((post) => {%>
@@ -40,229 +37,17 @@
               <div class="blog">
                 <a href="./blog.html">
                   <div class="blog-image">
-                    <img class="" src=<%= post.image %> alt="Typewriter with flowers">
+                    <img class="" src=<%= post.image %> alt=<%= post.imageAlt %>>
                   </div>
                   <div class="blog-info">
                     <h2> <%= post.title %> </h2>
-                    <p> <%= post.date %> </p>
-                    </div>
+                    <h3> <%= post.date %> </h3>
                   </div>
                 </a>
               </div>
+            </div>
           <% }) %>
 
-          <div class="blog-container">
-            <div class="blog">
-              <a href="./blog.html">
-                <div class="blog-image">
-                  <img class="" src="./public/images/blogs/florencia-viadana-1iyGImW84cQ-unsplash.jpg" alt="Typewriter with flowers">
-                </div>
-
-                <div class="blog-info">
-
-                  <div class="blog-title">
-                    <h2>How to keep your content natural</h2>
-                  </div>
-                  <div class="blog-date">
-                    24 November 2021
-                  </div>
-
-                </div>
-              </a>
-            </div>
-
-          </div>
-          <div class="blog-container">
-            <div class="blog">
-              <a href="./blog.html">
-                <div class="blog-image">
-                  <img class="" src="./public/images/blogs/hannah-grace-j9JoYpaJH3A-unsplash.jpg" alt="Write without fear. Edit without mercy">
-                </div>
-                <div class="blog-info">
-
-                  <div class="blog-title">
-                    <h2>The Secret to Engaging New Customers</h2>
-                  </div>
-                  <div class="blog-date">
-                    24 November 2021
-                  </div>
-
-                </div>
-              </a>
-            </div>
-
-          </div>
-          <div class="blog-container">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/mika-baumeister-LaqL8nxiacc-unsplash.jpg" alt="Your ideas matter, Write them down">
-              </div>
-              <div class="blog-info">
-
-                <div class="blog-title">
-                  <h2>7 Tricks to Rank Higher in Google</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="blog-container">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/umberto-GQ4VBpgPzik-unsplash.jpg" alt="Sharp pencil">
-              </div>
-              <div class="blog-info">
-
-                <div class="blog-title">
-                  <h2>Gettiong to the Point: How to Write Copy</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="blog-container">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/tamara-gore-jfH6tHXvXlg-unsplash.jpg" alt="Do what you love!">
-              </div>
-              <div class="blog-info">
-
-                <div class="blog-title">
-                  <h2>Never be Afraid to Show Your Passion</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="blog-container">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/marten-newhall-uAFjFsMS3YY-unsplash.jpg" alt="Magnifying glass">
-              </div>
-              <div class="blog-info">
-                <div class="blog-title">
-                  <h2>What is Search Engine Optimisation (SEO)</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="blog-container hidden">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/florencia-viadana-1iyGImW84cQ-unsplash.jpg" alt="Typewriter with flowers">
-              </div>
-
-              <div class="blog-info">
-
-                <div class="blog-title">
-                  <h2>How to keep your content natural</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-          <div class="blog-container hidden">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/hannah-grace-j9JoYpaJH3A-unsplash.jpg" alt="Write without fear. Edit without mercy">
-              </div>
-              <div class="blog-info">
-
-                <div class="blog-title">
-                  <h2>How to keep your content natural</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-          <div class="blog-container hidden">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/mika-baumeister-LaqL8nxiacc-unsplash.jpg" alt="Your ideas matter, Write them down">
-              </div>
-              <div class="blog-info">
-
-                <div class="blog-title">
-                  <h2>7 Tricks to Rank Higher in Google</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="blog-container hidden">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/umberto-GQ4VBpgPzik-unsplash.jpg" alt="Sharp pencil">
-              </div>
-              <div class="blog-info">
-
-                <div class="blog-title">
-                  <h2>Gettiong to the Point: How to Write Copy</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="blog-container hidden">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/tamara-gore-jfH6tHXvXlg-unsplash.jpg" alt="Do what you love!">
-              </div>
-              <div class="blog-info">
-
-                <div class="blog-title">
-                  <h2>Never be Afraid to Show Your Passion</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="blog-container hidden">
-            <div class="blog">
-              <div class="blog-image">
-                <img class="" src="./public/images/blogs/marten-newhall-uAFjFsMS3YY-unsplash.jpg" alt="Magnifying glass">
-              </div>
-              <div class="blog-info">
-                <div class="blog-title">
-                  <h2>What is Search Engine Optimisation (SEO)</h2>
-                </div>
-                <div class="blog-date">
-                  24 November 2021
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="load-more">
           <button type="button" name="button">Load more</button>

@@ -704,7 +704,7 @@ header .navigation a {
 .blogs-container .headline-blog {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
   margin-bottom: 20px;
@@ -725,7 +725,7 @@ header .navigation a {
 }
 .blogs-container .headline-blog .blog-image-headline {
   height: 480px;
-  width: 100%;
+  width: 39.15875em;
 }
 .blogs-container .headline-blog .blog-image-headline img {
   position: relative;
@@ -747,12 +747,16 @@ header .navigation a {
 .blogs-container .blog-grid .blog-container .blog {
   min-height: 418px;
 }
+.blogs-container .blog-grid .blog-container .blog blog-info {
+  padding: 0 20px;
+}
 .blogs-container .blog-grid img {
   width: 100%;
   height: 300px;
   object-fit: cover;
 }
 .blogs-container .load-more {
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -910,6 +914,16 @@ header .navigation a {
   font-size: 0.4em;
   color: #545454;
 }
+.blog-grid a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+.blog-grid a h3 {
+  font-size: 1em;
+  color: #545454;
+}
+
 .load-more button {
   border: 1px #E1E8EB solid;
   border-radius: 5px;
@@ -920,14 +934,6 @@ header .navigation a {
   color: white;
   background-color: #1fcda8;
   cursor: pointer;
-}
-
-.awful-selfie {
-  background: url(../images/homepage/the_writing_doctor_logo.jpg);
-  width: 1000px;
-  height: 1000px;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
 }
 
 /*# sourceMappingURL=main.css.map */

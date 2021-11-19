@@ -8,7 +8,7 @@
   margin: 150px 0 50px 0;
   position: relative;
   .headline-blog{
-    @include flex-row(row, center);
+    @include flex-row(row, space-between);
     margin: auto;
     margin-bottom: 20px;
     width: 60.25em;
@@ -29,7 +29,7 @@
     }
     .blog-image-headline {
       height: 480px;;
-      width: 100%;
+      width: 39.15875em;
       img {
         position: relative;
         width: 100%;
@@ -46,6 +46,9 @@
       margin-bottom: 40px;
       .blog {
         min-height: 418px;
+        blog-info {
+          padding: 0 20px;
+        }
       }
     }
     img {
@@ -55,6 +58,7 @@
     }
   }
   .load-more {
+    margin: auto;
     @include flex-row (row, center);
     button {
       padding: 10px 23px;

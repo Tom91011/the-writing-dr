@@ -3,23 +3,36 @@
   text-align: center;
   font-size: 1.9em;
 }
+
 .headline-blog{
   .blog-info-headline {
     .blog-info-headline-inner {
       background-color: $primaryWhite;
       font-size: 1.5em;
       letter-spacing: 0.1em;
-      // text-align: center;
       .blog-title-headline {
       }
       .blog-date-headline {
-        // text-align: left;
         font-size: 0.4em;
         color: $additionalSlate;
       }
     }
   }
   .blog-image-headline {
+  }
+}
+
+.blog-grid {
+  a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+    .blog-info {
+    }
+    h3 {
+      font-size: 1em;
+      color: $additionalSlate;
+    }
   }
 }
 
@@ -34,15 +47,6 @@
       color: $primaryWhite;
       background-color: $primaryGreen;
       cursor: pointer;
-
     }
   }
-}
-
-.awful-selfie {
-  background: url(../images/homepage/the_writing_doctor_logo.jpg);
-  width: 1000px;
-  height: 1000px;
-  background-size: 100% auto;
-  background-repeat: no-repeat;
 }
