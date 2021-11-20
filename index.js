@@ -10,6 +10,7 @@ const mongoDB = 'mongodb://127.0.0.1/blogs_database';
 
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
+// app.use('/public/images/');
 app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms, without it you will get ***undefined
 
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -92,8 +93,28 @@ app.post("/compose", (req, res) => {
 })
 
 
-app.get("/blog-page", (req, res) => {
-  res.render("blog-page")
+app.get("/blogs/:blogName", (req, res) => {
+  const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
+  // console.log(req.params);
+  // console.log(typedTitle);
+
+  blogArray.forEach((post) => {
+    const storedTitle = _.kebabCase(_.lowerCase(post.title))
+    // console.log(post);
+    // console.log(storedTitle);
+    if(typedTitle ===  storedTitle) {
+      console.log(storedTitle);
+      console.log(typedTitle);
+      res.render("blog-page", {
+        title: post.title,
+        content: post.content,
+        date: post.date,
+        imageLink: post.image,
+        altImage: post.imageAlt
+
+        })
+    }
+  })
 })
 
 

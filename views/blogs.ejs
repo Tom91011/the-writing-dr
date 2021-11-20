@@ -34,7 +34,7 @@
 
           <% foundItems.forEach((post) => {%>
             <div class="blog-container">
-              <a href=<%=`./blog-page`%>>
+              <a href=<%= `/blogs/${post.href}` %>>
                 <div class="blog">
                     <div class="blog-image">
                       <img class="" src=<%= post.image %> alt=<%= post.imageAlt %>>
