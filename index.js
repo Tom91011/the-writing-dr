@@ -29,7 +29,8 @@ const blogSchema = new Schema ({
   content: String,
   date: String,
   image: String,
-  imageAlt: String
+  imageAlt: String,
+  href: String
 })
 
 const Blog = mongoose.model("Blog", blogSchema)
@@ -83,11 +84,17 @@ app.post("/compose", (req, res) => {
     date: newBlog.blogDate,
     image: newBlog.blogImageFilePath,
     imageAlt: newBlog.blogImageAlt,
+    href:_.kebabCase(_.lowerCase(newBlog.blogTitle))
   })
+  console.log(newBlogForDb);
   newBlogForDb.save()
   res.redirect("/blogs")
 })
 
+
+app.get("/blog-page", (req, res) => {
+  res.render("blog-page")
+})
 
 
 app.listen(PORT, () => {

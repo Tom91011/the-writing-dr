@@ -34,17 +34,17 @@
 
           <% foundItems.forEach((post) => {%>
             <div class="blog-container">
-              <div class="blog">
-                <a href="./blog.html">
-                  <div class="blog-image">
-                    <img class="" src=<%= post.image %> alt=<%= post.imageAlt %>>
-                  </div>
-                  <div class="blog-info">
-                    <h2> <%= post.title %> </h2>
-                    <h3> <%= post.date %> </h3>
-                  </div>
-                </a>
-              </div>
+              <a href=<%=`./blog-page`%>>
+                <div class="blog">
+                    <div class="blog-image">
+                      <img class="" src=<%= post.image %> alt=<%= post.imageAlt %>>
+                    </div>
+                    <div class="blog-info">
+                      <h2> <%= post.title %> </h2>
+                      <h3> <%= post.date %> </h3>
+                    </div>
+                </div>
+              </a>
             </div>
           <% }) %>
 
