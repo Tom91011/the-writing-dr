@@ -1,4 +1,5 @@
 const express = require('express')
+const events = require('events')
 const https = require("https")
 const path = require('path')
 const app = express()
@@ -43,9 +44,13 @@ const blogSchema = new Schema ({
 
 const Blog = mongoose.model("Blog", blogSchema)
 
-app.get('/', (req, res) => {
-    res.render("home", )
-  })
+// app.get('/', (req, res) => {
+//     res.render("home", )
+//   })
+
+  app.get('/', (req, res) => {
+      res.sendFile(__dirname + '/views/index.html')
+    })
 
 app.get('/about', (req, res) => {
   res.render("about")
@@ -55,15 +60,19 @@ app.get('/services', (req, res) => {
   res.render("services")
 })
 
+let blogsToDisplay = 6
+
 app.get('/blogs', (req, res) => {
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
   res.render("blogs", {
       foundItems: foundItems,
-      blogsToDisplay: 6
+      blogsToDisplay: blogsToDisplay
     })
   })
 })
+
+const myEmitter = new events.EventEmitter()
 
 app.get('/contact', (req, res) => {
   res.render("contact")
