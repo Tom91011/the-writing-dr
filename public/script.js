@@ -1,3 +1,6 @@
+
+// code for the testimonial carousel on the homepage
+
 $(".right-arrow").on("click", function () {
     $.ajax({
     type: 'GET',
@@ -27,8 +30,8 @@ $(document).ready(function(){
  timeout
 });
 
-// *******************
 
+// code for the promises carousel on the about-page
 
 $(".right-arrow").on("click", function () {
     $.ajax({
@@ -58,7 +61,6 @@ const promisestimeout = setTimeout(updatePromisesCarousel(),3000);
 $(document).ready(function(){
  timeout
 });
-
 
 $("#carousel").hover(function(){
   console.log("hovered");

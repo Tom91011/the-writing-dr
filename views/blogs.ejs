@@ -31,7 +31,7 @@
 
         </div>
         <div class="blog-grid">
-
+<!--
           <% foundItems.forEach((post) => {%>
             <div class="blog-container">
               <a href=<%= `/blogs/${post.href}` %>>
@@ -47,6 +47,23 @@
               </a>
             </div>
           <% }) %>
+-->
+
+           <% for (let i = 0; i < blogsToDisplay; i++) {%>
+            <div class="blog-container">
+              <a href=<%= `/blogs/${foundItems[i].href}` %>>
+                <div class="blog">
+                    <div class="blog-image">
+                      <img class="" src=<%= foundItems[i].image %> alt=<%= foundItems[i].imageAlt %>>
+                    </div>
+                    <div class="blog-info">
+                      <h2> <%= foundItems[i].title %> </h2>
+                      <h3> <%= foundItems[i].date %> </h3>
+                    </div>
+                </div>
+              </a>
+            </div>
+          <% } %>
 
 
 

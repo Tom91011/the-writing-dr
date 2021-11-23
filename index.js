@@ -9,10 +9,9 @@ const PORT = 8000
 const mongoose = require('mongoose')
 const mongoDB = 'mongodb://127.0.0.1/blogs_database';
 const testimonials = require("./src/testimonials")
-const testimonialsArray = testimonials.getTestimonials()
+
 const promises = require("./src/promise-images")
-const promisesArray = promises.getPromises()
-console.log(testimonialsArray);
+
 
 
 app.set('view engine', 'ejs')
@@ -60,7 +59,8 @@ app.get('/blogs', (req, res) => {
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
   res.render("blogs", {
-      foundItems: foundItems
+      foundItems: foundItems,
+      blogsToDisplay: 6
     })
   })
 })
@@ -112,39 +112,7 @@ app.get("/blogs/:blogName", (req, res) => {
   })
 })
 
-// const testimonialsArray = [
-//
-//   {
-//   			review: "Really happy with the work completed. Highly recommend this gig. Was a pleasure to work with and picked up the idea and made it a reality.",
-//   			reviewer: "-Rebmatic",
-//   			date: "03 January 2022"
-//   },
-//   {
-//   			review: "Joe is fantastic! I couldn’t really ask for a better writer and I look forward to working with Joe in the future.",
-//   			reviewer: "-Ryan Simoes",
-//   			date: "03 January 2022"
-//   },
-//   {
-//   			review: "The article is almost alive, love the color and drama he introduces to keep the audience captivated",
-//   			reviewer: "-Alex Tsado",
-//   			date: "03 January 2022"
-//   },
-//   {
-//   			review: "Amazing writer, super communication, created unique, to the point content even with little requirements. Not a single revision was needed. Was definitely worth to pay more and get articles written by someone with good English writing skills. Already looking forward for the next time :)",
-//   			reviewer: "-Klemicha",
-//   			date: "03 January 2022"
-//   },
-//   {
-//   			review: "Excellent work, exceeded my expectations.",
-//   			reviewer: "-Lorenzo Orsini",
-//   			date: "03 January 2022"
-//   },
-//   {
-//   			review: "Once again, Joe has done a fantastic job. He has a clear and engaging writing style, and ability to write on a broad range of topics. I would highly recommend!",
-//   			reviewer: "-Evlang",
-//   			date: "03 January 2022"
-//   },
-// ]
+const testimonialsArray = testimonials.getTestimonials()
 
 let currentTestimonial = 0
 const testimonialIteration = () => {
@@ -164,29 +132,7 @@ app.get('/testimonial-carousel', (req, res) => {
   })
 })
 
-// const promisesArray = [
-//   {
-//     filePath: "./public/images/about/1_carousel.png",
-//     alt : "Search Engine Optimised"
-//   },
-//   {
-//     filePath: "./public/images/about/2_carousel.png",
-//     alt : "Search Engine Optimised"
-//   },
-//   {
-//     filePath: "./public/images/about/3_carousel.png",
-//     alt : "Search Engine Optimised"
-//   },
-//   {
-//     filePath: "./public/images/about/4_carousel.png",
-//     alt : "Search Engine Optimised"
-//   },
-//   {
-//     filePath: "./public/images/about/5_carousel.png",
-//     alt : "Search Engine Optimised"
-//   },
-// ]
-
+const promisesArray = promises.getPromises()
 let currentPromise = 0
 const promisesIteration = () => {
   if (currentPromise === promisesArray.length-1) {
