@@ -48,6 +48,7 @@
   }
   .promises-inner {
     @include flex-row(row, center);
+    height: 550px;
   }
   img {
     max-width: 50em;

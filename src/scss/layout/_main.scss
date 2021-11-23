@@ -10,7 +10,7 @@ header {
   top: 0;
   width: 100%;
   @include flex-row(column, space-between);
-  z-index: 1;
+  z-index: 100;
   background-color: $primaryWhite;
   img {
     padding-top: 15px;
@@ -180,8 +180,14 @@ header {
     width: 100%;
     min-height: 160px;
     .carousel-item {
-      padding: 0 50px;
+      // padding: 0 50px;
       width: 100%;
+    }
+    .right-arrow {
+      margin-left: 20px;
+    }
+    .left-arrow {
+      margin-right: 20px;
     }
   }
 }

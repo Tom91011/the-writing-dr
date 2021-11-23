@@ -1,12 +1,21 @@
-<%- include("partials/header") -%>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-<!-- <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
-</div> -->
-<div class="site-wrapper">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <title>The Writing Doctor - About Me</title>
+</head>
+
+<body>
+  <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
+  </div>
+  <div class="site-wrapper">
     <header class="on-load">
       <a name=#top></a>
       <img class="header-logo" src="./public/images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
-      <%- include("partials/nav-bar") -%>
+      <navbar-component></navbar-component>
     </header>
 
     <main>
@@ -22,7 +31,7 @@
             </h1>
           </div>
           <div class="hero-image">
-            <img class="silohoutte" src="./public/images/homepage/man_standing_silohoutte.png" alt="Man Standing Silohouette">
+            <img class="silohoutte" src="./images/homepage/man_standing_silohoutte.png" alt="Man Standing Silohouette">
           </div>
         </div>
 
@@ -52,7 +61,7 @@
         <div class="line line-about-me">
         </div>
 
-        <img src="./public/images/about/stethoscope.gif" alt="Stethoscope">
+        <img src="./images/about/stethoscope.gif" alt="Stethoscope">
 
         <div class="content content-about-top">
           <p>
@@ -88,20 +97,21 @@
           </h2>
           <div class="promises-inner">
 
-            <%# <div class="left-arrow arrows">
+            <div class="left-arrow arrows">
               <div class="testimonial-arrows">
                 <i class="fas fa-chevron-left"></i>
               </div>
-            </div> %>
-
-            <div id="promise" class="carousel-item">
-
             </div>
-            <%# <div class="right-arrow arrows">
+            <img class="carousel-item" src="./images/about/1_carousel.png" alt="Search Engine Optimised">
+            <img class="carousel-item hidden" src="./images/about/2_carousel.png" alt="Search Engine Optimised">
+            <img class="carousel-item hidden" src="./images/about/3_carousel.png" alt="Search Engine Optimised">
+            <img class="carousel-item hidden" src="./images/about/4_carousel.png" alt="Search Engine Optimised">
+            <img class="carousel-item hidden" src="./images/about/5_carousel.png" alt="Search Engine Optimised">
+            <div class="right-arrow arrows">
               <div class="testimonial-arrows">
                 <i class="fas fa-chevron-right"></i>
               </div>
-            </div> %>
+            </div>
           </div>
         </div>
       </div>
@@ -133,22 +143,21 @@
 
 
       <div class="signup-container">
-      <%- include("partials/signup") -%>
-      <div class="book container">
-        <div class="book-inner">
-          <h2 class="book-today">Book <br> Today</h2>
-          <img src="./public/images/homepage/book.png" alt="Book Picture">
+        <signup-component class="container"></signup-component>
+        <div class="book container">
+          <div class="book-inner">
+            <h2 class="book-today">Book <br> Today</h2>
+            <img src="./images/homepage/book.png" alt="Book Picture">
+          </div>
         </div>
+
       </div>
-
-    </div>
-  </main>
+    </main>
 
 
 
-  <%- include("partials/footer") -%>
-</div>
+    <footer-component></footer-component>
+  </div>
 </body>
-<%# <script src="src/js-files/hide-header.js"></script> %>
-<script type="text/javascript" src="public/script.js"></script>
+
 </html>
