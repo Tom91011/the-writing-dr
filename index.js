@@ -48,12 +48,12 @@ const Blog = mongoose.model("Blog", blogSchema)
 //     res.render("home", )
 //   })
 
-  app.get('/', (req, res) => {
-      res.sendFile(__dirname + '/views/index.html')
-    })
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/views/index.html')
+  })
 
 app.get('/about', (req, res) => {
-  res.render("about")
+  res.sendFile(__dirname + '/views/about.html')
 })
 
 app.get('/services', (req, res) => {

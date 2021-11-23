@@ -7,11 +7,11 @@ export default function navbarComponent() {
       this.innerHTML = `
         <div class="header-main">
           <nav class="navigation">
-            <a href="./test">HOME</a>
+            <a href="./">HOME</a>
             <a href="./about">ABOUT</a>
-            <a href="./services.html">SERVICES</a>
-            <a href="./blogs.html">BLOG</a>
-            <a href="./contact.html">CONTACT</a>
+            <a href="./services">SERVICES</a>
+            <a href="./blogs">BLOG</a>
+            <a href="./contact">CONTACT</a>
           </nav>
         </div>
 
