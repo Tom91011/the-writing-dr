@@ -1,5 +1,17 @@
 // code for the testimonial carousel on the homepage
 
+$(".load-more").on("click", function () {
+  console.log("More button clicked");
+    $.ajax({
+    type: 'GET',
+    url: '/blogs-loop',
+    success: function(result) {
+         $('#blogs').html(result);
+    }
+  });
+})
+
+
 $(".right-arrow").on("click", function () {
     $.ajax({
     type: 'GET',

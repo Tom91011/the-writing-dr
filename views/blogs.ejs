@@ -9,64 +9,34 @@
       <%- include("partials/nav-bar") -%>
     </header>
 
-
-      <div class="blogs-container">
-        <div class="blogs-hero-title">
-          <h1>KEEP YOUR FINGER ON THE PULSE<span class="highlight-green">.</span> </h1>
-        </div>
-        <div class="headline-blog">
-          <div class="blog-info-headline">
-            <div class="blog-info-headline-inner">
-              <div class="blog-title-headline">
-                <h2><%=foundItems[0].title%></h2>
-              </div>
-              <div class="blog-date-headline">
-                <h3 class="blog-date"><%=foundItems[0].date%></h3>
-              </div>
+  <main>
+    <div class="blogs-container">
+      <div class="blogs-hero-title">
+        <h1>KEEP YOUR FINGER ON THE PULSE<span class="highlight-green">.</span> </h1>
+      </div>
+      <div class="headline-blog">
+        <div class="blog-info-headline">
+          <div class="blog-info-headline-inner">
+            <div class="blog-title-headline">
+              <h2><%=foundItems[0].title%></h2>
+            </div>
+            <div class="blog-date-headline">
+              <h3 class="blog-date"><%=foundItems[0].date%></h3>
             </div>
           </div>
-          <div class="blog-image-headline">
-            <img class="" src=<%=foundItems[0].image%> alt=<%= foundItems[0].imageAlt %>">
-          </div>
-
         </div>
+        <div class="blog-image-headline">
+          <img class="" src=<%=foundItems[0].image%> alt=<%= foundItems[0].imageAlt %>">
+        </div>
+
+      </div>
+      <div class="blog-container">
         <div class="blog-grid">
-<!--
-          <% foundItems.forEach((post) => {%>
-            <div class="blog-container">
-              <a href=<%= `/blogs/${post.href}` %>>
-                <div class="blog">
-                    <div class="blog-image">
-                      <img class="" src=<%= post.image %> alt=<%= post.imageAlt %>>
-                    </div>
-                    <div class="blog-info">
-                      <h2> <%= post.title %> </h2>
-                      <h3> <%= post.date %> </h3>
-                    </div>
-                </div>
-              </a>
-            </div>
-          <% }) %>
--->
+          <%- include("blogs-loop") -%>
+        </div>
+        <div id="blogs" class="blog-grid">
 
-           <% for (let i = 0; i < blogsToDisplay; i++) {%>
-            <div class="blog-container">
-              <a href=<%= `/blogs/${foundItems[i].href}` %>>
-                <div class="blog">
-                    <div class="blog-image">
-                      <img class="" src=<%= foundItems[i].image %> alt=<%= foundItems[i].imageAlt %>>
-                    </div>
-                    <div class="blog-info">
-                      <h2> <%= foundItems[i].title %> </h2>
-                      <h3> <%= foundItems[i].date %> </h3>
-                    </div>
-                </div>
-              </a>
-            </div>
-          <% } %>
-
-
-
+        </div>
       </div>
       <div class="load-more">
         <button type="button" name="button">Load more</button>
@@ -80,8 +50,8 @@
             <img src="./public/images/blogs/dark_continent_gold.png" alt="Beard Sorcery Logo">
           </div>
 
+          </div>
         </div>
-      </div>
       <!-- <div class="signup-container">
         <%- include("partials/signup") -%>
         <div class="book container">
@@ -91,11 +61,12 @@
           </div>
         </div>
       </div> -->
+      </div>
     </main>
 
     <%- include("partials/footer") -%>
-  </div>
+
   </body>
-  <%# <script src="src/js-files/hide-header.js"></script> %>
-<script type="module" src="public/hide-header.js"></script>
+  <script type="text/javascript" src="public/script.js"></script>
+  <script type="module" src="public/hide-header.js"></script>
   </html>

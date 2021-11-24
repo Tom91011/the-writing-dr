@@ -65,7 +65,18 @@ let blogsToDisplay = 6
 app.get('/blogs', (req, res) => {
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
+    console.log(blogArray);
   res.render("blogs", {
+      foundItems: foundItems,
+      blogsToDisplay: blogsToDisplay
+    })
+  })
+})
+
+app.get('/blogs-loop', (req, res) => {
+  Blog.find({}, (err, foundItems) => {
+    blogArray = foundItems
+    res.render("blogs-loop", {
       foundItems: foundItems,
       blogsToDisplay: blogsToDisplay
     })
@@ -98,16 +109,21 @@ app.post("/compose", (req, res) => {
     image: newBlog.blogImageFilePath,
     imageAlt: newBlog.blogImageAlt,
     href:_.kebabCase(_.lowerCase(newBlog.blogTitle))
+
   })
   newBlogForDb.save()
   res.redirect("/blogs")
 })
 
 app.get("/blogs/:blogName", (req, res) => {
+  console.log("clicked");
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
+  console.log(typedTitle);
+  console.log(req.params);
 
   blogArray.forEach((post) => {
     const storedTitle = _.kebabCase(_.lowerCase(post.title))
+
 
     if(typedTitle ===  storedTitle) {
       res.render("blog-page", {

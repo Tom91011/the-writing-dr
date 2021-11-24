@@ -735,12 +735,13 @@ header .navigation a {
   margin-bottom: 0;
 }
 .blogs-container .headline-blog .blog-image-headline {
-  height: 480px;
   width: 39.15875em;
 }
 .blogs-container .headline-blog .blog-image-headline img {
+  height: 600px;
   position: relative;
   width: 100%;
+  object-fit: cover;
 }
 .blogs-container .blog-grid {
   margin: auto;
@@ -786,6 +787,14 @@ header .navigation a {
 .other-writing .logo-section {
   top: 0;
   margin-bottom: 50px;
+}
+
+.blog-page-inner {
+  width: 100%;
+}
+.blog-page-inner img {
+  margin: auto;
+  width: 600px;
 }
 
 .hero-about {
