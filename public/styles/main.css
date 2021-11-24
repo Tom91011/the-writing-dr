@@ -162,6 +162,10 @@ main .content-section .middle-p {
   font-weight: lighter;
 }
 
+.carousel-promises {
+  color: #e7a640;
+}
+
 .signup-container {
   color: white;
 }
@@ -438,10 +442,12 @@ header .navigation a {
 .carousel-testimonials .testimonials-inner .carousel-item {
   width: 100%;
 }
-.carousel-testimonials .testimonials-inner .right-arrow {
+
+.right-arrow {
   margin-left: 20px;
 }
-.carousel-testimonials .testimonials-inner .left-arrow {
+
+.left-arrow {
   margin-right: 20px;
 }
 

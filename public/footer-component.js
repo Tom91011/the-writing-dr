@@ -15,7 +15,8 @@ export default function footerComponent() {
         <h4 class="footer-policy" href="#">Web Privacy Policy</h4>
         <br>
         <h4 class="footer-policy" href="#">Web Cookie Policy</h4>
-        <h3>© 2021 The Writing Doctor, Inc. | All Rights Reserved | <span class="creative-credits highlight-yellow">Creative Credits</span> | <span class="to-top highlight-yellow">  <a href="#top">Back to top</a> </span></h3>
+        <h3>© 2021 The Writing Doctor, Inc. | All Rights Reserved | <span class="creative-credits highlight-yellow">Creative Credits</span> | <span class="to-top highlight-yellow">
+        <a class="to-top" href="#top">Back to top</a> </span></h3>
       </div>
       `
     }
