@@ -1,4 +1,3 @@
-import navbarComponent from './navbar-component.js'
 // code for the testimonial carousel on the homepage
 
 $(".right-arrow").on("click", function () {
