@@ -1,5 +1,5 @@
 const getPromises = () => {
-
+  console.log("hello");
   return [
     {
       filePath: "./public/images/about/1_carousel.png",

@@ -44,10 +44,6 @@ const blogSchema = new Schema ({
 
 const Blog = mongoose.model("Blog", blogSchema)
 
-// app.get('/', (req, res) => {
-//     res.render("home", )
-//   })
-
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
   })
@@ -60,30 +56,41 @@ app.get('/services', (req, res) => {
   res.render("services")
 })
 
-let blogsToDisplay = 14
-
+let loadMoreClickCount = 0
+const blogsToShow = 6
 app.get('/blogs', (req, res) => {
+  loadMoreClickCount= 0
+  blogArray = []
   Blog.find({}, (err, foundItems) => {
+    console.log(foundItems[1]);
     blogArray = foundItems
-    console.log(blogArray);
+    let totalBlogs = blogArray.length
+    console.log(totalBlogs);
   res.render("blogs", {
-      foundItems: foundItems,
-      blogsToDisplay: blogsToDisplay
+      blogArray: blogArray,
+      totalBlogs: totalBlogs,
+      startingBlogArrayPostion: totalBlogs - 1,
+      endingBlogArrayPosition: totalBlogs - blogsToShow
     })
   })
 })
 
 app.get('/blogs-loop', (req, res) => {
+
+  loadMoreClickCount+= 1
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
+    let totalBlogs = blogArray.length
+    let startingBlogArrayPostion = totalBlogs - (loadMoreClickCount* blogsToShow)
+    let endingBlogArrayPosition = startingBlogArrayPostion - blogsToShow + 1
     res.render("blogs-loop", {
-      foundItems: foundItems,
-      blogsToDisplay: blogsToDisplay
+      blogArray: blogArray,
+      totalBlogs: totalBlogs,
+      startingBlogArrayPostion: startingBlogArrayPostion,
+      endingBlogArrayPosition: endingBlogArrayPosition
     })
   })
 })
-
-const myEmitter = new events.EventEmitter()
 
 app.get('/contact', (req, res) => {
   res.render("contact")
@@ -116,10 +123,7 @@ app.post("/compose", (req, res) => {
 })
 
 app.get("/blogs/:blogName", (req, res) => {
-  console.log("clicked");
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
-  console.log(typedTitle);
-  console.log(req.params);
 
   blogArray.forEach((post) => {
     const storedTitle = _.kebabCase(_.lowerCase(post.title))
