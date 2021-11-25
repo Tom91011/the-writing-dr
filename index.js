@@ -60,7 +60,7 @@ app.get('/services', (req, res) => {
   res.render("services")
 })
 
-let blogsToDisplay = 6
+let blogsToDisplay = 14
 
 app.get('/blogs', (req, res) => {
   Blog.find({}, (err, foundItems) => {
@@ -123,12 +123,13 @@ app.get("/blogs/:blogName", (req, res) => {
 
   blogArray.forEach((post) => {
     const storedTitle = _.kebabCase(_.lowerCase(post.title))
-
+    const blogContent = post.content
+    const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
 
     if(typedTitle ===  storedTitle) {
       res.render("blog-page", {
         title: post.title,
-        content: post.content,
+        content: reformatedContent,
         date: post.date,
         imageLink: post.image,
         altImage: post.imageAlt

@@ -1,4 +1,4 @@
-<% for (let i = 0; i < blogsToDisplay; i++) {%>
+<% for (let i = blogsToDisplay-1; i >= 0; i--) {%>
  <div class="blog-container">
    <a href=<%= `/blogs/${foundItems[i].href}` %>>
      <div class="blog">
