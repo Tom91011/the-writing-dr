@@ -60,8 +60,9 @@ app.get('/blogs', (req, res) => {
   res.render("blogs", {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
-      startingBlogArrayPostion: totalBlogs - 1,
-      endingBlogArrayPosition: totalBlogs - blogsToShow,
+      startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
+      endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems,
+      loadMoreClickCount)),
       href: "/blogs/"
     })
   })
@@ -180,7 +181,6 @@ app.get("/admin-blogs/:blogName", (req, res) => {
     }
   })
 })
-
 
 app.post("/delete", (req, res) => {
   const idToBeDeleted = req.body.delete
