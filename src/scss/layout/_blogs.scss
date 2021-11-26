@@ -47,8 +47,9 @@
       margin-bottom: 40px;
       .blog {
         min-height: 418px;
-        blog-info {
+        .blog-info {
           padding: 0 20px;
+          height: 150px;
         }
       }
     }

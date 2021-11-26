@@ -15,6 +15,6 @@ $(".load-more").on("click", function () {
 const createElement = () => {
   const newBlock = document.createElement("div")
   newBlock.innerHTML = `<div id=blogs-${loadMoreClickCount} class="blog-grid"><%- include("blogs-loop")-%></div>`
-  const myElement = document.querySelector(".blog-container")
+  const myElement = document.querySelector(".blogs-container-inner")
   myElement.appendChild(newBlock)
 }

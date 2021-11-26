@@ -1,0 +1,19 @@
+.admin-blog-page,
+.admin-header {
+  background-color: $additionalSlate;
+  .navigation {
+    background-color: $additionalSlate;
+    a {
+      color: white;
+    }
+  }
+}
+
+.admin-blogs-container {
+  margin-top: 400px;
+}
+
+.admin-title {
+  color: red;
+  font-size: 3em;
+}

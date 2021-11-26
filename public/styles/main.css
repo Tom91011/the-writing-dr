@@ -759,8 +759,9 @@ header .navigation a {
 .blogs-container .blog-grid .blog-container .blog {
   min-height: 418px;
 }
-.blogs-container .blog-grid .blog-container .blog blog-info {
+.blogs-container .blog-grid .blog-container .blog .blog-info {
   padding: 0 20px;
+  height: 150px;
 }
 .blogs-container .blog-grid img {
   width: 100%;
@@ -795,6 +796,28 @@ header .navigation a {
 .blog-page-inner img {
   margin: auto;
   width: 600px;
+}
+
+.admin-blog-page,
+.admin-header {
+  background-color: #545454;
+}
+.admin-blog-page .navigation,
+.admin-header .navigation {
+  background-color: #545454;
+}
+.admin-blog-page .navigation a,
+.admin-header .navigation a {
+  color: white;
+}
+
+.admin-blogs-container {
+  margin-top: 400px;
+}
+
+.admin-title {
+  color: red;
+  font-size: 3em;
 }
 
 .hero-about {
@@ -938,6 +961,9 @@ header .navigation a {
   color: black;
   text-decoration: none;
   font-size: 1.2em;
+}
+.blog-grid a h2 {
+  font-size: 1.1vw;
 }
 .blog-grid a h3 {
   font-size: 1em;

@@ -9,9 +9,6 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const PORT = 8000
 const mongoose = require('mongoose')
 const mongoDB = 'mongodb://127.0.0.1/blogs_database';
-const testimonials = require("./src/testimonials")
-
-const promises = require("./src/promise-images")
 
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
@@ -75,14 +72,29 @@ app.get('/blogs-loop', (req, res) => {
 
   loadMoreClickCount += 1
   Blog.find({}, (err, foundItems) => {
-    blogArray = foundItems
-    let totalBlogs = blogArray.length
+    let totalBlogs = foundItems.length
     res.render("blogs-loop", {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
       endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems, loadMoreClickCount))
     })
+  })
+})
+
+app.get('/admin-blogs', (req, res) => {
+  loadMoreClickCount= 0
+  blogArray = []
+  Blog.find({}, (err, foundItems) => {
+    blogArray = foundItems
+    let totalBlogs = blogArray.length
+  res.render("admin-blogs", {
+      blogArray: blogArray,
+      totalBlogs: totalBlogs,
+      startingBlogArrayPostion: totalBlogs - 1,
+      endingBlogArrayPosition: 0
+    })
+  })
 })
 
 const getStartingPostion = (foundItems, loadMoreClickCount) => {
@@ -145,44 +157,6 @@ app.get("/blogs/:blogName", (req, res) => {
         altImage: post.imageAlt
       })
     }
-  })
-})
-
-const testimonialsArray = testimonials.getTestimonials()
-
-let currentTestimonial = 0
-const testimonialIteration = () => {
-  if (currentTestimonial === testimonialsArray.length-1) {
-    currentTestimonial = 0
-  } else {
-      currentTestimonial +=1
-    }
-}
-
-setInterval(testimonialIteration,2000)
-
-app.get('/testimonial-carousel', (req, res) => {
-  res.render("carousel", {
-    currentBlogReview: testimonialsArray[currentTestimonial].review,
-    currentBlogReviewer: testimonialsArray[currentTestimonial].reviewer
-  })
-})
-
-const promisesArray = promises.getPromises()
-let currentPromise = 0
-const promisesIteration = () => {
-  if (currentPromise === promisesArray.length-1) {
-    currentPromise = 0
-  } else {
-      currentPromise +=1
-    }
-}
-setInterval(promisesIteration,3000)
-
-app.get('/promises-carousel', (req, res) => {
-  res.render("promises", {
-    currentPromise: promisesArray[currentPromise].filePath,
-    currentPromiseAlt: promisesArray[currentPromise].alt
   })
 })
 
