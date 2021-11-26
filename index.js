@@ -13,8 +13,6 @@ const testimonials = require("./src/testimonials")
 
 const promises = require("./src/promise-images")
 
-
-
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
 // app.use('/public/images/');
@@ -78,43 +76,25 @@ app.get('/blogs-loop', (req, res) => {
   loadMoreClickCount += 1
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
-    console.log(blogArray);
     let totalBlogs = blogArray.length
-    // let startingBlogArrayPostion = totalBlogs - (loadMoreClickCount * blogsToShow)
-    // let endingBlogArrayPosition = getStartingPostion(foundItems, loadMoreClickCount) - blogsToShow + 1
-    // console.log(`1starting position is ${startingBlogArrayPostion}`)
-    // console.log(`1ending position is ${endingBlogArrayPosition}`)
-    // if (getStartingPostion(foundItems, loadMoreClickCount) < 6) {
-    //   endingBlogArrayPosition = 0
-    // }
-    // let blogsLeftToDisplay = endingBlogArrayPosition - 1
-    // console.log(`starting position is ${startingBlogArrayPostion}`)
-    // console.log(`ending position is ${endingBlogArrayPosition}`)
     res.render("blogs-loop", {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
       endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems, loadMoreClickCount))
     })
-    // console.log(`2starting position is ${startingBlogArrayPostion}`)
-    // console.log(`2ending position is ${endingBlogArrayPosition}`)
-  })
 })
 
 const getStartingPostion = (foundItems, loadMoreClickCount) => {
-  // console.log(loadMoreClickCount);
   let startingBlogArrayPostion = foundItems.length - (loadMoreClickCount * blogsToShow) -1
-  // console.log(startingBlogArrayPostion);
   return startingBlogArrayPostion
 }
 
 const getEndingPosition = (startingPostion) => {
-
   let endingPosition = startingPostion - blogsToShow + 1
   if (startingPostion < blogsToShow ) {
     endingPosition = 0
   }
-  console.log(`1ending position is ${endingPosition}`);
   return endingPosition
 }
 
