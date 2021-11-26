@@ -7,14 +7,14 @@ $(".load-more").on("click", function () {
     type: 'GET',
     url: '/blogs-loop',
     success: function(result) {
-         $('#blogs').html(result);
+         $(`#blogs-${loadMoreClickCount}`).html(result);
     }
   });
 })
 
 const createElement = () => {
   const newBlock = document.createElement("div")
-  newBlock.innerHTML = `<div id="blogs" class="blog-grid">""</div>`
+  newBlock.innerHTML = `<div id=blogs-${loadMoreClickCount} class="blog-grid"><%- include("blogs-loop")-%></div>`
   const myElement = document.querySelector(".blog-container")
   myElement.appendChild(newBlock)
 }
