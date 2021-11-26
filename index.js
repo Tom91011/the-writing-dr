@@ -168,17 +168,30 @@ app.get("/admin-blogs/:blogName", (req, res) => {
     const storedTitle = _.kebabCase(_.lowerCase(post.title))
     const blogContent = post.content
     const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
-// console.log(res);
     if(typedTitle ===  storedTitle) {
-      // console.log(res);
       res.render("admin-blog-page", {
         title: post.title,
         content: reformatedContent,
         date: post.date,
         imageLink: post.image,
-        altImage: post.imageAlt
+        altImage: post.imageAlt,
+        blogId: post._id
       })
     }
+  })
+})
+
+
+app.post("/delete", (req, res) => {
+  const idToBeDeleted = req.body.delete
+  console.log(idToBeDeleted);
+  Blog.findByIdAndDelete(idToBeDeleted, (err, docs) => {
+    if (err) {
+       console.log(err)
+   }
+   else {
+       console.log("Deleted : ", docs);
+   }
   })
 })
 
