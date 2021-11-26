@@ -16,12 +16,18 @@
 
       <div class="blog">
         <form class="" action="/delete" method="post">
-
           <button type="submit" name="delete" value=<%= blogId %>>DELETE</button>
-
         </form>
+
+         <form class="" action="/update" method="post">
+           <input type="input" class="form-control" name="blogTitle" value="<%= title %>">
+           <input type="input" class="form-control" name="blogDate" value="<%= date %>">
+            <textarea id="new-content" name="blogContent" rows="6" ><%- content %></textarea>
+           <button type="submit" name="update" value=<%= blogId %>>Update Blog</button>
+         </form>
+
           <div class="blog-image">
-            <img class="" src= <%= imageLink %> alt=<%= altImage %>>
+            <img class="" src= <%= imageLink %> alt="<%- altImage %>">
           </div>
           <div class="blog-info">
             <h2><%= blogId %></h2>

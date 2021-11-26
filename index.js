@@ -165,7 +165,11 @@ app.get("/blogs/:blogName", (req, res) => {
 
 app.get("/admin-blogs/:blogName", (req, res) => {
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
+  const blogArrayJson = JSON.stringify(blogArray)
+  console.log(blogArrayJson);
+  console.log(blogArray);
   blogArray.forEach((post) => {
+    // console.log(post);
     const storedTitle = _.kebabCase(_.lowerCase(post.title))
     const blogContent = post.content
     const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
@@ -193,6 +197,28 @@ app.post("/delete", (req, res) => {
        console.log("Deleted : ", docs);
    }
   })
+})
+
+app.post("/update", (req, res) => {
+  console.log(res.body);
+  console.log(req.body);
+  const idToBeUpdated = req.body.update
+  Blog.findByIdAndUpdate(idToBeUpdated, {
+    title: req.body.blogTitle,
+    date:req.body.blogDate,
+    content: req.body.blogContent,
+    href: _.kebabCase(_.lowerCase(req.body.blogTitle))
+
+  },
+  (err, docs) => {
+    if (err){
+        console.log(err)
+    }
+    else{
+        console.log("Updated User : ", docs);
+    }
+  })
+  res.redirect("/blogs")
 })
 
 app.listen(PORT, () => {
