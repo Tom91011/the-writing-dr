@@ -207,6 +207,8 @@ app.post("/update", (req, res) => {
     title: req.body.blogTitle,
     date:req.body.blogDate,
     content: req.body.blogContent,
+    image: req.body.blogImage,
+    imageAlt: req.body.blogImageAlt,
     href: _.kebabCase(_.lowerCase(req.body.blogTitle))
 
   },

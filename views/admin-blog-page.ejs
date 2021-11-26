@@ -22,7 +22,10 @@
          <form class="" action="/update" method="post">
            <input type="input" class="form-control" name="blogTitle" value="<%= title %>">
            <input type="input" class="form-control" name="blogDate" value="<%= date %>">
+           <input type="input" class="form-control" name="blogImage" value="<%= imageLink %>">
+           <input type="input" class="form-control" name="blogImageAlt" value="<%= altImage %>">
             <textarea id="new-content" name="blogContent" rows="6" ><%- content %></textarea>
+
            <button type="submit" name="update" value=<%= blogId %>>Update Blog</button>
          </form>
 
