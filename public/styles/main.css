@@ -962,9 +962,6 @@ header .navigation a {
   text-decoration: none;
   font-size: 1.2em;
 }
-.blog-grid a h2 {
-  font-size: 1.1vw;
-}
 .blog-grid a h3 {
   font-size: 1em;
   color: #545454;

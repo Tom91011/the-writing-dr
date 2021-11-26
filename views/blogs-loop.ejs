@@ -1,6 +1,6 @@
 <% for (let i = startingBlogArrayPostion; i >= endingBlogArrayPosition; i--) {%>
  <div class="blog-container">
-   <a href=<%= `/blogs/${blogArray[i].href}` %>>
+   <a href=<%= `${href}${blogArray[i].href}` %>>
      <div class="blog">
          <div class="blog-image">
            <img class="" src=<%= blogArray[i].image %> alt=<%= blogArray[i].imageAlt %>>

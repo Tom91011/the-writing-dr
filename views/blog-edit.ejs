@@ -1,0 +1,58 @@
+<%- include("partials/header") -%>
+
+<!-- <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
+</div> -->
+<div class="site-wrapper">
+    <header class="on-load">
+      <a name=#top></a>
+      <img class="header-logo" src="./public/images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
+      <%- include("partials/nav-bar") -%>
+    </header>
+    <main>
+      <div class="hero hero-contact">
+        <div class="hero-main">
+
+          <div class="hero-slogan">
+            <h1>New Blog Post</h1>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="content-section contact-outer-container top-section-contact">
+
+        <div class="line">
+        </div>
+        <div class="content contact-inner-container">
+
+          <form class="" action="/compose" method="post">
+            <div class="contact-top-row">
+              <input type="input" class="form-control" name="blogTitle" placeholder="Title">
+              <input type="text" id="new-date" name="blogDate" placeholder="Date">
+              <input type="text" id="new-image" name="blogImageFilePath" placeholder="image">
+              <input type="text" id="new-image-alt" name="blogImageAlt" placeholder="Image Alt Name">
+
+            </div>
+            <div class="contact-bottom-row">
+              <textarea id="new-content" name="blogContent" rows="6"  placeholder="Content"></textarea>
+            </div>
+            <div class="submit-row">
+
+              <button type="submit" name="submit">Post Blog</button>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </main>
+
+
+
+    <%- include("partials/footer") -%>
+  </div>
+  </body>
+  <%# <script src="src/js-files/hide-header.js"></script> %>
+
+  </html>

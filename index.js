@@ -4,9 +4,8 @@ const https = require("https")
 const path = require('path')
 const app = express()
 const _ = require("lodash")
-const bootstrap = typeof window !== `undefined` && import("bootstrap")
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const PORT = 8000
+const PORT = 3000
 const mongoose = require('mongoose')
 const mongoDB = 'mongodb://127.0.0.1/blogs_database';
 
@@ -14,8 +13,7 @@ app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
 // app.use('/public/images/');
 app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms, without it you will get ***undefined
-app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
-app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
+
 
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
@@ -63,7 +61,8 @@ app.get('/blogs', (req, res) => {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: totalBlogs - 1,
-      endingBlogArrayPosition: totalBlogs - blogsToShow
+      endingBlogArrayPosition: totalBlogs - blogsToShow,
+      href: "/blogs/"
     })
   })
 })
@@ -77,7 +76,8 @@ app.get('/blogs-loop', (req, res) => {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
-      endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems, loadMoreClickCount))
+      endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems, loadMoreClickCount)),
+      href:"/blogs/"
     })
   })
 })
@@ -92,7 +92,8 @@ app.get('/admin-blogs', (req, res) => {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: totalBlogs - 1,
-      endingBlogArrayPosition: 0
+      endingBlogArrayPosition: 0,
+      href:"/admin-blogs/"
     })
   })
 })
@@ -144,12 +145,33 @@ app.get("/blogs/:blogName", (req, res) => {
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
 
   blogArray.forEach((post) => {
+    // console.log(blogArray);
     const storedTitle = _.kebabCase(_.lowerCase(post.title))
     const blogContent = post.content
     const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
 
     if(typedTitle ===  storedTitle) {
       res.render("blog-page", {
+        title: post.title,
+        content: reformatedContent,
+        date: post.date,
+        imageLink: post.image,
+        altImage: post.imageAlt
+      })
+    }
+  })
+})
+
+app.get("/admin-blogs/:blogName", (req, res) => {
+  const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
+  blogArray.forEach((post) => {
+    const storedTitle = _.kebabCase(_.lowerCase(post.title))
+    const blogContent = post.content
+    const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
+// console.log(res);
+    if(typedTitle ===  storedTitle) {
+      // console.log(res);
+      res.render("admin-blog-page", {
         title: post.title,
         content: reformatedContent,
         date: post.date,
