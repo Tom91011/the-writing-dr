@@ -1,5 +1,11 @@
 let loadMoreClickCount = 0
 
+const loadMoreButton = document.querySelector(".load-more")
+loadMoreButton.addEventListener("click", () => {
+  console.log("clicked");
+})
+console.log(loadMoreButton);
+
 $(".load-more").on("click", function () {
   loadMoreClickCount += 1
   createElement()

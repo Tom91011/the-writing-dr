@@ -1,4 +1,5 @@
 export default function hideHeader() {
+  console.log("Hello from hideHeader");
 
   window.onscroll = () => {
   growShrinkLogo()

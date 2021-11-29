@@ -790,12 +790,29 @@ header .navigation a {
   margin-bottom: 50px;
 }
 
-.blog-page-inner {
-  width: 100%;
+.blog-page-container {
+  position: relative;
+  top: 150px;
+  margin: 50px auto 150px;
+  width: 60.25em;
 }
-.blog-page-inner img {
+.blog-page-container .blog-page-inner {
+  width: 40em;
   margin: auto;
-  width: 600px;
+}
+.blog-page-container .blog-page-inner img {
+  margin: auto;
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+}
+.blog-page-container .blog-page-inner h1 {
+  font-size: 4em;
+  margin-bottom: 0;
+}
+.blog-page-container .blog-page-inner h3 {
+  font-size: 1em;
+  color: #545454;
 }
 
 .admin-blog-page,

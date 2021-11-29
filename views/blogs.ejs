@@ -1,7 +1,7 @@
 <%- include("partials/header") -%>
 
-<!-- <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
-</div> -->
+<%# <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
+</div> %>
 <div class="site-wrapper">
     <header class="on-load">
       <a name=#top></a>
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="blog-image-headline">
-          <img class="" src=<%=blogArray[0].image%> alt=<%= blogArray[0].imageAlt %>">
+          <img class="" src=<%=`/public/images/blogs/${blogArray[0].image}`%> alt=<%= blogArray[0].imageAlt %>">
         </div>
       </div>
       <div class="blogs-container-inner">
@@ -66,5 +66,5 @@
 
   </body>
   <script type="text/javascript" src="public/script.js"></script>
-  <script type="module" src="public/hide-header.js"></script>
+  <script type="module" src="/public/hide-header.js"></script>
   </html>

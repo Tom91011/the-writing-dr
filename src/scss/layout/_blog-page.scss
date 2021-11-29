@@ -1,7 +1,25 @@
-.blog-page-inner {
-  width: 100%;
-  img {
+.blog-page-container {
+  position: relative;
+  top: 150px;
+  margin: 50px auto 150px;
+  width: 60.25em;
+  // padding-top: 20px;
+  .blog-page-inner {
+    width: 40em;
     margin: auto;
-    width: 600px;
+    img {
+      margin: auto;
+      height: 600px;
+      width: 100%;
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 4em;
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: 1em;
+      color: $additionalSlate
+    }
   }
 }

@@ -165,9 +165,6 @@ app.get("/blogs/:blogName", (req, res) => {
 
 app.get("/admin-blogs/:blogName", (req, res) => {
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
-  const blogArrayJson = JSON.stringify(blogArray)
-  console.log(blogArrayJson);
-  console.log(blogArray);
   blogArray.forEach((post) => {
     // console.log(post);
     const storedTitle = _.kebabCase(_.lowerCase(post.title))
@@ -200,8 +197,6 @@ app.post("/delete", (req, res) => {
 })
 
 app.post("/update", (req, res) => {
-  console.log(res.body);
-  console.log(req.body);
   const idToBeUpdated = req.body.update
   Blog.findByIdAndUpdate(idToBeUpdated, {
     title: req.body.blogTitle,
@@ -217,7 +212,7 @@ app.post("/update", (req, res) => {
         console.log(err)
     }
     else{
-        console.log("Updated User : ", docs);
+        console.log("Updated Blog : ", docs);
     }
   })
   res.redirect("/blogs")
