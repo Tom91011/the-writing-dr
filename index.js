@@ -4,6 +4,7 @@ const https = require("https")
 const path = require('path')
 const app = express()
 const _ = require("lodash")
+const marked = require('marked')
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const PORT = 3000
 const mongoose = require('mongoose')
@@ -147,14 +148,15 @@ app.get("/blogs/:blogName", (req, res) => {
 
   blogArray.forEach((post) => {
     // console.log(blogArray);
-    const storedTitle = _.kebabCase(_.lowerCase(post.title))
-    const blogContent = post.content
-    const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
-
+      const storedTitle = _.kebabCase(_.lowerCase(post.title))
     if(typedTitle ===  storedTitle) {
+
+      const blogContent = post.content
+      const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
+      const markedContent = marked.parse(blogContent)
       res.render("blog-page", {
         title: post.title,
-        content: reformatedContent,
+        content: markedContent,
         date: post.date,
         imageLink: post.image,
         altImage: post.imageAlt
@@ -167,13 +169,16 @@ app.get("/admin-blogs/:blogName", (req, res) => {
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
   blogArray.forEach((post) => {
     // console.log(post);
-    const storedTitle = _.kebabCase(_.lowerCase(post.title))
-    const blogContent = post.content
-    const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
+
+      const storedTitle = _.kebabCase(_.lowerCase(post.title))
     if(typedTitle ===  storedTitle) {
+      const blogContent = post.content
+      const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
+      const markedContent = marked.parse(blogContent)
       res.render("admin-blog-page", {
         title: post.title,
-        content: reformatedContent,
+        content: blogContent,
+        markedContent: markedContent,
         date: post.date,
         imageLink: post.image,
         altImage: post.imageAlt,

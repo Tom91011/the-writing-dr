@@ -801,10 +801,7 @@ header .navigation a {
   margin: auto;
 }
 .blog-page-container .blog-page-inner img {
-  margin: auto;
-  height: 600px;
-  width: 100%;
-  object-fit: cover;
+  width: 50%;
 }
 .blog-page-container .blog-page-inner h1 {
   font-size: 4em;

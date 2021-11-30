@@ -5,6 +5,10 @@ export default function hideHeader() {
   growShrinkLogo()
 }
 
+window.onload = function() {
+  console.log("loaded");
+}
+
 function growShrinkLogo() {
   const header = document.querySelector("header")
     const main = document.querySelector("main")
