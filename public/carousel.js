@@ -1,10 +1,10 @@
 export default function carousel() {
-  window.onload = function() {
+
     const carouselEl = document.getElementById("carousel")
     const nodeList = document.querySelectorAll(".carousel-item")
     const leftArrowEl = document.querySelector(".left-arrow")
     const rightArrowEl = document.querySelector(".right-arrow")
-    // console.log("I got called from testimonial carousel");
+    console.log("I got called from testimonial carousel");
     console.log(nodeList.length);
     let currentTestimonial = 0
 
@@ -58,10 +58,6 @@ export default function carousel() {
     carouselEl.addEventListener("mouseleave", restartAutoScroll)
 
     restartAutoScroll()
-
-
-
-  }
 }
 
 carousel()
