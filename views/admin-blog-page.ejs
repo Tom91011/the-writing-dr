@@ -8,7 +8,7 @@
     <a name=#top></a>
     <img class="header-logo" src="/public/images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
     <%- include("partials/nav-bar") -%>
-    <h1 class="admin-title">BLOGS ADMIN PAGE</h1>
+    <h1 class="admin-title">BLOG ADMIN PAGE</h1>
   </header>
 
 <main>
@@ -19,18 +19,18 @@
         <button type="submit" name="delete" value=<%= blogId %>>DELETE</button>
       </form>
 
-       <form class="ammend-form" action="/update" method="post">
-         <label for="" value="" >Title</label>
+       <form class="input-form" action="/update" method="post">
+         <label for="blob-title" value="" >Title</label>
          <input type="input" id="blog-title" class="form-control" name="blogTitle" value="<%= title %>">
-         <label for="" value="" >Published Date</label>
+         <label for="blog-date" value="" >Published Date</label>
          <input type="input" id="blog-date" class="form-control" name="blogDate" value="<%= date %>">
-         <label for="" value="" >Image file Name - Use full name with file extension type</label>
+         <label for="blog-image" value="" >Image file Name - Use full name with file extension type</label>
          <input type="input" id="blog-image" class="form-control" name="blogImage" value="<%= imageLink %>">
-         <label for="" value="" >Image Description - This improves SEO</label>
+         <label for="blog-image-alt" value="" >Image Description - This improves SEO</label>
          <input type="input" id="blog-image-alt" class="form-control" name="blogImageAlt" value="<%= altImage %>">
-         <label for="" value="" >Article Body - to be written in Markdown format</label>
-          <textarea id="new-content" name="blogContent" rows="6" ><%- content %></textarea>
-          <button type="submit" name="update" value=<%= blogId %>>Update Blog</button>
+         <label for="content" value="" >Article Body - to be written in Markdown format</label>
+         <textarea id="content" name="blogContent" rows="6" ><%- content %></textarea>
+         <button type="submit" name="update" value=<%= blogId %>>Update Blog</button>
        </form>
 
      </div>

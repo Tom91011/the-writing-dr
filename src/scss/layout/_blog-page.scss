@@ -3,23 +3,41 @@
   top: 150px;
   margin: 50px auto 150px;
   width: 60.25em;
-  // padding-top: 20px;
   .blog-page-inner {
     width: 40em;
     margin: auto;
     img {
-      // margin: auto;
-      // height: 600px;
       width: 50%;
-      // object-fit: cover;
     }
     h1 {
-      font-size: 4em;
       margin-bottom: 0;
     }
-    h3 {
-      font-size: 1em;
-      color: $additionalSlate
+  }
+}
+
+
+
+.input-form {
+  @include flex-row(column, space-between);
+  align-items: flex-start;
+  input, textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px 10px;
+  }
+  label {
+    margin-top: 20px;
+  }
+  textarea {
+    height: 600px;
+    // width: 120%;
+  }
+  button {
+    padding: 15px 40px;
+    border: 1px #E1E8EB solid;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
     }
   }
 }

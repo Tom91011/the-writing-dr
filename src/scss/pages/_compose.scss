@@ -1,0 +1,18 @@
+.input-form {
+  input, textarea {
+  }
+  label {
+    text-align: left;
+  }
+  textarea {
+    font-family: $josefinSansRegular;
+  }
+  button {
+    color: $primaryWhite;
+    background-color: $primaryGreen;
+    &:hover {
+    background-color: $primaryWhite;
+    color: $primaryGreen;
+    }
+  }
+}

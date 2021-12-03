@@ -804,81 +804,101 @@ header .navigation a {
   width: 50%;
 }
 .blog-page-container .blog-page-inner h1 {
-  font-size: 4em;
   margin-bottom: 0;
 }
-.blog-page-container .blog-page-inner h3 {
-  font-size: 1em;
-  color: #545454;
-}
 
-.admin-blog-page,
-.admin-header {
-  background-color: #c3eaf1;
-}
-.admin-blog-page .navigation,
-.admin-header .navigation {
-  background-color: #c3eaf1;
-}
-.admin-blog-page .navigation a,
-.admin-header .navigation a {
-  color: white;
-}
-
-.admin-title {
-  color: red;
-  font-size: 2em;
-  margin: 10px 0;
-}
-
-.admin-blogs-container {
-  margin: auto;
-  position: relative;
-  width: 60.25em;
-  margin-top: 280px;
-}
-.admin-blogs-container button {
-  padding: 15px 40px;
-  border: 1px #E1E8EB solid;
-  border-radius: 5px;
-  background-color: #dc3545;
-  color: white;
-}
-.admin-blogs-container button:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}
-.admin-blogs-container .ammend-form {
+.input-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   align-items: flex-start;
 }
-.admin-blogs-container .ammend-form input, .admin-blogs-container .ammend-form textarea {
+.input-form input, .input-form textarea {
   width: 100%;
   margin: 5px 0;
   padding: 5px 10px;
 }
-.admin-blogs-container .ammend-form label {
+.input-form label {
   margin-top: 20px;
-  text-align: left;
 }
-.admin-blogs-container .ammend-form textarea {
+.input-form textarea {
   height: 600px;
-  font-family: Josefin-Sans-Regular, sans-serif;
 }
-.admin-blogs-container .ammend-form button {
+.input-form button {
   padding: 15px 40px;
   border: 1px #E1E8EB solid;
   border-radius: 5px;
-  color: white;
-  background-color: #1fcda8;
 }
-.admin-blogs-container .ammend-form button:hover {
-  background-color: white;
-  color: #1fcda8;
+.input-form button:hover {
+  cursor: pointer;
+}
+
+.admin-title {
+  margin: 10px 0;
+}
+
+.blog-edit-container {
+  width: 80%;
+  margin: auto;
+}
+.blog-edit-container button {
+  padding: 15px 40px;
+  border: 1px #E1E8EB solid;
+  border-radius: 5px;
+}
+.blog-edit-container button:hover {
+  cursor: pointer;
+}
+
+.admin-blogs-container {
+  position: relative;
+  width: 60.25em;
+  width: 100%;
+  margin-top: 280px;
+  margin-left: 0;
+}
+.admin-blogs-container .blog-container-inner .blog-grid-admin {
+  width: 90%;
+}
+.admin-blogs-container .blog-container-inner .blog-grid-admin .blog-container {
+  width: 20%;
+  margin: 20px;
+}
+
+.hero-compose {
+  height: 20vh;
+  min-height: 400px !important;
+}
+
+.input-form-container {
+  margin-left: 100px !important;
+  max-width: 80% !important;
+}
+.input-form-container .input-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-items: flex-start;
+}
+.input-form-container .input-form input, .input-form-container .input-form textarea {
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px 10px;
+}
+.input-form-container .input-form label {
+  margin-top: 20px;
+}
+.input-form-container .input-form textarea {
+  height: 600px;
+}
+.input-form-container .input-form button {
+  padding: 15px 40px;
+  border: 1px #E1E8EB solid;
+  border-radius: 5px;
+}
+.input-form-container .input-form button:hover {
   cursor: pointer;
 }
 
@@ -1039,6 +1059,70 @@ header .navigation a {
   color: white;
   background-color: #1fcda8;
   cursor: pointer;
+}
+
+.blog-page-container .blog-page-inner h1 {
+  font-size: 4em;
+}
+.blog-page-container .blog-page-inner h3 {
+  font-size: 1em;
+  color: #545454;
+}
+
+.admin-blog-page,
+.admin-header {
+  background-color: #c3eaf1;
+}
+.admin-blog-page .navigation,
+.admin-header .navigation {
+  background-color: #c3eaf1;
+}
+.admin-blog-page .navigation a,
+.admin-header .navigation a {
+  color: white;
+}
+
+.admin-title {
+  color: red;
+  font-size: 2em;
+}
+
+.admin-blogs-container button {
+  background-color: #dc3545;
+  color: white;
+}
+.admin-blogs-container button:hover {
+  background-color: black;
+  color: white;
+}
+.admin-blogs-container .input-form label {
+  text-align: left;
+}
+.admin-blogs-container .input-form textarea {
+  font-family: Josefin-Sans-Regular, sans-serif;
+}
+.admin-blogs-container .input-form button {
+  color: white;
+  background-color: #1fcda8;
+}
+.admin-blogs-container .input-form button:hover {
+  background-color: white;
+  color: #1fcda8;
+}
+
+.input-form label {
+  text-align: left;
+}
+.input-form textarea {
+  font-family: Josefin-Sans-Regular, sans-serif;
+}
+.input-form button {
+  color: white;
+  background-color: #1fcda8;
+}
+.input-form button:hover {
+  background-color: white;
+  color: #1fcda8;
 }
 
 /*# sourceMappingURL=main.css.map */

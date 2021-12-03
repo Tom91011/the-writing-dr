@@ -1,0 +1,16 @@
+.admin-title {
+  margin: 10px 0
+}
+
+.blog-edit-container {
+  width: 80%;
+  margin: auto;
+  button {
+    padding: 15px 40px;
+    border: 1px #E1E8EB solid;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

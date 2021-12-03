@@ -9,41 +9,28 @@
       <%- include("partials/nav-bar") -%>
     </header>
     <main>
-      <div class="hero hero-contact">
+      <div class="hero hero-compose">
         <div class="hero-main">
-
-          <div class="hero-slogan">
+          <div class="hero-slogan-compose">
             <h1>New Blog Post</h1>
           </div>
-
         </div>
-
       </div>
 
-      <div class="content-section contact-outer-container top-section-contact">
+      <div class="content-section">
 
         <div class="line">
         </div>
-        <div class="content contact-inner-container">
-
-          <form class="" action="/compose" method="post">
-            <div class="contact-top-row">
-              <input type="input" class="form-control" name="blogTitle" placeholder="Title">
-              <input type="text" id="new-date" name="blogDate" placeholder="Date">
-              <input type="text" id="new-image" name="blogImageFilePath" placeholder="image">
-              <input type="text" id="new-image-alt" name="blogImageAlt" placeholder="Image Alt Name" value="">
-
-            </div>
-            <div class="contact-bottom-row">
-              <textarea id="new-content" name="blogContent" rows="6"  placeholder="Content"></textarea>
-            </div>
-            <div class="submit-row">
-
-              <button type="submit" name="submit">Post Blog</button>
-
-            </div>
-          </form>
-
+          <div class="content input-form-container">
+            <form class="input-form" action="/compose" method="post">
+                <input type="input" class="form-control" name="blogTitle" placeholder="Title">
+                <input type="text" id="new-date" name="blogDate" placeholder="Date">
+                <input type="text" id="new-image" name="blogImageFilePath" placeholder="image">
+                <input type="text" id="new-image-alt" name="blogImageAlt" placeholder="Image Alt Name" value="">
+                <textarea id="new-content" name="blogContent" rows="6"  placeholder="Content"></textarea>
+                <button type="submit" name="submit">Post Blog</button>
+              </form>
+          </div>
         </div>
       </div>
     </main>

@@ -1,0 +1,32 @@
+.hero-compose {
+  height: 20vh;
+  min-height: 400px !important;
+}
+
+.input-form-container {
+  margin-left: 100px !important;
+  max-width: 80% !important;
+  .input-form {
+    @include flex-row(column, space-between);
+    align-items: flex-start;
+    input, textarea {
+      width: 100%;
+      margin: 5px 0;
+      padding: 5px 10px;
+    }
+    label {
+      margin-top: 20px;
+    }
+    textarea {
+      height: 600px;
+    }
+    button {
+      padding: 15px 40px;
+      border: 1px #E1E8EB solid;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
