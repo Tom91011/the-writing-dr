@@ -30,7 +30,13 @@
          <input type="input" id="blog-image-alt" class="form-control" name="blogImageAlt" value="<%= altImage %>">
          <label for="content" value="" >Article Body - to be written in Markdown format</label>
          <textarea id="content" name="blogContent" rows="6" ><%- content %></textarea>
-         <button type="submit" name="update" value=<%= blogId %>>Update Blog</button>
+         <div class="submit-container">
+           <button type="submit" name="update" value=<%= blogId %>>Update Blog</button>
+           <div class="make-headline-container">
+             <label for="make-headline">Make Headline</label>
+             <input type="checkbox" id="make-headline" name="" value="">
+           </div>
+         </div>
        </form>
 
      </div>

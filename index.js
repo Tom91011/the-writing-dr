@@ -23,6 +23,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const Schema = mongoose.Schema;
 
 let blogArray = []
+let loadMoreClickCount = 0
+const blogsToShow = 6
+let headlineBlog = "61aa27fa5e3a4610a018185c"
 
 const blogSchema = new Schema ({
   title: {
@@ -50,15 +53,16 @@ app.get('/services', (req, res) => {
   res.render("services")
 })
 
-let loadMoreClickCount = 0
-const blogsToShow = 6
+
 app.get('/blogs', (req, res) => {
   loadMoreClickCount= 0
   // blogArray = []
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
+    console.log(foundItems);
     let totalBlogs = blogArray.length
   res.render("blogs", {
+    headlineBlog: headlineBlog,
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),

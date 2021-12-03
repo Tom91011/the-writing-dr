@@ -13,4 +13,14 @@
       cursor: pointer;
     }
   }
+  .submit-container {
+    @include flex-row(row, space-between);
+    .make-headline-container {
+      margin-left: 20px;
+      @include flex-row(row, space-between);
+      label {
+        margin: 0
+      }
+    }
+  }
 }

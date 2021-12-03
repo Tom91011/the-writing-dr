@@ -850,6 +850,22 @@ header .navigation a {
 .blog-edit-container button:hover {
   cursor: pointer;
 }
+.blog-edit-container .submit-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.blog-edit-container .submit-container .make-headline-container {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.blog-edit-container .submit-container .make-headline-container label {
+  margin: 0;
+}
 
 .admin-blogs-container {
   position: relative;
