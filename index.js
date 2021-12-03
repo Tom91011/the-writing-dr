@@ -184,6 +184,7 @@ app.get("/admin-blogs/:blogName", (req, res) => {
         altImage: post.imageAlt,
         blogId: post._id
       })
+    } else {
     }
   })
 })

@@ -3,6 +3,7 @@
 <!-- <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
 </div> -->
 <div class="site-wrapper admin-blog-page">
+
   <header class="on-load admin-header">
     <a name=#top></a>
     <img class="header-logo" src="/public/images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
@@ -12,25 +13,33 @@
 
 <main>
   <div class="blog-container admin-blogs-container">
-    <div class="blog-page-inner">
+    <div class="blog-edit-container">
 
-      <div class="blog">
-        <form class="" action="/delete" method="post">
-          <button type="submit" name="delete" value=<%= blogId %>>DELETE</button>
-        </form>
+      <form class="delete-button" action="/delete" method="post">
+        <button type="submit" name="delete" value=<%= blogId %>>DELETE</button>
+      </form>
 
-         <form class="" action="/update" method="post">
-           <input type="input" class="form-control" name="blogTitle" value="<%= title %>">
-           <input type="input" class="form-control" name="blogDate" value="<%= date %>">
-           <input type="input" class="form-control" name="blogImage" value="<%= imageLink %>">
-           <input type="input" class="form-control" name="blogImageAlt" value="<%= altImage %>">
-            <textarea id="new-content" name="blogContent" rows="6" ><%- content %></textarea>
+       <form class="ammend-form" action="/update" method="post">
+         <label for="" value="" >Title</label>
+         <input type="input" id="blog-title" class="form-control" name="blogTitle" value="<%= title %>">
+         <label for="" value="" >Published Date</label>
+         <input type="input" id="blog-date" class="form-control" name="blogDate" value="<%= date %>">
+         <label for="" value="" >Image file Name - Use full name with file extension type</label>
+         <input type="input" id="blog-image" class="form-control" name="blogImage" value="<%= imageLink %>">
+         <label for="" value="" >Image Description - This improves SEO</label>
+         <input type="input" id="blog-image-alt" class="form-control" name="blogImageAlt" value="<%= altImage %>">
+         <label for="" value="" >Article Body - to be written in Markdown format</label>
+          <textarea id="new-content" name="blogContent" rows="6" ><%- content %></textarea>
+          <button type="submit" name="update" value=<%= blogId %>>Update Blog</button>
+       </form>
 
-           <button type="submit" name="update" value=<%= blogId %>>Update Blog</button>
-         </form>
+     </div>
 
+   <div class="blog-page-container">
+     <div class="blog-page-inner">
+       <div class="blog">
           <div class="blog-image">
-            <img class="" src= <%= imageLink %> alt="<%- altImage %>">
+              <img class="" src= <%= `/public/images/blogs/${imageLink}` %> alt=<%= altImage %>>
           </div>
           <div class="blog-info">
             <h2><%= blogId %></h2>
@@ -40,11 +49,16 @@
           <div class="blog-content">
             <p> <%- markedContent %></p>
           </div>
+        </div>
       </div>
-
     </div>
   </div>
 
 </main>
 
 </div>
+<%- include("partials/footer") -%>
+
+</body>
+<script type="module" src="/public/hide-header.js"></script>
+</html>

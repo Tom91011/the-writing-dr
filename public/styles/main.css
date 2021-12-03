@@ -814,24 +814,72 @@ header .navigation a {
 
 .admin-blog-page,
 .admin-header {
-  background-color: #545454;
+  background-color: #c3eaf1;
 }
 .admin-blog-page .navigation,
 .admin-header .navigation {
-  background-color: #545454;
+  background-color: #c3eaf1;
 }
 .admin-blog-page .navigation a,
 .admin-header .navigation a {
   color: white;
 }
 
-.admin-blogs-container {
-  margin-top: 400px;
-}
-
 .admin-title {
   color: red;
-  font-size: 3em;
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+.admin-blogs-container {
+  margin: auto;
+  position: relative;
+  width: 60.25em;
+  margin-top: 280px;
+}
+.admin-blogs-container button {
+  padding: 15px 40px;
+  border: 1px #E1E8EB solid;
+  border-radius: 5px;
+  background-color: #dc3545;
+  color: white;
+}
+.admin-blogs-container button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.admin-blogs-container .ammend-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-items: flex-start;
+}
+.admin-blogs-container .ammend-form input, .admin-blogs-container .ammend-form textarea {
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px 10px;
+}
+.admin-blogs-container .ammend-form label {
+  margin-top: 20px;
+  text-align: left;
+}
+.admin-blogs-container .ammend-form textarea {
+  height: 600px;
+  font-family: Josefin-Sans-Regular, sans-serif;
+}
+.admin-blogs-container .ammend-form button {
+  padding: 15px 40px;
+  border: 1px #E1E8EB solid;
+  border-radius: 5px;
+  color: white;
+  background-color: #1fcda8;
+}
+.admin-blogs-container .ammend-form button:hover {
+  background-color: white;
+  color: #1fcda8;
+  cursor: pointer;
 }
 
 .hero-about {
