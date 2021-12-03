@@ -37,6 +37,9 @@
       }
     }
   }
+  .blog-grid:first-child {
+    
+  }
   .blog-grid {
     margin: auto;
     @include flex-row (row, space-between);

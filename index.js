@@ -54,7 +54,7 @@ let loadMoreClickCount = 0
 const blogsToShow = 6
 app.get('/blogs', (req, res) => {
   loadMoreClickCount= 0
-  blogArray = []
+  // blogArray = []
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
     let totalBlogs = blogArray.length
@@ -63,7 +63,7 @@ app.get('/blogs', (req, res) => {
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
       endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems,
-      loadMoreClickCount)),
+      loadMoreClickCount)) +1,
       href: "/blogs/"
     })
   })
@@ -101,7 +101,7 @@ app.get('/admin-blogs', (req, res) => {
 })
 
 const getStartingPostion = (foundItems, loadMoreClickCount) => {
-  let startingBlogArrayPostion = foundItems.length - (loadMoreClickCount * blogsToShow) -1
+  let startingBlogArrayPostion = foundItems.length - (loadMoreClickCount * blogsToShow) - 1
   return startingBlogArrayPostion
 }
 
