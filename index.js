@@ -199,6 +199,7 @@ app.post("/delete", (req, res) => {
        console.log("Deleted : ", docs);
    }
   })
+  setTimeout(() => {res.redirect("/admin-blogs")},1000)
 })
 
 app.post("/update", (req, res) => {

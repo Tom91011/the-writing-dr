@@ -1,0 +1,42 @@
+<%- include("partials/header") -%>
+
+<%# <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
+</div> %>
+<div class="site-wrapper">
+    <header class="on-load">
+      <a name=#top></a>
+      <img class="header-logo" src="/public/images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
+      <%- include("partials/nav-bar") -%>
+    </header>
+  <h1 class="admin-title">BLOGS ADMIN PAGE</h1>
+  <form class="" action="index.html" method="post">
+
+    <button type="button" name="button"></button>
+
+  </form>
+<%# <!-- %>
+<div class="blog-page-container">
+  <div class="blog-page-inner">
+    <div class="blog">
+        <div class="blog-image">
+          <img class="" src= <%= `/public/images/blogs/${imageLink}` %> alt=<%= altImage %>>
+        </div>
+        <div class="blog-info">
+          <h1> <%= title %> </h1>
+          <h3> <%= date %> </h3>
+        </div>
+        <div class="blog-content">
+          <%- content %>
+          <% console.log(content);%>
+        </div>
+    </div>
+
+  </div>
+  </div>
+
+  </div>
+<%- include("partials/footer") -%>
+
+</body>
+<script type="module" src="/public/hide-header.js"></script>
+</html>

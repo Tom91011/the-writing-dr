@@ -1,13 +1,8 @@
 export default function hideHeader() {
-  console.log("Hello from hideHeader");
-
   window.onscroll = () => {
   growShrinkLogo()
 }
 
-window.onload = function() {
-  console.log("loaded");
-}
 
 function growShrinkLogo() {
   const header = document.querySelector("header")
