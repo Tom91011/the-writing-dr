@@ -38,7 +38,7 @@
     }
   }
   .blog-grid:first-child {
-    
+
   }
   .blog-grid {
     margin: auto;
@@ -74,7 +74,7 @@
 .other-writing {
     @include flex-row (COLUMN, center);
     H1 {
-      // margin-bottom: 20px;
+      margin: 50px 0;
     }
     .logo-section {
       top: 0;

@@ -61,7 +61,7 @@ h3 {
 
 header {
   color: #0f68b7;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 header a {
   text-decoration: none;
@@ -784,6 +784,9 @@ header .navigation a {
   flex-direction: COLUMN;
   justify-content: center;
   align-items: center;
+}
+.other-writing H1 {
+  margin: 50px 0;
 }
 .other-writing .logo-section {
   top: 0;

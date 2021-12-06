@@ -42,7 +42,7 @@ export default function carousel() {
 
     const restartAutoScroll = () => {
        clearInterval(autoScroll)
-       autoScroll = setInterval(nextSlideRight, 2000)
+       autoScroll = setInterval(nextSlideRight, 3000)
     }
 
     const pauseScroll = () => {

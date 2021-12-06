@@ -42,11 +42,11 @@ const blogSchema = new Schema ({
 const Blog = mongoose.model("Blog", blogSchema)
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/index.html')
+    res.render("index")
   })
 
 app.get('/about', (req, res) => {
-  res.sendFile(__dirname + '/views/about.html')
+  res.render("about")
 })
 
 app.get('/services', (req, res) => {
@@ -59,7 +59,6 @@ app.get('/blogs', (req, res) => {
   // blogArray = []
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
-    console.log(foundItems);
     let totalBlogs = blogArray.length
   res.render("blogs", {
     headlineBlog: headlineBlog,
@@ -195,7 +194,7 @@ app.get("/admin-blogs/:blogName", (req, res) => {
 
 app.post("/delete", (req, res) => {
   const idToBeDeleted = req.body.delete
-  console.log(idToBeDeleted);
+  // console.log(idToBeDeleted);
   Blog.findByIdAndDelete(idToBeDeleted, (err, docs) => {
     if (err) {
        console.log(err)
@@ -209,6 +208,11 @@ app.post("/delete", (req, res) => {
 
 app.post("/update", (req, res) => {
   const idToBeUpdated = req.body.update
+  const isHeadline = req.body.blogId
+  console.log(isHeadline);
+  console.log(idToBeUpdated);
+  // console.log(req.body.makeHeadline);
+  console.log(req.body.blogId);
   Blog.findByIdAndUpdate(idToBeUpdated, {
     title: req.body.blogTitle,
     date:req.body.blogDate,
@@ -216,17 +220,18 @@ app.post("/update", (req, res) => {
     image: req.body.blogImage,
     imageAlt: req.body.blogImageAlt,
     href: _.kebabCase(_.lowerCase(req.body.blogTitle))
-
   },
   (err, docs) => {
     if (err){
         console.log(err)
     }
-    else{
-        console.log("Updated Blog : ", docs);
+    else {
+        // console.log("Updated Blog : ", docs);
+        console.log(req.body.blogId);
     }
   })
   res.redirect("/blogs")
+  console.log(req.body.blogId);
 })
 
 app.listen(PORT, () => {

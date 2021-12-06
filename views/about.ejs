@@ -1,12 +1,15 @@
 <%- include("partials/header") -%>
 
-<!-- <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
-</div> -->
-<div class="site-wrapper">
+</head>
+
+<body>
+  <div id="loadOverlay" style="background-color:#333; position:sticky; top:0px; left:0px; width:100%; height:100vh; z-index:2000;">
+  </div>
+  <div class="site-wrapper">
     <header class="on-load">
       <a name=#top></a>
       <img class="header-logo" src="./public/images/homepage/the_writing_doctor_logo.jpg" alt="The Writing Doctor Logo" loading="lazy" style="max-width: 100px;">
-      <%- include("partials/nav-bar") -%>
+      <navbar-component></navbar-component>
     </header>
 
     <main>
@@ -88,20 +91,27 @@
           </h2>
           <div class="promises-inner">
 
-            <%# <div class="left-arrow arrows">
+            <div class="left-arrow arrows">
               <div class="testimonial-arrows">
                 <i class="fas fa-chevron-left"></i>
               </div>
-            </div> %>
-
-            <div id="promise" class="carousel-item">
-
+              <div class="testimonial-arrows">
+                <i class="fas fa-chevron-left"></i>
+              </div>
             </div>
-            <%# <div class="right-arrow arrows">
+            <img class="carousel-item" src="./public/images/about/1_carousel.png" alt="Search Engine Optimised">
+            <img class="carousel-item hidden" src="./public/images/about/2_carousel.png" alt="Search Engine Optimised">
+            <img class="carousel-item hidden" src="./public/images/about/3_carousel.png" alt="Search Engine Optimised">
+            <img class="carousel-item hidden" src="./public/images/about/4_carousel.png" alt="Search Engine Optimised">
+            <img class="carousel-item hidden" src="./public/images/about/5_carousel.png" alt="Search Engine Optimised">
+            <div class="right-arrow arrows">
               <div class="testimonial-arrows">
                 <i class="fas fa-chevron-right"></i>
               </div>
-            </div> %>
+              <div class="testimonial-arrows">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -149,6 +159,7 @@
   <%- include("partials/footer") -%>
 </div>
 </body>
-<%# <script src="src/js-files/hide-header.js"></script> %>
-<script type="text/javascript" src="public/script.js"></script>
+<script type="module" src="public/module.js"></script>
+<script type="module" src="public/carousel.js"></script>
+<script type="module" src="public/hide-header.js"></script>
 </html>
