@@ -16,19 +16,23 @@
       </div>
 
       <div class="headline-blog">
-        <div class="blog-info-headline">
-          <div class="blog-info-headline-inner">
-            <div class="blog-title-headline">
-              <h2><%=blogArray[0].title%></h2>
-            </div>
-            <div class="blog-date-headline">
-              <h3 class="blog-date"><%=blogArray[0].date%></h3>
+        <a href=<%= `${href}${blogArray[0].href}` %>>
+          <div class="blog-info-headline">
+            <div class="blog-info-headline-inner">
+              <div class="blog-title-headline">
+                <h2><%=blogArray[0].title%></h2>
+              </div>
+              <div class="blog-date-headline">
+                <h3 class="blog-date"><%=blogArray[0].date%></h3>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="blog-image-headline">
-          <img class="" src=<%=`/public/images/blogs/${blogArray[0].image}`%> alt=<%= blogArray[0].imageAlt %>">
-        </div>
+        </a>
+        <a href=<%= `${href}${blogArray[0].href}` %>>
+          <div class="blog-image-headline">
+              <img class="" src=<%=`/public/images/blogs/${blogArray[0].image}`%> alt=<%= blogArray[0].imageAlt %>">
+          </div>
+        </a>
       </div>
 
       <div class="blogs-container-inner">

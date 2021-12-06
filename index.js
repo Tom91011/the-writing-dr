@@ -24,7 +24,7 @@ const Schema = mongoose.Schema;
 
 let blogArray = []
 let loadMoreClickCount = 0
-const blogsToShow = 6
+let blogsToShow = 7
 let headlineBlog = "61aa27fa5e3a4610a018185c"
 
 const blogSchema = new Schema ({
@@ -56,12 +56,15 @@ app.get('/services', (req, res) => {
 
 app.get('/blogs', (req, res) => {
   loadMoreClickCount= 0
+  blogsToShow = 7
+  console.log(loadMoreClickCount);
+  console.log(blogsToShow);
   // blogArray = []
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
     let totalBlogs = blogArray.length
   res.render("blogs", {
-    headlineBlog: headlineBlog,
+      headlineBlog: headlineBlog,
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
@@ -73,8 +76,10 @@ app.get('/blogs', (req, res) => {
 })
 
 app.get('/blogs-loop', (req, res) => {
-
+  blogsToShow = 6
   loadMoreClickCount += 1
+  console.log("load-more-button", loadMoreClickCount);
+  console.log(blogsToShow);
   Blog.find({}, (err, foundItems) => {
     let totalBlogs = foundItems.length
     res.render("blogs-loop", {
@@ -93,7 +98,7 @@ app.get('/admin-blogs', (req, res) => {
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
     let totalBlogs = blogArray.length
-  res.render("admin-blogs", {
+  res.render("admin-pages/admin-blogs", {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: totalBlogs - 1,
