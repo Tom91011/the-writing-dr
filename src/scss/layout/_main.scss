@@ -104,10 +104,10 @@ header {
   height: 110px;
   .alive {
     box-sizing: border-box;
-    animation-name: font-size;
-    animation-duration: 0.5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    // animation-name: font-size;
+    // animation-duration: 0.5s;
+    // animation-iteration-count: infinite;
+    // animation-direction: alternate;
   }
 }
 
@@ -182,7 +182,7 @@ header {
     .carousel-item {
       // padding: 0 50px;
       width: 100%;
-    }    
+    }
   }
 }
 

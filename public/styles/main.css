@@ -358,10 +358,6 @@ header .navigation a {
 }
 .alive-container .alive {
   box-sizing: border-box;
-  animation-name: font-size;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }
 
 .line {
@@ -1057,6 +1053,9 @@ header .navigation a {
 .headline-blog .blog-info-headline .blog-info-headline-inner .blog-date-headline {
   font-size: 0.4em;
   color: #545454;
+}
+.blog-grid {
+  color: white;
 }
 .blog-grid a {
   color: black;

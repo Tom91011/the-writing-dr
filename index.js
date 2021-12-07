@@ -5,7 +5,7 @@ const path = require('path')
 const app = express()
 const _ = require("lodash")
 const marked = require('marked')
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+// var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const PORT = 3000
 const mongoose = require('mongoose')
 const mongoDB = 'mongodb://127.0.0.1/blogs_database';
@@ -23,9 +23,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const Schema = mongoose.Schema;
 
 let blogArray = []
+let totalBlogs = 0
 let loadMoreClickCount = 0
 let blogsToShow = 7
-let headlineBlog = "61aa27fa5e3a4610a018185c"
+let blogsCurrentlyShown = blogsToShow
+let blogsLeftToShow = totalBlogs - blogsCurrentlyShown
+let headlineBlog = "61addf30f4c6b3b34388a9d5"
 
 const blogSchema = new Schema ({
   title: {
@@ -57,12 +60,14 @@ app.get('/services', (req, res) => {
 app.get('/blogs', (req, res) => {
   loadMoreClickCount= 0
   blogsToShow = 7
-  console.log(loadMoreClickCount);
-  console.log(blogsToShow);
-  // blogArray = []
+  blogsCurrentlyShown = blogsToShow
+  let loadMoreClass = "load-more"
+  let loadMoreText = "Load More"
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
-    let totalBlogs = blogArray.length
+    totalBlogs = blogArray.length
+
+
   res.render("blogs", {
       headlineBlog: headlineBlog,
       blogArray: blogArray,
@@ -70,7 +75,9 @@ app.get('/blogs', (req, res) => {
       startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
       endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems,
       loadMoreClickCount)) +1,
-      href: "/blogs/"
+      href: "/blogs/",
+      loadMoreClass: loadMoreClass,
+      loadMoreText: loadMoreText
     })
   })
 })
@@ -78,10 +85,13 @@ app.get('/blogs', (req, res) => {
 app.get('/blogs-loop', (req, res) => {
   blogsToShow = 6
   loadMoreClickCount += 1
-  console.log("load-more-button", loadMoreClickCount);
-  console.log(blogsToShow);
+  blogsCurrentlyShown += blogsToShow
+  blogsLeftToShow = totalBlogs - blogsCurrentlyShown
+  console.log(blogsCurrentlyShown, "currently shown");
+  console.log(blogsLeftToShow, "left to show");
   Blog.find({}, (err, foundItems) => {
-    let totalBlogs = foundItems.length
+    // let totalBlogs = foundItems.length
+    console.log(totalBlogs);
     res.render("blogs-loop", {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
@@ -97,7 +107,6 @@ app.get('/admin-blogs', (req, res) => {
   blogArray = []
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
-    let totalBlogs = blogArray.length
   res.render("admin-pages/admin-blogs", {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
@@ -116,7 +125,7 @@ const getStartingPostion = (foundItems, loadMoreClickCount) => {
 const getEndingPosition = (startingPostion) => {
   let endingPosition = startingPostion - blogsToShow + 1
   if (startingPostion < blogsToShow ) {
-    endingPosition = 0
+    endingPosition = 1
   }
   return endingPosition
 }
@@ -155,7 +164,6 @@ app.get("/blogs/:blogName", (req, res) => {
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
 
   blogArray.forEach((post) => {
-    // console.log(blogArray);
       const storedTitle = _.kebabCase(_.lowerCase(post.title))
     if(typedTitle ===  storedTitle) {
 
@@ -176,8 +184,6 @@ app.get("/blogs/:blogName", (req, res) => {
 app.get("/admin-blogs/:blogName", (req, res) => {
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
   blogArray.forEach((post) => {
-    // console.log(post);
-
       const storedTitle = _.kebabCase(_.lowerCase(post.title))
     if(typedTitle ===  storedTitle) {
       const blogContent = post.content
@@ -199,7 +205,6 @@ app.get("/admin-blogs/:blogName", (req, res) => {
 
 app.post("/delete", (req, res) => {
   const idToBeDeleted = req.body.delete
-  // console.log(idToBeDeleted);
   Blog.findByIdAndDelete(idToBeDeleted, (err, docs) => {
     if (err) {
        console.log(err)
@@ -214,10 +219,6 @@ app.post("/delete", (req, res) => {
 app.post("/update", (req, res) => {
   const idToBeUpdated = req.body.update
   const isHeadline = req.body.blogId
-  console.log(isHeadline);
-  console.log(idToBeUpdated);
-  // console.log(req.body.makeHeadline);
-  console.log(req.body.blogId);
   Blog.findByIdAndUpdate(idToBeUpdated, {
     title: req.body.blogTitle,
     date:req.body.blogDate,
@@ -231,12 +232,10 @@ app.post("/update", (req, res) => {
         console.log(err)
     }
     else {
-        // console.log("Updated Blog : ", docs);
         console.log(req.body.blogId);
     }
   })
   res.redirect("/blogs")
-  console.log(req.body.blogId);
 })
 
 app.listen(PORT, () => {

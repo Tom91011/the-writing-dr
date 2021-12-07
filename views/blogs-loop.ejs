@@ -1,5 +1,5 @@
 <% for (let i = startingBlogArrayPostion; i >= endingBlogArrayPosition; i--) {%>
- <div class="blog-container">
+ <div class="blog-container <%= endingBlogArrayPosition %>">
    <a href=<%= `${href}${blogArray[i].href}` %>>
      <div class="blog">
          <div class="blog-image">
