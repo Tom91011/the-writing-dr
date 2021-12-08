@@ -1,7 +1,8 @@
 export default function loadMore() {
   let loadMoreClickCount = 0
-
+  console.log(loadMoreClickCount);
   const loadMoreButton = document.querySelector(".load-more")
+
 
   $(".load-more").on("click", function () {
     loadMoreClickCount += 1
@@ -9,10 +10,18 @@ export default function loadMore() {
       $.ajax({
       type: 'GET',
       url: '/blogs-loop',
+      data: {
+        clicks: loadMoreClickCount
+      },
       success: function(result) {
            $(`#blogs-${loadMoreClickCount}`).html(result);
       }
     });
+  })
+
+  loadMoreButton.addEventListener("click", () => {
+    loadMoreButton.classList.add(loadMoreClickCount + 2)
+    console.log(loadMoreClickCount);
   })
 
   // Creates a new element for the next set of blogs

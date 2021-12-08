@@ -17,8 +17,7 @@ app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms,
 
 let blogArray = []
 let totalBlogs = 0
-let loadMoreClickCount = 0
-let blogsToShow = 7
+let blogsToShow = 4
 let blogsCurrentlyShown = blogsToShow
 let blogsLeftToShow = totalBlogs - blogsCurrentlyShown
 let headlineBlog = "61addf30f4c6b3b34388a9d5"
@@ -37,23 +36,20 @@ app.get('/services', (req, res) => {
 
 
 app.get('/blogs', (req, res) => {
-  loadMoreClickCount= 0
-  blogsToShow = 7
+  blogsToShow = 4
   blogsCurrentlyShown = blogsToShow
   let loadMoreClass = "load-more"
   let loadMoreText = "Load More"
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
     totalBlogs = blogArray.length
-
-
   res.render("blogs", {
       headlineBlog: headlineBlog,
       blogArray: blogArray,
       totalBlogs: totalBlogs,
-      startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
+      startingBlogArrayPostion: getStartingPostion(foundItems, 0),
       endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems,
-      loadMoreClickCount)) +1,
+      0)) +1,
       href: "/blogs/",
       loadMoreClass: loadMoreClass,
       loadMoreText: loadMoreText
@@ -62,14 +58,13 @@ app.get('/blogs', (req, res) => {
 })
 
 app.get('/blogs-loop', (req, res) => {
-  blogsToShow = 6
-  loadMoreClickCount += 1
+  loadMoreClickCount = req.query.clicks
+  blogsToShow = 3
   blogsCurrentlyShown += blogsToShow
   blogsLeftToShow = totalBlogs - blogsCurrentlyShown
   console.log(blogsCurrentlyShown, "currently shown");
   console.log(blogsLeftToShow, "left to show");
   Blog.find({}, (err, foundItems) => {
-    // let totalBlogs = foundItems.length
     console.log(totalBlogs);
     res.render("blogs-loop", {
       blogArray: blogArray,
@@ -116,6 +111,7 @@ app.get('/contact', (req, res) => {
 app.get('/compose', (req, res) => {
   res.render("compose")
 })
+
 
 app.post("/compose", (req, res) => {
 
