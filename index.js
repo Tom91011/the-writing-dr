@@ -5,22 +5,15 @@ const path = require('path')
 const app = express()
 const _ = require("lodash")
 const marked = require('marked')
-// var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const PORT = 3000
-const mongoose = require('mongoose')
-const mongoDB = 'mongodb://127.0.0.1/blogs_database';
+
+const Blog = require ('./controllers/Blogcontroller.js')
+const { mong } = require('./db.js');
 
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
 // app.use('/public/images/');
 app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms, without it you will get ***undefined
-
-
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-const Schema = mongoose.Schema;
 
 let blogArray = []
 let totalBlogs = 0
@@ -29,20 +22,6 @@ let blogsToShow = 7
 let blogsCurrentlyShown = blogsToShow
 let blogsLeftToShow = totalBlogs - blogsCurrentlyShown
 let headlineBlog = "61addf30f4c6b3b34388a9d5"
-
-const blogSchema = new Schema ({
-  title: {
-    type: String,
-    maxLength: 50
-  },
-  content: String,
-  date: String,
-  image: String,
-  imageAlt: String,
-  href: String
-})
-
-const Blog = mongoose.model("Blog", blogSchema)
 
 app.get('/', (req, res) => {
     res.render("index")
@@ -242,3 +221,5 @@ app.post("/update", (req, res) => {
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`)
 })
+
+// app.use('/', Blogcontroller);
