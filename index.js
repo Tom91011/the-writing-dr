@@ -205,6 +205,7 @@ app.get("/admin-blogs/:blogName", (req, res) => {
 
 app.post("/delete", (req, res) => {
   const idToBeDeleted = req.body.delete
+  console.log(idToBeDeleted);
   Blog.findByIdAndDelete(idToBeDeleted, (err, docs) => {
     if (err) {
        console.log(err)
@@ -213,7 +214,7 @@ app.post("/delete", (req, res) => {
        console.log("Deleted : ", docs);
    }
   })
-  setTimeout(() => {res.redirect("/admin-blogs")},1000)
+  setTimeout(() => {res.redirect("/blogs")},1000)
 })
 
 app.post("/update", (req, res) => {

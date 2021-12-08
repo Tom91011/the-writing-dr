@@ -59,17 +59,22 @@ h3 {
   font-size: 1.5em;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 header {
   color: #0f68b7;
   font-size: 1.2em;
 }
 header a {
-  text-decoration: none;
   color: #0f68b7;
 }
 header a:hover {
   color: #ffbd59;
   cursor: pointer;
+  text-decoration: underline 3px;
 }
 header a a:visited {
   text-decoration: none;

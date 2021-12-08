@@ -14,17 +14,22 @@ h3 {
   font-size: 1.5em;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 
 
 header {
   color: $primaryBlue;
   font-size: 1.2em;
   a {
-    text-decoration: none;
     color: $primaryBlue;
     &:hover {
       color: $primaryYellow;
       cursor: pointer;
+      text-decoration: underline 3px;
     }
     a:visited { text-decoration: none; color:red; }
     a:hover { text-decoration: none; color:blue; }
