@@ -118,32 +118,30 @@ app.get('/contact', (req, res) => {
   res.render("contact")
 })
 
-app.get('/compose', (req, res) => {
-  res.render("compose")
-})
-
-
-app.post("/compose", (req, res) => {
-
-  const newBlog = {
-    blogTitle: req.body.blogTitle,
-    blogDate: req.body.blogDate,
-    blogImageFilePath: req.body.blogImageFilePath,
-    blogImageAlt: req.body.blogImageAlt,
-    blogContent: req.body.blogContent
-  }
-  const newBlogForDb = new Blog ({
-    title: newBlog.blogTitle,
-    content: newBlog.blogContent,
-    date: newBlog.blogDate,
-    image: newBlog.blogImageFilePath,
-    imageAlt: newBlog.blogImageAlt,
-    href:_.kebabCase(_.lowerCase(newBlog.blogTitle))
-
+app
+  .route('/compose')
+  .get((req, res) => {
+    res.render("compose")
   })
-  newBlogForDb.save()
-  res.redirect("/blogs")
-})
+  .post((req, res) => {
+    const newBlog = {
+      blogTitle: req.body.blogTitle,
+      blogDate: req.body.blogDate,
+      blogImageFilePath: req.body.blogImageFilePath,
+      blogImageAlt: req.body.blogImageAlt,
+      blogContent: req.body.blogContent
+    }
+    const newBlogForDb = new Blog ({
+      title: newBlog.blogTitle,
+      content: newBlog.blogContent,
+      date: newBlog.blogDate,
+      image: newBlog.blogImageFilePath,
+      imageAlt: newBlog.blogImageAlt,
+      href:_.kebabCase(_.lowerCase(newBlog.blogTitle))
+    })
+    newBlogForDb.save()
+    res.redirect("/blogs")
+  })
 
 app.get("/blogs/:blogName", (req, res) => {
   const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
