@@ -7,7 +7,7 @@ const _ = require("lodash")
 const marked = require('marked')
 const PORT = 3000
 const mailchimp = require("@mailchimp/mailchimp_marketing");
-const Blog = require ('./controllers/Blogcontroller.js')
+const Article = require ('./controllers/Articlecontroller.js')
 const { mong } = require('./db.js');
 const compose = require('./routes/compose')
 require('dotenv').config() //Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env (e.g. keys/tokens)
@@ -18,12 +18,12 @@ app.use('/public', express.static(path.join(__dirname, './public')))
 app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms, without it you will get ***undefined
 
 
-let blogArray = []
-let totalBlogs = 0
-let blogsToShow = 4
-let blogsCurrentlyShown = blogsToShow
-let blogsLeftToShow = totalBlogs - blogsCurrentlyShown
-let headlineBlog = "61addf30f4c6b3b34388a9d5"
+let articleArray = []
+let totalArticles = 0
+let articlesToShow = 4
+let articlesCurrentlyShown = articlesToShow
+let articlesLeftToShow = totalArticles - articlesCurrentlyShown
+let headlineArticle = "61addf30f4c6b3b34388a9d5"
 
 app.get('/', (req, res) => {
     res.render("index")
@@ -37,79 +37,82 @@ app.get('/services', (req, res) => {
   res.render("services")
 })
 
-
-app.get('/blogs', (req, res) => {
-  blogsToShow = 4
-  blogsCurrentlyShown = blogsToShow
+app.get('/articles', (req, res) => {
+  articlesToShow = 3
+  articlesCurrentlyShown = articlesToShow
   let loadMoreClass = "load-more"
   let loadMoreText = "Load More"
-  Blog.find({}, (err, foundItems) => {
-    blogArray = foundItems
-    totalBlogs = blogArray.length
-  res.render("blogs", {
-      headlineBlog: headlineBlog,
-      blogArray: blogArray,
-      totalBlogs: totalBlogs,
-      startingBlogArrayPostion: getStartingPostion(foundItems, 0),
-      endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems,
-      0)) +1,
-      href: "/blogs/",
+
+  Article.find({}, (err, foundItems) => {
+    console.log("starting postion is " + getStartingPostion(foundItems, 0))
+    console.log(foundItems.length);
+    articleArray = foundItems
+    totalArticles = articleArray.length
+  res.render("articles", {
+      headlineArticle: headlineArticle,
+      articleArray: articleArray,
+      totalArticles: totalArticles,
+      startingArticleArrayPostion: getStartingPostion(foundItems, 0),
+      endingArticleArrayPosition: getEndingPosition(getStartingPostion(foundItems,
+      0)) ,
+      href: "/articles/",
       loadMoreClass: loadMoreClass,
       loadMoreText: loadMoreText
     })
   })
 })
 
-app.get('/blogs-loop', (req, res) => {
+app.get('/articles-loop', (req, res) => {
   loadMoreClickCount = req.query.clicks
-  blogsToShow = 3
-  blogsCurrentlyShown += blogsToShow
-  blogsLeftToShow = totalBlogs - blogsCurrentlyShown
-  // console.log(blogsCurrentlyShown, "currently shown");
-  // console.log(blogsLeftToShow, "left to show");
-  Blog.find({}, (err, foundItems) => {
-    // console.log(totalBlogs);
-    res.render("blogs-loop", {
-      blogArray: blogArray,
-      totalBlogs: totalBlogs,
-      startingBlogArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
-      endingBlogArrayPosition: getEndingPosition(getStartingPostion(foundItems, loadMoreClickCount)),
-      href:"/blogs/"
+  console.log(loadMoreClickCount);
+  articlesToShow = 3
+  articlesCurrentlyShown += articlesToShow
+  articlesLeftToShow = totalArticles - articlesCurrentlyShown
+  // console.log(articlesCurrentlyShown, "currently shown");
+  // console.log(articlesLeftToShow, "left to show");
+  Article.find({}, (err, foundItems) => {
+    // console.log(foundItems);
+    res.render("articles-loop", {
+      articleArray: articleArray,
+      totalArticles: totalArticles,
+      startingArticleArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
+      endingArticleArrayPosition: getEndingPosition(getStartingPostion(foundItems, loadMoreClickCount)),
+      href:"/articles/"
     })
   })
 })
 
-app.get('/admin-blogs', (req, res) => {
+app.get('/admin-articles', (req, res) => {
   loadMoreClickCount= 0
-  blogArray = []
-  // const data = getBlogs()
+  articleArray = []
+  // const data = getArticles()
   let data = 
-  Blog.find({}, (err, items) => {
+  Article.find({}, (err, items) => {
     data = items
     // console.log(data);
   });
   setTimeout(() => {console.log(data);},1000)
 
-  Blog.find({}, (err, foundItems) => {
-    blogArray = foundItems
-    res.render("admin-pages/admin-blogs", {
-      blogArray: blogArray,
-      totalBlogs: totalBlogs,
-      startingBlogArrayPostion: totalBlogs - 1,
-      endingBlogArrayPosition: 0,
-      href:"/admin-blogs/"
+  Article.find({}, (err, foundItems) => {
+    articleArray = foundItems
+    res.render("admin-pages/admin-articles", {
+      articleArray: articleArray,
+      totalArticles: totalArticles,
+      startingArticleArrayPostion: totalArticles - 1,
+      endingArticleArrayPosition: 0,
+      href:"/admin-articles/"
     })
   })
 })
 
 const getStartingPostion = (foundItems, loadMoreClickCount) => {
-  let startingBlogArrayPostion = foundItems.length - (loadMoreClickCount * blogsToShow) - 1
-  return startingBlogArrayPostion
+  let startingArticleArrayPostion = foundItems.length - (loadMoreClickCount * articlesToShow) - 1
+  return startingArticleArrayPostion
 }
 
 const getEndingPosition = (startingPostion) => {
-  let endingPosition = startingPostion - blogsToShow + 1
-  if (startingPostion < blogsToShow ) {
+  let endingPosition = startingPostion - articlesToShow + 1
+  if (startingPostion < articlesToShow ) {
     endingPosition = 1
   }
   return endingPosition
@@ -124,17 +127,17 @@ app.use('/compose', compose)
 
 
 
-app.get("/blogs/:blogName", (req, res) => {
-  const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
+app.get("/articles/:articleName", (req, res) => {
+  const typedTitle = _.kebabCase(_.lowerCase(req.params.articleName))
 
-  blogArray.forEach((post) => {
+  articleArray.forEach((post) => {
       const storedTitle = _.kebabCase(_.lowerCase(post.title))
     if(typedTitle ===  storedTitle) {
 
-      const blogContent = post.content
-      const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
-      const markedContent = marked.parse(blogContent)
-      res.render("blog-page", {
+      const articleContent = post.content
+      const reformatedContent = articleContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
+      const markedContent = marked.parse(articleContent)
+      res.render("article-page", {
         title: post.title,
         content: markedContent,
         date: post.date,
@@ -145,22 +148,22 @@ app.get("/blogs/:blogName", (req, res) => {
   })
 })
 
-app.get("/admin-blogs/:blogName", (req, res) => {
-  const typedTitle = _.kebabCase(_.lowerCase(req.params.blogName))
-  blogArray.forEach((post) => {
+app.get("/admin-articles/:articleName", (req, res) => {
+  const typedTitle = _.kebabCase(_.lowerCase(req.params.articleName))
+  articleArray.forEach((post) => {
       const storedTitle = _.kebabCase(_.lowerCase(post.title))
     if(typedTitle ===  storedTitle) {
-      const blogContent = post.content
-      const reformatedContent = blogContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
-      const markedContent = marked.parse(blogContent)
-      res.render("admin-blog-page", {
+      const articleContent = post.content
+      const reformatedContent = articleContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
+      const markedContent = marked.parse(articleContent)
+      res.render("admin-article-page", {
         title: post.title,
-        content: blogContent,
+        content: articleContent,
         markedContent: markedContent,
         date: post.date,
         imageLink: post.image,
         altImage: post.imageAlt,
-        blogId: post._id
+        articleId: post._id
       })
     } else {
     }
@@ -170,7 +173,7 @@ app.get("/admin-blogs/:blogName", (req, res) => {
 app.post("/delete", (req, res) => {
   const idToBeDeleted = req.body.delete
   console.log(idToBeDeleted);
-  Blog.findByIdAndDelete(idToBeDeleted, (err, docs) => {
+  Article.findByIdAndDelete(idToBeDeleted, (err, docs) => {
     if (err) {
        console.log(err)
    }
@@ -178,29 +181,29 @@ app.post("/delete", (req, res) => {
        console.log("Deleted : ", docs);
    }
   })
-  setTimeout(() => {res.redirect("/blogs")},1000)
+  setTimeout(() => {res.redirect("/articles")},1000)
 })
 
 app.post("/update", (req, res) => {
   const idToBeUpdated = req.body.update
-  const isHeadline = req.body.blogId
-  Blog.findByIdAndUpdate(idToBeUpdated, {
-    title: req.body.blogTitle,
-    date:req.body.blogDate,
-    content: req.body.blogContent,
-    image: req.body.blogImage,
-    imageAlt: req.body.blogImageAlt,
-    href: _.kebabCase(_.lowerCase(req.body.blogTitle))
+  const isHeadline = req.body.articleId
+  Article.findByIdAndUpdate(idToBeUpdated, {
+    title: req.body.articleTitle,
+    date:req.body.articleDate,
+    content: req.body.articleContent,
+    image: req.body.articleImage,
+    imageAlt: req.body.articleImageAlt,
+    href: _.kebabCase(_.lowerCase(req.body.articleTitle))
   },
   (err, docs) => {
     if (err){
         console.log(err)
     }
     else {
-        console.log(req.body.blogId);
+        console.log(req.body.articleId);
     }
   })
-  res.redirect("/blogs")
+  res.redirect("/articles")
 })
 
 
@@ -252,4 +255,4 @@ app.listen(PORT, () => {
   console.log(`App running on port ${PORT}`)
 })
 
-// app.use('/', Blogcontroller);
+// app.use('/', Articlecontroller);

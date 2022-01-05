@@ -1,5 +1,5 @@
-.blogs-container {
-  .blogs-hero-title {
+.articles-container {
+  .articles-hero-title {
     margin: auto;
     width: 700px;
     padding-top: 20px;
@@ -7,14 +7,14 @@
   width: 100%;
   margin: 150px 0 50px 0;
   position: relative;
-  .headline-blog{
+  .headline-article{
     @include flex-row(row, space-between);
     margin: auto;
     margin-bottom: 20px;
     width: 60.25em;
     min-height: 480px;
-    .blog-info-headline {
-      .blog-info-headline-inner {
+    .article-info-headline {
+      .article-info-headline-inner {
         position: relative;
         top: -70px;
         right: -120px;
@@ -27,8 +27,8 @@
         margin-bottom: 0;
       }
     }
-    .blog-image-headline {
-      width: 39.15875em;// This equals the width of two blog images + the space between them
+    .article-image-headline {
+      width: 39.15875em;// This equals the width of two article images + the space between them
       img {
         height: 600px;;
         position: relative;
@@ -37,20 +37,20 @@
       }
     }
   }
-  .blog-grid:first-child {
+  .article-grid:first-child {
 
   }
-  .blog-grid {
+  .article-grid {
     margin: auto;
     @include flex-row (row, space-between);
     flex-flow: wrap;
     width: 60.25em;
-    .blog-container {
+    .article-container {
       width: 30%;
       margin-bottom: 40px;
-      .blog {
+      .article {
         min-height: 418px;
-        .blog-info {
+        .article-info {
           padding: 0 20px;
           height: 150px;
         }

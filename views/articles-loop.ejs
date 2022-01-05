@@ -1,0 +1,15 @@
+<% for (let i = startingArticleArrayPostion; i >= endingArticleArrayPosition; i--) {%>
+ <div class="article-container <%= endingArticleArrayPosition %>">
+   <a href=<%= `${href}${articleArray[i].href}` %>>
+     <div class="article">
+         <div class="article-image">
+           <img class="" src=<%=`/public/images/articles/${articleArray[i].image}`%> alt="<%= articleArray[i].imageAlt %>">
+         </div>
+         <div class="article-info">
+           <h2> <%= articleArray[i].title %> </h2>
+           <h3> <%= articleArray[i].date %> </h3>
+         </div>
+     </div>
+   </a>
+ </div>
+<% } %>

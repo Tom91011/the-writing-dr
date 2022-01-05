@@ -15,17 +15,17 @@
 
   </form>
 <%# <!-- %>
-<div class="blog-page-container">
-  <div class="blog-page-inner">
-    <div class="blog">
-        <div class="blog-image">
-          <img class="" src= <%= `/public/images/blogs/${imageLink}` %> alt=<%= altImage %>>
+<div class="article-page-container">
+  <div class="article-page-inner">
+    <div class="article">
+        <div class="article-image">
+          <img class="" src= <%= `/public/images/articles/${imageLink}` %> alt=<%= altImage %>>
         </div>
-        <div class="blog-info">
+        <div class="article-info">
           <h1> <%= title %> </h1>
           <h3> <%= date %> </h3>
         </div>
-        <div class="blog-content">
+        <div class="article-content">
           <%- content %>
           <% console.log(content);%>
         </div>

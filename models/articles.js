@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-const blogSchema = new Schema ({
+const articleSchema = new Schema ({
   title: {
     type: String,
     maxLength: 50
@@ -14,6 +14,6 @@ const blogSchema = new Schema ({
   href: String
 })
 
-const Blog = mongoose.model("Blog", blogSchema)
+const Article = mongoose.model("Article", articleSchema)
 
-module.exports = { Blog }
+module.exports = { Article }

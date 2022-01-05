@@ -1,34 +1,34 @@
-.blogs-hero-title {
+.articles-hero-title {
   color: $primaryPink;
   text-align: center;
   font-size: 1.9em;
 }
 
-.headline-blog{
-  .blog-info-headline {
-    .blog-info-headline-inner {
+.headline-article{
+  .article-info-headline {
+    .article-info-headline-inner {
       background-color: $primaryWhite;
       font-size: 1.5em;
       letter-spacing: 0.1em;
-      .blog-title-headline {
+      .article-title-headline {
       }
-      .blog-date-headline {
+      .article-date-headline {
         font-size: 0.4em;
         color: $additionalSlate;
       }
     }
   }
-  .blog-image-headline {
+  .article-image-headline {
   }
 }
 
-.blog-grid {
+.article-grid {
   color: $primaryWhite;
   a {
     color: black;
     text-decoration: none;
     font-size: 1.2em;
-    .blog-info {
+    .article-info {
     }
     h3 {
       font-size: 1em;

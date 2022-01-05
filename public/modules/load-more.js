@@ -9,12 +9,12 @@ export default function loadMore() {
     createElement()
       $.ajax({
       type: 'GET',
-      url: '/blogs-loop',
+      url: '/articles-loop',
       data: {
         clicks: loadMoreClickCount
       },
       success: function(result) {
-           $(`#blogs-${loadMoreClickCount}`).html(result);
+           $(`#articles-${loadMoreClickCount}`).html(result);
       }
     });
   })
@@ -24,11 +24,11 @@ export default function loadMore() {
     console.log(loadMoreClickCount);
   })
 
-  // Creates a new element for the next set of blogs
+  // Creates a new element for the next set of articles
   const createElement = () => {
     const newBlock = document.createElement("div")
-    newBlock.innerHTML = `<div id=blogs-${loadMoreClickCount} class="blog-grid"><%- include("blogs-loop")-%></div>`
-    const myElement = document.querySelector(".blogs-container-inner")
+    newBlock.innerHTML = `<div id=articles-${loadMoreClickCount} class="article-grid"><%- include("articles-loop")-%></div>`
+    const myElement = document.querySelector(".articles-container-inner")
     myElement.appendChild(newBlock)
   }
 }

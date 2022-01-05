@@ -7,6 +7,6 @@ const _ = require("lodash")
 const marked = require('marked')
 var router = express.Router();
 
-const { Blog } = require('../models/articles')
+const { Article } = require('../models/articles')
 
-module.exports = Blog
+module.exports = Article

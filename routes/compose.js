@@ -1,6 +1,6 @@
 const express = require('express')
 const _ = require("lodash")
-const Blog = require ('../controllers/Blogcontroller.js')
+const Article = require ('../controllers/Articlecontroller.js')
 const router = express.Router()
 
 router
@@ -9,23 +9,23 @@ router
     res.render("compose")
   })
   .post((req, res) => {
-    const newBlog = {
-      blogTitle: req.body.blogTitle,
-      blogDate: req.body.blogDate,
-      blogImageFilePath: req.body.blogImageFilePath,
-      blogImageAlt: req.body.blogImageAlt,
-      blogContent: req.body.blogContent
+    const newArticle = {
+      articleTitle: req.body.articleTitle,
+      articleDate: req.body.articleDate,
+      articleImageFilePath: req.body.articleImageFilePath,
+      articleImageAlt: req.body.articleImageAlt,
+      articleContent: req.body.articleContent
     }
-    const newBlogForDb = new Blog ({
-      title: newBlog.blogTitle,
-      content: newBlog.blogContent,
-      date: newBlog.blogDate,
-      image: newBlog.blogImageFilePath,
-      imageAlt: newBlog.blogImageAlt,
-      href:_.kebabCase(_.lowerCase(newBlog.blogTitle))
+    const newArticleForDb = new Article ({
+      title: newArticle.articleTitle,
+      content: newArticle.articleContent,
+      date: newArticle.articleDate,
+      image: newArticle.articleImageFilePath,
+      imageAlt: newArticle.articleImageAlt,
+      href:_.kebabCase(_.lowerCase(newArticle.articleTitle))
     })
-    newBlogForDb.save()
-    res.redirect("/blogs")
+    newArticleForDb.save()
+    res.redirect("/articles")
   })
 
 module.exports = router
