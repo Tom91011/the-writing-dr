@@ -6,14 +6,16 @@ const app = express()
 const _ = require("lodash")
 const marked = require('marked')
 const PORT = 3000
-
+const mailchimp = require("@mailchimp/mailchimp_marketing");
 const Blog = require ('./controllers/Blogcontroller.js')
 const { mong } = require('./db.js');
+require('dotenv').config() //Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env (e.g. keys/tokens)
 
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
 // app.use('/public/images/');
 app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms, without it you will get ***undefined
+
 
 let blogArray = []
 let totalBlogs = 0
@@ -62,10 +64,10 @@ app.get('/blogs-loop', (req, res) => {
   blogsToShow = 3
   blogsCurrentlyShown += blogsToShow
   blogsLeftToShow = totalBlogs - blogsCurrentlyShown
-  console.log(blogsCurrentlyShown, "currently shown");
-  console.log(blogsLeftToShow, "left to show");
+  // console.log(blogsCurrentlyShown, "currently shown");
+  // console.log(blogsLeftToShow, "left to show");
   Blog.find({}, (err, foundItems) => {
-    console.log(totalBlogs);
+    // console.log(totalBlogs);
     res.render("blogs-loop", {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
@@ -79,9 +81,17 @@ app.get('/blogs-loop', (req, res) => {
 app.get('/admin-blogs', (req, res) => {
   loadMoreClickCount= 0
   blogArray = []
+  // const data = getBlogs()
+  let data = 
+  Blog.find({}, (err, items) => {
+    data = items
+    // console.log(data);
+  });
+  setTimeout(() => {console.log(data);},1000)
+
   Blog.find({}, (err, foundItems) => {
     blogArray = foundItems
-  res.render("admin-pages/admin-blogs", {
+    res.render("admin-pages/admin-blogs", {
       blogArray: blogArray,
       totalBlogs: totalBlogs,
       startingBlogArrayPostion: totalBlogs - 1,
@@ -212,6 +222,51 @@ app.post("/update", (req, res) => {
     }
   })
   res.redirect("/blogs")
+})
+
+
+//Setting up MailChimp
+mailchimp.setConfig({
+    apiKey: process.env.API_KEY,
+    server: process.env.SERVER
+});
+
+app.post("/new-email", (req,res) => {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const phone = req.body.phone;
+    const listId = process.env.LIST_ID;
+    //Creating an object with the users data
+    const subscribingUser = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone
+    };
+    console.log(subscribingUser.phone);
+    //Uploading the data to the server
+    async function run() {
+      const response = await mailchimp.lists.addListMember(listId, {
+        email_address: subscribingUser.email,
+        status: "subscribed",
+        merge_fields: {
+        FNAME: subscribingUser.firstName,
+        LNAME: subscribingUser.lastName,
+        PHONE: subscribingUser.phone
+        }
+      });
+    //If all goes well logging the contact's id and render success page
+      res.sendFile(__dirname + "/success.html")
+      console.log(`Successfully added contact as an audience member. The contact's id is ${response.id}.`);
+    }
+    // catch statement on failed posts
+    run().catch(e => res.sendFile(__dirname + "/failure.html"));
+  });
+  
+app.post("/failure", (req, res) => {
+  const failureButton = req.body.failureButton
+  res.redirect("/contact")
 })
 
 app.listen(PORT, () => {
