@@ -64,7 +64,8 @@
       object-fit: cover;
     }
   }
-  .load-more {
+  .load-more,
+  .no-more-articles {
     margin: auto;
     @include flex-row (row, center);
     button {

@@ -1,6 +1,5 @@
 export default function lastArticleCheck() {
 
-
   const loadMoreButton = document.querySelector(".load-more")
   loadMoreButton.addEventListener("click", () => {removeButton()})
 
@@ -13,6 +12,8 @@ export default function lastArticleCheck() {
       } else {
         console.log(true)
         loadMoreButton.innerHTML = "That's all the articles for now"
+        loadMoreButton.classList.add("no-more-articles")
+        loadMoreButton.classList.remove("load-more")
     }},1000)
   }
   removeButton()
