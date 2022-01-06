@@ -744,7 +744,10 @@ header .navigation a {
   width: 100%;
   object-fit: cover;
 }
-.articles-container .article-grid {
+.articles-container .article-row {
+  color: white;
+}
+.articles-container .article-row-inner {
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -753,18 +756,18 @@ header .navigation a {
   flex-flow: wrap;
   width: 60.25em;
 }
-.articles-container .article-grid .article-container {
+.articles-container .article-row-inner .article-container {
   width: 30%;
   margin-bottom: 40px;
 }
-.articles-container .article-grid .article-container .article {
+.articles-container .article-row-inner .article-container .article {
   min-height: 418px;
 }
-.articles-container .article-grid .article-container .article .article-info {
+.articles-container .article-row-inner .article-container .article .article-info {
   padding: 0 20px;
   height: 150px;
 }
-.articles-container .article-grid img {
+.articles-container .article-row-inner img {
   width: 100%;
   height: 300px;
   object-fit: cover;

@@ -36,11 +36,11 @@
       </div>
 
       <div class="articles-container-inner">
-        <div>
-            <div class="article-grid">
-              <%- include("articles-loop")-%>
-            </div>
-        </div>
+        <div class="article-row">
+          <div class="article-row-inner">
+            <%- include("articles-loop")-%>
+          </div>
+        </div>            
       </div>
       <div class=<%= loadMoreClass %>>
         <button type="button" name="button"><%= loadMoreText %></button>

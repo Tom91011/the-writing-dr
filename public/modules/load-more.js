@@ -19,16 +19,14 @@ export default function loadMore() {
     });
   })
 
-  loadMoreButton.addEventListener("click", () => {
-    loadMoreButton.classList.add(loadMoreClickCount)
-    console.log("Load more click count is " + loadMoreClickCount);
-  })
-
   // Creates a new element for the next set of articles
   const createElement = () => {
-    const newBlock = document.createElement("div")
-    newBlock.innerHTML = `<div id=articles-${loadMoreClickCount} class="article-grid"><%- include("articles-loop")-%></div>`
-    const myElement = document.querySelector(".articles-container-inner")
-    myElement.appendChild(newBlock)
-  }
+    const gridContainer = document.querySelector(".articles-container-inner")
+    const newBlock = document.createElement("div")   
+    
+    gridContainer.appendChild(newBlock)
+    
+    newBlock.innerHTML = `<div id=articles-${loadMoreClickCount} class="article-row-inner"><%- include("articles-loop")-%></div>`
+    newBlock.classList.add("article-row")
+   }
 }

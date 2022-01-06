@@ -37,10 +37,12 @@
       }
     }
   }
-  .article-grid:first-child {
 
+  .article-row {
+    color: white;
   }
-  .article-grid {
+
+  .article-row-inner {
     margin: auto;
     @include flex-row (row, space-between);
     flex-flow: wrap;
