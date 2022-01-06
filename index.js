@@ -10,9 +10,9 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 const Article = require ('./controllers/Articlecontroller.js')
 const { mong } = require('./db.js');
 const compose = require('./routes/compose')
+const articles = require('./routes/articles')
 const { getStartingPostion } = require ('./modules/starting-position.js')
 require('dotenv').config() //Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env (e.g. keys/tokens)
-
 
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
@@ -21,11 +21,6 @@ app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms,
 
 
 let articleArray = []
-// let totalArticles = 6
-// let articlesToShow = 3
-// let articlesCurrentlyShown = articlesToShow
-// let articlesLeftToShow = totalArticles - articlesCurrentlyShown
-let headlineArticle = "61addf30f4c6b3b34388a9d5"
 
 app.get('/', (req, res) => {
     res.render("index")
@@ -39,30 +34,32 @@ app.get('/services', (req, res) => {
   res.render("services")
 })
 
-app.get('/articles', (req, res) => {
-  articlesToShow = 3
-  articlesCurrentlyShown = articlesToShow
+// app.get('/articles', (req, res) => {
+//   articlesToShow = 3
+//   articlesCurrentlyShown = articlesToShow
  
-  let loadMoreClass = "load-more"
-  let loadMoreText = "Load More"
+//   let loadMoreClass = "load-more"
+//   let loadMoreText = "Load More"
 
-  Article.find({}, (err, foundItems) => {
-    articleArray = foundItems
-    totalArticles = articleArray.length
-    articlesLeftToShow = totalArticles - articlesCurrentlyShown
-    console.log(articlesLeftToShow);
-  res.render("articles", {
-      headlineArticle: headlineArticle,
-      articleArray: articleArray,
-      totalArticles: totalArticles,
-      startingArticleArrayPostion: getStartingPostion(foundItems, 0, articlesToShow),
-      endingArticleArrayPosition: foundItems.length - articlesToShow ,
-      href: "/articles/",
-      loadMoreClass: loadMoreClass,
-      loadMoreText: loadMoreText
-    })
-  })
-})
+//   Article.find({}, (err, foundItems) => {
+//     articleArray = foundItems
+//     totalArticles = articleArray.length
+//     articlesLeftToShow = totalArticles - articlesCurrentlyShown
+//     console.log(articlesLeftToShow);
+//   res.render("articles", {
+//       headlineArticle: headlineArticle,
+//       articleArray: articleArray,
+//       totalArticles: totalArticles,
+//       startingArticleArrayPostion: getStartingPostion(foundItems, 0, articlesToShow),
+//       endingArticleArrayPosition: foundItems.length - articlesToShow ,
+//       href: "/articles/",
+//       loadMoreClass: loadMoreClass,
+//       loadMoreText: loadMoreText
+//     })
+//   })
+// })
+
+app.use('/articles', articles)
 
 app.get('/articles-loop', (req, res) => {
   loadMoreClickCount = req.query.clicks
@@ -100,29 +97,12 @@ app.get('/admin-articles', (req, res) => {
   })
 })
 
-// const getStartingPostion = (foundItems, loadMoreClickCount) => {
-//     console.log("found items is " + foundItems.length);
-//     console.log("load more click count is " + loadMoreClickCount);
-//     console.log("articles to show is " + articlesToShow);
-//   let startingArticleArrayPostion = foundItems.length - (loadMoreClickCount * articlesToShow) - 1
-//   return startingArticleArrayPostion
-// }
-
-// const getEndingPosition = (startingPostion, articlesToShow) => {
-//   let endingPosition = startingPostion - articlesToShow + 1
-//   if (startingPostion < articlesToShow ) {
-//     endingPosition = 1
-//   }
-//   return endingPosition
-// }
-
 app.get('/contact', (req, res) => {
   res.render("contact")
 })
 
 // use the compose.js file to handle the compose endpoint
 app.use('/compose', compose)
-
 
 
 app.get("/articles/:articleName", (req, res) => {
