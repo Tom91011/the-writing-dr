@@ -20,8 +20,8 @@ export default function loadMore() {
   })
 
   loadMoreButton.addEventListener("click", () => {
-    loadMoreButton.classList.add(loadMoreClickCount + 2)
-    console.log(loadMoreClickCount);
+    loadMoreButton.classList.add(loadMoreClickCount)
+    console.log("Load more click count is " + loadMoreClickCount);
   })
 
   // Creates a new element for the next set of articles

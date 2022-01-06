@@ -10,7 +10,9 @@ const mailchimp = require("@mailchimp/mailchimp_marketing");
 const Article = require ('./controllers/Articlecontroller.js')
 const { mong } = require('./db.js');
 const compose = require('./routes/compose')
+const { getStartingPostion } = require ('./modules/starting-position.js')
 require('dotenv').config() //Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env (e.g. keys/tokens)
+
 
 app.set('view engine', 'ejs')
 app.use('/public', express.static(path.join(__dirname, './public')))
@@ -19,10 +21,10 @@ app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms,
 
 
 let articleArray = []
-let totalArticles = 0
-let articlesToShow = 4
-let articlesCurrentlyShown = articlesToShow
-let articlesLeftToShow = totalArticles - articlesCurrentlyShown
+// let totalArticles = 6
+// let articlesToShow = 3
+// let articlesCurrentlyShown = articlesToShow
+// let articlesLeftToShow = totalArticles - articlesCurrentlyShown
 let headlineArticle = "61addf30f4c6b3b34388a9d5"
 
 app.get('/', (req, res) => {
@@ -40,21 +42,21 @@ app.get('/services', (req, res) => {
 app.get('/articles', (req, res) => {
   articlesToShow = 3
   articlesCurrentlyShown = articlesToShow
+ 
   let loadMoreClass = "load-more"
   let loadMoreText = "Load More"
 
   Article.find({}, (err, foundItems) => {
-    console.log("starting postion is " + getStartingPostion(foundItems, 0))
-    console.log(foundItems.length);
     articleArray = foundItems
     totalArticles = articleArray.length
+    articlesLeftToShow = totalArticles - articlesCurrentlyShown
+    console.log(articlesLeftToShow);
   res.render("articles", {
       headlineArticle: headlineArticle,
       articleArray: articleArray,
       totalArticles: totalArticles,
-      startingArticleArrayPostion: getStartingPostion(foundItems, 0),
-      endingArticleArrayPosition: getEndingPosition(getStartingPostion(foundItems,
-      0)) ,
+      startingArticleArrayPostion: getStartingPostion(foundItems, 0, articlesToShow),
+      endingArticleArrayPosition: foundItems.length - articlesToShow ,
       href: "/articles/",
       loadMoreClass: loadMoreClass,
       loadMoreText: loadMoreText
@@ -64,59 +66,55 @@ app.get('/articles', (req, res) => {
 
 app.get('/articles-loop', (req, res) => {
   loadMoreClickCount = req.query.clicks
-  console.log(loadMoreClickCount);
   articlesToShow = 3
   articlesCurrentlyShown += articlesToShow
   articlesLeftToShow = totalArticles - articlesCurrentlyShown
-  // console.log(articlesCurrentlyShown, "currently shown");
-  // console.log(articlesLeftToShow, "left to show");
+  console.log(articlesLeftToShow);
   Article.find({}, (err, foundItems) => {
-    // console.log(foundItems);
+    let loopArrayStartPosition = getStartingPostion(foundItems, loadMoreClickCount, articlesToShow)
+    let loopArrayEndPosition = foundItems.length - articlesCurrentlyShown
+    if(articlesLeftToShow <= 1) {
+      loopArrayEndPosition = 1
+    }
+
     res.render("articles-loop", {
-      articleArray: articleArray,
-      totalArticles: totalArticles,
-      startingArticleArrayPostion: getStartingPostion(foundItems, loadMoreClickCount),
-      endingArticleArrayPosition: getEndingPosition(getStartingPostion(foundItems, loadMoreClickCount)),
+      articleArray: foundItems,
+      startingArticleArrayPostion: loopArrayStartPosition,
+      endingArticleArrayPosition: loopArrayEndPosition,
       href:"/articles/"
     })
   })
 })
 
 app.get('/admin-articles', (req, res) => {
-  loadMoreClickCount= 0
-  articleArray = []
-  // const data = getArticles()
-  let data = 
-  Article.find({}, (err, items) => {
-    data = items
-    // console.log(data);
-  });
-  setTimeout(() => {console.log(data);},1000)
-
   Article.find({}, (err, foundItems) => {
     articleArray = foundItems
+    console.log(articleArray);
     res.render("admin-pages/admin-articles", {
       articleArray: articleArray,
-      totalArticles: totalArticles,
-      startingArticleArrayPostion: totalArticles - 1,
+      totalArticles: articleArray.length,
+      startingArticleArrayPostion: articleArray.length - 1,
       endingArticleArrayPosition: 0,
       href:"/admin-articles/"
     })
   })
 })
 
-const getStartingPostion = (foundItems, loadMoreClickCount) => {
-  let startingArticleArrayPostion = foundItems.length - (loadMoreClickCount * articlesToShow) - 1
-  return startingArticleArrayPostion
-}
+// const getStartingPostion = (foundItems, loadMoreClickCount) => {
+//     console.log("found items is " + foundItems.length);
+//     console.log("load more click count is " + loadMoreClickCount);
+//     console.log("articles to show is " + articlesToShow);
+//   let startingArticleArrayPostion = foundItems.length - (loadMoreClickCount * articlesToShow) - 1
+//   return startingArticleArrayPostion
+// }
 
-const getEndingPosition = (startingPostion) => {
-  let endingPosition = startingPostion - articlesToShow + 1
-  if (startingPostion < articlesToShow ) {
-    endingPosition = 1
-  }
-  return endingPosition
-}
+// const getEndingPosition = (startingPostion, articlesToShow) => {
+//   let endingPosition = startingPostion - articlesToShow + 1
+//   if (startingPostion < articlesToShow ) {
+//     endingPosition = 1
+//   }
+//   return endingPosition
+// }
 
 app.get('/contact', (req, res) => {
   res.render("contact")
