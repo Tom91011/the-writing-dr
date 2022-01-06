@@ -3,6 +3,7 @@ const _ = require("lodash")
 const Article = require ('../controllers/Articlecontroller.js')
 const router = express.Router()
 const { getStartingPostion } = require ('../modules/starting-position.js')
+const marked = require('marked')
 
 let headlineArticle = "61addf30f4c6b3b34388a9d5"
 
@@ -31,17 +32,25 @@ router.get('/', (req, res) => {
   })
 })
 
-  // const getStartingPostion = (foundItems, loadMoreClickCount) => {
-  //   let startingArticleArrayPostion = foundItems.length - (loadMoreClickCount * articlesToShow) - 1
-  //   return startingArticleArrayPostion
-  // }
-  
-  // const getEndingPosition = (startingPostion) => {
-  //   let endingPosition = startingPostion - articlesToShow + 1
-  //   if (startingPostion < articlesToShow ) {
-  //     endingPosition = 1
-  //   }
-  //   return endingPosition
-  // }
+router.get("/:articleName", (req, res) => {
+  const typedTitle = _.kebabCase(_.lowerCase(req.params.articleName))
+
+  articleArray.forEach((post) => {
+      const storedTitle = _.kebabCase(_.lowerCase(post.title))
+    if(typedTitle ===  storedTitle) {
+
+      const articleContent = post.content
+      const reformatedContent = articleContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
+      const markedContent = marked.parse(articleContent)
+      res.render("article-page", {
+        title: post.title,
+        content: markedContent,
+        date: post.date,
+        imageLink: post.image,
+        altImage: post.imageAlt
+      })
+    }
+  })
+})
 
 module.exports = router

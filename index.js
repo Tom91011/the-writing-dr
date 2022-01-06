@@ -11,6 +11,7 @@ const Article = require ('./controllers/Articlecontroller.js')
 const { mong } = require('./db.js');
 const compose = require('./routes/compose')
 const articles = require('./routes/articles')
+const articlesLoop = require('./routes/articles-loop')
 const { getStartingPostion } = require ('./modules/starting-position.js')
 require('dotenv').config() //Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env (e.g. keys/tokens)
 
@@ -34,54 +35,8 @@ app.get('/services', (req, res) => {
   res.render("services")
 })
 
-// app.get('/articles', (req, res) => {
-//   articlesToShow = 3
-//   articlesCurrentlyShown = articlesToShow
- 
-//   let loadMoreClass = "load-more"
-//   let loadMoreText = "Load More"
-
-//   Article.find({}, (err, foundItems) => {
-//     articleArray = foundItems
-//     totalArticles = articleArray.length
-//     articlesLeftToShow = totalArticles - articlesCurrentlyShown
-//     console.log(articlesLeftToShow);
-//   res.render("articles", {
-//       headlineArticle: headlineArticle,
-//       articleArray: articleArray,
-//       totalArticles: totalArticles,
-//       startingArticleArrayPostion: getStartingPostion(foundItems, 0, articlesToShow),
-//       endingArticleArrayPosition: foundItems.length - articlesToShow ,
-//       href: "/articles/",
-//       loadMoreClass: loadMoreClass,
-//       loadMoreText: loadMoreText
-//     })
-//   })
-// })
-
 app.use('/articles', articles)
-
-app.get('/articles-loop', (req, res) => {
-  loadMoreClickCount = req.query.clicks
-  articlesToShow = 3
-  articlesCurrentlyShown += articlesToShow
-  articlesLeftToShow = totalArticles - articlesCurrentlyShown
-  console.log(articlesLeftToShow);
-  Article.find({}, (err, foundItems) => {
-    let loopArrayStartPosition = getStartingPostion(foundItems, loadMoreClickCount, articlesToShow)
-    let loopArrayEndPosition = foundItems.length - articlesCurrentlyShown
-    if(articlesLeftToShow <= 1) {
-      loopArrayEndPosition = 1
-    }
-
-    res.render("articles-loop", {
-      articleArray: foundItems,
-      startingArticleArrayPostion: loopArrayStartPosition,
-      endingArticleArrayPosition: loopArrayEndPosition,
-      href:"/articles/"
-    })
-  })
-})
+app.use('/articles-loop', articlesLoop)
 
 app.get('/admin-articles', (req, res) => {
   Article.find({}, (err, foundItems) => {
@@ -104,27 +59,6 @@ app.get('/contact', (req, res) => {
 // use the compose.js file to handle the compose endpoint
 app.use('/compose', compose)
 
-
-app.get("/articles/:articleName", (req, res) => {
-  const typedTitle = _.kebabCase(_.lowerCase(req.params.articleName))
-
-  articleArray.forEach((post) => {
-      const storedTitle = _.kebabCase(_.lowerCase(post.title))
-    if(typedTitle ===  storedTitle) {
-
-      const articleContent = post.content
-      const reformatedContent = articleContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
-      const markedContent = marked.parse(articleContent)
-      res.render("article-page", {
-        title: post.title,
-        content: markedContent,
-        date: post.date,
-        imageLink: post.image,
-        altImage: post.imageAlt
-      })
-    }
-  })
-})
 
 app.get("/admin-articles/:articleName", (req, res) => {
   const typedTitle = _.kebabCase(_.lowerCase(req.params.articleName))
