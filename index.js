@@ -12,6 +12,7 @@ const { mong } = require('./db.js');
 const compose = require('./routes/compose')
 const articles = require('./routes/articles')
 const articlesLoop = require('./routes/articles-loop')
+const adminArticles = require('./routes/admin-articles')
 const { getStartingPostion } = require ('./modules/starting-position.js')
 require('dotenv').config() //Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env (e.g. keys/tokens)
 
@@ -38,19 +39,6 @@ app.get('/services', (req, res) => {
 app.use('/articles', articles)
 app.use('/articles-loop', articlesLoop)
 
-app.get('/admin-articles', (req, res) => {
-  Article.find({}, (err, foundItems) => {
-    articleArray = foundItems
-    console.log(articleArray);
-    res.render("admin-pages/admin-articles", {
-      articleArray: articleArray,
-      totalArticles: articleArray.length,
-      startingArticleArrayPostion: articleArray.length - 1,
-      endingArticleArrayPosition: 0,
-      href:"/admin-articles/"
-    })
-  })
-})
 
 app.get('/contact', (req, res) => {
   res.render("contact")
@@ -60,27 +48,44 @@ app.get('/contact', (req, res) => {
 app.use('/compose', compose)
 
 
-app.get("/admin-articles/:articleName", (req, res) => {
-  const typedTitle = _.kebabCase(_.lowerCase(req.params.articleName))
-  articleArray.forEach((post) => {
-      const storedTitle = _.kebabCase(_.lowerCase(post.title))
-    if(typedTitle ===  storedTitle) {
-      const articleContent = post.content
-      const reformatedContent = articleContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
-      const markedContent = marked.parse(articleContent)
-      res.render("admin-article-page", {
-        title: post.title,
-        content: articleContent,
-        markedContent: markedContent,
-        date: post.date,
-        imageLink: post.image,
-        altImage: post.imageAlt,
-        articleId: post._id
-      })
-    } else {
-    }
-  })
-})
+app.use('/admin-articles', adminArticles)
+
+// app.get('/admin-articles', (req, res) => {
+//   Article.find({}, (err, foundItems) => {
+//     articleArray = foundItems
+//     console.log(articleArray);
+//     res.render("admin-pages/admin-articles", {
+//       articleArray: articleArray,
+//       totalArticles: articleArray.length,
+//       startingArticleArrayPostion: articleArray.length - 1,
+//       endingArticleArrayPosition: 0,
+//       href:"/admin-articles/"
+//     })
+//   })
+// })
+
+
+// app.get("/admin-articles/:articleName", (req, res) => {
+//   const typedTitle = _.kebabCase(_.lowerCase(req.params.articleName))
+//   articleArray.forEach((post) => {
+//       const storedTitle = _.kebabCase(_.lowerCase(post.title))
+//     if(typedTitle ===  storedTitle) {
+//       const articleContent = post.content
+//       const reformatedContent = articleContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
+//       const markedContent = marked.parse(articleContent)
+//       res.render("admin-article-page", {
+//         title: post.title,
+//         content: articleContent,
+//         markedContent: markedContent,
+//         date: post.date,
+//         imageLink: post.image,
+//         altImage: post.imageAlt,
+//         articleId: post._id
+//       })
+//     } else {
+//     }
+//   })
+// })
 
 app.post("/delete", (req, res) => {
   const idToBeDeleted = req.body.delete
