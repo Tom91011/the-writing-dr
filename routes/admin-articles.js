@@ -28,7 +28,7 @@ router.get("/:articleName", (req, res) => {
         const articleContent = post.content
         const reformatedContent = articleContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
         const markedContent = marked.parse(articleContent)
-        res.render("admin-article-page", {
+        res.render("admin-pages/admin-article-page", {
           title: post.title,
           content: articleContent,
           markedContent: markedContent,
