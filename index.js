@@ -14,6 +14,7 @@ const articles = require('./routes/articles')
 const articlesLoop = require('./routes/articles-loop')
 const adminArticles = require('./routes/admin-articles')
 const deleteArticle = require('./routes/delete-article')
+const updateArticle = require('./routes/update-article')
 const { getStartingPostion } = require ('./modules/starting-position.js')
 require('dotenv').config() //Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env (e.g. keys/tokens)
 
@@ -45,28 +46,29 @@ app.use('/articles-loop', articlesLoop)
 app.use('/compose', compose)
 app.use('/admin-articles', adminArticles)
 app.use('/delete', deleteArticle)
+app.use('/update', updateArticle)
 
-app.post("/update", (req, res) => {
-  const idToBeUpdated = req.body.update
-  const isHeadline = req.body.articleId
-  Article.findByIdAndUpdate(idToBeUpdated, {
-    title: req.body.articleTitle,
-    date:req.body.articleDate,
-    content: req.body.articleContent,
-    image: req.body.articleImage,
-    imageAlt: req.body.articleImageAlt,
-    href: _.kebabCase(_.lowerCase(req.body.articleTitle))
-  },
-  (err, docs) => {
-    if (err){
-        console.log(err)
-    }
-    else {
-        console.log(req.body.articleId);
-    }
-  })
-  res.redirect("/articles")
-})
+// app.post("/update", (req, res) => {
+//   const idToBeUpdated = req.body.update
+//   const isHeadline = req.body.articleId
+//   Article.findByIdAndUpdate(idToBeUpdated, {
+//     title: req.body.articleTitle,
+//     date:req.body.articleDate,
+//     content: req.body.articleContent,
+//     image: req.body.articleImage,
+//     imageAlt: req.body.articleImageAlt,
+//     href: _.kebabCase(_.lowerCase(req.body.articleTitle))
+//   },
+//   (err, docs) => {
+//     if (err){
+//         console.log(err)
+//     }
+//     else {
+//         console.log(req.body.articleId);
+//     }
+//   })
+//   res.redirect("/articles")
+// })
 
 
 //Setting up MailChimp

@@ -2,22 +2,27 @@ const express = require('express')
 const _ = require("lodash")
 const Article = require ('../controllers/Articlecontroller.js')
 const router = express.Router()
-const { getStartingPostion } = require ('../modules/starting-position.js')
-const marked = require('marked')
-
 
 router.post("/", (req, res) => {
-    const idToBeDeleted = req.body.delete
-    console.log(idToBeDeleted);
-    Article.findByIdAndDelete(idToBeDeleted, (err, docs) => {
-      if (err) {
-         console.log(err)
-     }
-     else {
-         console.log("Deleted : ", docs);
-     }
+    const idToBeUpdated = req.body.update
+    const isHeadline = req.body.articleId
+    Article.findByIdAndUpdate(idToBeUpdated, {
+      title: req.body.articleTitle,
+      date:req.body.articleDate,
+      content: req.body.articleContent,
+      image: req.body.articleImage,
+      imageAlt: req.body.articleImageAlt,
+      href: _.kebabCase(_.lowerCase(req.body.articleTitle))
+    },
+    (err, docs) => {
+      if (err){
+          console.log(err)
+      }
+      else {
+          console.log(req.body.articleId);
+      }
     })
-    setTimeout(() => {res.redirect("/articles")},1000)
+    res.redirect("/articles")
   })
 
   module.exports = router
