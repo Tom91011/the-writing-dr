@@ -6,6 +6,7 @@ const app = express()
 const PORT = 3000
 const mailchimp = require("@mailchimp/mailchimp_marketing")
 const { mong } = require('./db.js');
+const encrypt = require("mongoose-encryption")
 
 /////////////// Route links /////////////////////
 const compose = require('./routes/compose')

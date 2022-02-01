@@ -28,6 +28,7 @@
     "lodash": "^4.17.21",
     "marked": "^4.0.5",
     "mongoose": "^6.0.13",
+    "mongoose-encryption": "^2.1.2",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
