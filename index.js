@@ -6,6 +6,7 @@ const app = express()
 const PORT = 3000
 const mailchimp = require("@mailchimp/mailchimp_marketing")
 const { mong } = require('./db.js');
+const mongoose = require("mongoose")
 const encrypt = require("mongoose-encryption")
 
 /////////////// Route links /////////////////////
@@ -25,6 +26,60 @@ app.use('/public', express.static(path.join(__dirname, './public')))
 // app.use('/public/images/');
 app.use(express.urlencoded({extended:true})) //allows posting in html/ejs forms, without it you will get ***undefined
 
+// Access control code - will be moved out to own folder
+ 
+const userSchema = new mongoose.Schema ({
+    email: String,
+    password: String
+})
+
+const secret = "Thisisourlittlesecret"
+
+userSchema.plugin(encrypt, { secret: secret, encryptedFields: ["password"] })
+
+const User = new mongoose.model("User", userSchema)
+
+app.get("/login", function(req, res){
+  res.render("login");
+});
+ 
+app.get("/register", function(req, res){
+  res.render("register");
+});
+
+app.post("/register", function(req, res){
+  const newUser = new User({
+      email: req.body.username,
+      password: req.body.password
+  })
+
+  newUser.save(function(err) {
+      if(err) {
+          console.log(err);
+      } else {
+          res.render("index")
+      }
+  })
+})
+
+app.post("/login", function(req, res) {
+  const username = req.body.username
+  const password = req.body.password
+
+  User.findOne({email:username}, function(err, foundUser) {
+      if(err) {
+          console.log(err);
+      } else {
+          if(foundUser) {
+              if(foundUser.password === password) {
+                  res.render("about")
+              }
+          }
+      }
+  })
+})
+
+// 
 app.get('/', (req, res) => {res.render("index")})
 app.get('/about', (req, res) => {res.render("about")})
 app.get('/services', (req, res) => {res.render("services")})
