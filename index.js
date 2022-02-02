@@ -203,7 +203,7 @@ app.get('/articles/:articleName', function(req, res){
     articleArray.forEach((post) => {
         const storedTitle = _.kebabCase(_.lowerCase(post.title))
       if(typedTitle ===  storedTitle) {
-  
+        console.log(typedTitle);
         const articleContent = post.content
         const reformatedContent = articleContent.replace(/(\r\n|\r|\n)/g, '<br>') //converts \r\n text from the DB to <br> tags
         const markedContent = marked.parse(articleContent)
@@ -228,7 +228,7 @@ app.post("/failure", (req, res) => {
 })
 
 // these are utilising the routes folder
-app.use('/articles', articles)
+// app.use('/articles', articles)
 app.use('/articles-loop', articlesLoop)
 app.use('/delete', deleteArticle)
 app.use('/update', updateArticle)
