@@ -8,7 +8,7 @@ const marked = require('marked')
 var router = express.Router();
 
 const { Article } = require('../models/articles')
-const { User } = require('../models/admin-user')
+// const { User } = require('../models/admin-user')
 
 module.exports = Article
 // module.exports = User
