@@ -107,7 +107,6 @@ app.get('/admin-articles', function(req, res){
       console.log("in Article");
       articleArray = foundItems
       res.render("admin-pages/admin-articles", {
-        test: console.log("in Article.res.render"),
         articleArray: articleArray,
         totalArticles: articleArray.length,
         startingArticleArrayPostion: articleArray.length - 1,
