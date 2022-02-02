@@ -5,6 +5,7 @@ const router = express.Router()
 const { getStartingPostion } = require ('../modules/starting-position.js')
 
 router.get('/', (req, res) => {
+  console.log("in Articles Loop");
     loadMoreClickCount = req.query.clicks
     articlesToShow = 3
     articlesCurrentlyShown += articlesToShow

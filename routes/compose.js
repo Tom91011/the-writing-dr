@@ -9,6 +9,7 @@ router
     res.render("compose")
   })
   .post((req, res) => {
+    console.log("posting new article");
     const newArticle = {
       articleTitle: req.body.articleTitle,
       articleDate: req.body.articleDate,
