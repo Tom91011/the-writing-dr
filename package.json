@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently npm:watch:*",
-    "start": "node .",
+    "start": "node index.js",
     "watch:dev": "nodemon",
     "watch:scss": "sass --watch src/scss/main.scss public/styles/main.css"
   },
@@ -15,6 +15,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "14.17.6"
+  },
   "bugs": {
     "url": "https://github.com/Tom91011/the-writing-dr/issues"
   },
