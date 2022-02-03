@@ -51,7 +51,7 @@ body {
 
 h2 {
   font-size: 1.5em;
-  font-family: Argent-CF, sans-serif;
+  font-family: Josefin-Sans-Regular, sans-serif;
 }
 
 h3 {
@@ -325,8 +325,8 @@ header .navigation a {
   justify-content: centre;
   align-items: center;
   padding: 0 300px;
-  height: 85vh;
-  min-height: 850px;
+  height: 80vh;
+  min-height: 550px;
   background-color: #1fcda8;
   transform: skewY(-3deg);
 }
@@ -349,12 +349,16 @@ header .navigation a {
 .hero-main .hero-slogan h1 {
   margin: 50px 0 10px 0;
 }
+.hero-main .hero-slogan h2 {
+  line-height: 1.3;
+}
 .hero-main .hero-image {
   position: relative;
   top: 90px;
+  height: 600px;
 }
 .hero-main .hero-image .silohoutte {
-  max-width: 100%;
+  height: 80%;
   filter: drop-shadow(16px 16px 10px #545454);
 }
 
@@ -365,11 +369,14 @@ header .navigation a {
   box-sizing: border-box;
 }
 
+.home .line {
+  border: solid #1fcda8 1px;
+  background-color: #1fcda8;
+}
+
 .line {
   position: relative;
   top: -25px;
-  border: solid #1fcda8 1px;
-  background-color: #1fcda8;
   margin: auto;
   width: 0;
   height: 50px;
@@ -378,7 +385,6 @@ header .navigation a {
 
 .content-section {
   position: relative;
-  top: -50px;
   padding-bottom: 40px;
   background-color: #e0fff8;
   transform: skewY(-3deg);
@@ -390,24 +396,40 @@ header .navigation a {
   transform: skewY(3deg);
 }
 .content-section .content P {
-  padding: 10px 0S;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .logo-section {
   position: relative;
   top: -50px;
+  transform: skewY(-3deg);
 }
-.logo-section .brands {
+.logo-section H2 {
+  margin: 80px 0 0 0;
+  text-align: center;
+  background-color: white;
+  transform: skewY(3deg);
+  font-family: josefin-sans-300, sans-serif;
+}
+.logo-section .logos {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  background-color: white;
   top: -40px;
-  width: 50em;
+  width: 100%;
   margin: auto;
+  padding: 50px 0;
+  transform: skewY(3deg);
 }
-.logo-section .brands img {
+.logo-section .logos img {
   width: 10em;
+}
+.logo-section .logos .icon {
+  width: 12em;
+  font-size: 1em;
 }
 
 .bottom-section {
@@ -978,7 +1000,7 @@ header .navigation a {
   font-size: 2em;
 }
 
-.line-about-me {
+.about .line {
   border: solid #ffbd59 1px;
   background-color: #ffbd59;
 }
@@ -1036,7 +1058,7 @@ header .navigation a {
   color: #545454;
 }
 
-.line-services {
+.services .line {
   border: solid #0f68b7 1px;
   background-color: #0f68b7;
 }

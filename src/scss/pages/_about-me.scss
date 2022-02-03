@@ -32,10 +32,11 @@
   h3 {
     font-size: 2em;
   }
-
 }
 
-.line-about-me {
-  border: solid $primaryYellow 1px;
-  background-color: $primaryYellow;
+.about {
+  .line {
+    border: solid $primaryYellow 1px;
+    background-color: $primaryYellow;
+  }
 }

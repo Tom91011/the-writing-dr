@@ -53,8 +53,10 @@
   }
 }
 
-
-.line-services {
-  border: solid $primaryBlue 1px;
-  background-color: $primaryBlue;
+.services {
+  .line {
+    border: solid $primaryBlue 1px;
+    background-color: $primaryBlue;
+  }
 }
+
