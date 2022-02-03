@@ -699,8 +699,10 @@ header .navigation a {
 .hero-contact .hero-slogan {
   top: 0;
 }
-.hero-contact .hero-slogan h3 {
-  margin: 0;
+
+.contact-inner-container .contact-message {
+  margin-bottom: 0;
+  text-align: left;
 }
 
 .articles-container {
@@ -1040,17 +1042,18 @@ header .navigation a {
 }
 
 .hero-contact {
-  background-color: RGB(88, 189, 207);
+  background-color: white;
 }
 .hero-contact .hero-slogan {
   text-align: center;
 }
 .hero-contact .hero-slogan h1 {
   font-size: 4em;
+  color: #1fcda8;
 }
 .hero-contact .hero-slogan h3 {
-  font-family: Argent-CF, sans-serif;
   font-size: 3.5em;
+  color: #e7a640;
 }
 
 .line {
@@ -1058,8 +1061,14 @@ header .navigation a {
   background-color: RGB(88, 189, 207);
 }
 
-.top-section-contact {
-  background-color: #c3eaf1;
+.contact-inner-container {
+  background-color: white;
+}
+.contact-inner-container .submit-row button {
+  background-color: #e7a640;
+}
+.contact-inner-container .submit-row button:hover {
+  background-color: #1fcda8;
 }
 
 .articles-hero-title {

@@ -1,13 +1,15 @@
 .hero-contact {
-  background-color: $primaryTurquise;
+  background-color: $primaryWhite;
   .hero-slogan {
     text-align: center;
     h1 {
       font-size: 4em;
+      color: $primaryGreen;
     }
     h3 {
-      font-family: $argentRegular;
+      // font-family: $argentRegular;
       font-size: 3.5em;
+      color: $additionalGold;
     }
   }
 }
@@ -17,6 +19,14 @@
   background-color: $primaryTurquise;
 }
 
-.top-section-contact {
-  background-color: $secondaryAqua;
+.contact-inner-container {
+  background-color: $primaryWhite;
+  .submit-row {
+    button {
+      background-color: $additionalGold;
+      &:hover {
+        background-color: $primaryGreen;
+      }
+    } 
+  }  
 }
