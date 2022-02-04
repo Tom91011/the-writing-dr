@@ -399,7 +399,7 @@ header .navigation a {
 }
 .content-section .content {
   margin: auto;
-  width: calc(100% - 2rem);
+  width: 100%;
   max-width: 50em;
   transform: skewY(3deg);
 }
@@ -409,16 +409,21 @@ header .navigation a {
 }
 
 .logo-section {
+  margin: auto;
+  text-align: center;
+  width: calc(100% - 2rem);
   position: relative;
-  top: -50px;
   transform: skewY(-3deg);
+}
+.logo-section img {
+  margin: auto;
+  height: 80px;
 }
 .logo-section H2 {
   margin: 80px 0 0 0;
-  text-align: center;
   background-color: white;
   transform: skewY(3deg);
-  font-family: josefin-sans-300, sans-serif;
+  font-family: Josefin-Sans-Regular, sans-serif;
 }
 .logo-section .logos {
   display: flex;
@@ -427,21 +432,25 @@ header .navigation a {
   align-items: center;
   background-color: white;
   top: -40px;
-  width: 100%;
+  width: calc(66% - 2rem);
+  max-width: 50em;
   margin: auto;
   padding: 50px 0;
   transform: skewY(3deg);
 }
-.logo-section .logos img {
-  width: 10em;
-}
 .logo-section .logos .icon {
-  width: 12em;
+  padding: 0 12px;
+  height: 300px;
   font-size: 1em;
+}
+.logo-section .logos .icon h3 {
+  font-size: 1.2em;
+  height: 25%;
 }
 
 .bottom-section {
   top: 0;
+  width: calc(100% - 2rem);
   transform: skewY(0);
 }
 .bottom-section .content {
@@ -581,11 +590,38 @@ header .navigation a {
 .top-section-about {
   padding-bottom: 80px;
 }
+.top-section-about .bio {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 100%;
+}
+.top-section-about .bio .bio-image {
+  height: 100%;
+  width: 300px;
+  padding-right: 15px;
+}
+.top-section-about .bio .bio-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-items: flex-start;
+}
+.top-section-about .bio .bio-text p {
+  margin: 0;
+  text-align: justify;
+}
+.top-section-about .bio .bio-text p .align-left {
+  text-align: left;
+}
 
 .middle-section-about {
   margin: auto;
   position: relative;
-  height: 700px;
   max-width: 50em;
   z-index: 1;
 }
@@ -684,13 +720,13 @@ header .navigation a {
 }
 .testimonial .fa-quote-left {
   position: absolute;
-  left: 0;
+  left: -20px;
   top: 10px;
 }
 .testimonial .fa-quote-right {
   position: absolute;
   right: 0;
-  top: 175px;
+  top: 170px;
 }
 
 .treatments {
@@ -810,7 +846,7 @@ header .navigation a {
 }
 
 .hero-contact {
-  min-height: 500px;
+  min-height: 600px;
   height: 40vh;
 }
 .hero-contact .hero-slogan {
@@ -1064,7 +1100,7 @@ header .navigation a {
 }
 
 .top-section-about {
-  background-color: #fff4e4;
+  background-color: white;
 }
 
 .middle-section-about {
@@ -1126,15 +1162,6 @@ header .navigation a {
 
 .testimonial {
   font-size: 1.4em;
-}
-.testimonial .testimonial-author-title {
-  color: #0f68b7;
-}
-.testimonial .fas {
-  color: #0f68b7;
-}
-.testimonial .fas {
-  color: #0f68b7;
 }
 
 .treatment {

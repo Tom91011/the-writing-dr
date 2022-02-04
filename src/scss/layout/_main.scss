@@ -140,7 +140,7 @@ header {
   transform: skewY(-3deg);
   .content {
     margin: auto;
-    width: calc(100% - 2rem);
+    width: calc(100%);
     max-width: 50em;
     transform: skewY(3deg);
     P {
@@ -151,36 +151,49 @@ header {
 }
 
 .logo-section {
+  margin: auto;
+  text-align: center;
+  width: calc(100% - 2rem);
   position: relative;
-  top: -50px;
   transform: skewY(-3deg);
+  img {
+    margin: auto;
+    height: 80px;
+  }
   H2{
     margin: 80px 0 0 0;
-    text-align: center;
     background-color: $primaryWhite;
     transform: skewY(3deg);
-    font-family: $josefinSansLight;
+    font-family: $josefinSansRegular;
   }
   .logos {
     @include flex-row(row, space-around);
     background-color: $primaryWhite;
     top: -40px;
-    width: 100%;
+    width: calc(66% - 2rem);
+    max-width: 50em;
     margin: auto;
     padding:  50px 0;   
     transform: skewY(3deg); 
-    img {
-      width: 10em;
-    }
     .icon{
-      width: 12em;
+      padding: 0 12px;
+      height: 300px;
       font-size: 1em;
+      // img {
+      //   margin: auto;
+      //   height: 80px;
+      // }
+      h3 {
+        font-size:  1.2em;
+        height: 25%;
+      }
     }
   }
 }
 
 .bottom-section {
   top: 0;
+  width: calc(100% - 2rem);
     transform: skewY(0);
     .content {
         transform: skewY(0);
