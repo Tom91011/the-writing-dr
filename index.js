@@ -83,9 +83,9 @@ app.get("/login", function(req, res){
   res.render("login");
 });
  
-app.get("/register", function(req, res){
-  res.render("register");
-});
+// app.get("/register", function(req, res){
+//   res.render("register");
+// });
 
 app.get("/contact", function(req, res){
   res.render("contact");
@@ -151,18 +151,18 @@ app.post("/login", passport.authenticate("local"), function(req, res){
   res.redirect("/");
 });
 
-app.post("/register", function(req, res){
-  User.register({username: req.body.username}, req.body.password, function(err, user) {
-      if(err) {
-          console.log(err);
-          res.redirect("/register")
-      } else {
-              passport.authenticate("local")(req, res, function(){
-              res.redirect("/about")
-          })
-      }
-  })
-})
+// app.post("/register", function(req, res){
+//   User.register({username: req.body.username}, req.body.password, function(err, user) {
+//       if(err) {
+//           console.log(err);
+//           res.redirect("/register")
+//       } else {
+//               passport.authenticate("local")(req, res, function(){
+//               res.redirect("/about")
+//           })
+//       }
+//   })
+// })
 // temporarily added in index js rather than app.use(articles....) whilst the site is protected
 app.get('/articles', function(req, res){
   if(req.isAuthenticated()) {   
