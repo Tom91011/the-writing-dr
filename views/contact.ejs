@@ -43,11 +43,11 @@
 
             </div>
             <div class="contact-bottom-row">
-              <textarea id="message" name="message" rows="10" maxlength="1000" placeholder="Message"></textarea>
+              <textarea id="message"  name="message" rows="10" maxlength="1000" placeholder="Message"></textarea>
             </div>
             <div class="submit-row">
 
-              <p class="max-character-message">0 to 1000 max characters</p>
+              <p id="max-character-message">0 to 1000 max characters</p>
               <button type="submit" name="submit">Send Message</button>
 
             </div>
@@ -56,12 +56,9 @@
         </div>
       </div>
     </main>
-
-
-
     <%- include("partials/footer") -%>
   </div>
   </body>
-  <%# <script src="src/js-files/hide-header.js"></script> %>
 <script type="module" src="public/hide-header.js"></script>
+<script type="module" src="public/character-counter.js"></script>
   </html>
