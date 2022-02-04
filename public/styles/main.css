@@ -49,6 +49,12 @@ body {
   font-size: 16px;
 }
 
+p {
+  font-size: 1em;
+  font-family: Josefin-Sans-Regular, sans-serif;
+  font-weight: lighter;
+}
+
 h2 {
   font-size: 1.5em;
   font-family: Josefin-Sans-Regular, sans-serif;
@@ -115,9 +121,6 @@ main .content-section .headings {
   text-align: center;
   font-size: 1.6em;
 }
-main .content-section p {
-  font-size: 1.3em;
-}
 main .content-section h2 {
   text-align: center;
 }
@@ -144,6 +147,10 @@ main .content-section .middle-p {
 
 .highlight-pink {
   color: #ff91c2;
+}
+
+.highlight-bold {
+  font-weight: bold;
 }
 
 .handwriting {
@@ -345,6 +352,7 @@ header .navigation a {
 .hero-main .hero-slogan {
   position: relative;
   top: -40px;
+  width: 60%;
 }
 .hero-main .hero-slogan h1 {
   margin: 50px 0 10px 0;
@@ -629,9 +637,10 @@ header .navigation a {
   margin: auto;
 }
 
-.hero-services {
-  height: 85vh;
-  max-height: 800px;
+.services .hero {
+  text-align: center;
+  height: 75vh;
+  padding-top: 80px;
 }
 
 .top-section-services h3 {
@@ -642,31 +651,117 @@ header .navigation a {
   background-color: #e2f2ff;
 }
 
-.treatment-title {
+.steps-title {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.treatments {
-  display: flex;
-  flex-direction: column;
-  justify-content: centre;
-  align-items: center;
+.steps h3 {
+  text-align: left !important;
 }
-.treatments .treatment {
+
+.testimonial {
   display: flex;
   flex-direction: row;
-  justify-content: centre;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  text-align: center;
+  padding: 40px 0 10px 0;
 }
-.treatments .treatment .treatment-description {
-  padding: 0 20px;
-  width: 60%;
+.testimonial .testimonial-content .testimonial-author {
+  margin-bottom: 0;
 }
-.treatments .treatment .treatment-description p {
+.testimonial .testimonial-content .testimonial-author-title {
+  margin-top: 0;
+}
+.testimonial .testimonial-content h2 {
+  padding: 0 20px 20px 0;
   margin: 0;
-  font-size: 1em;
+  line-height: 1.3em;
+}
+.testimonial .testimonial-content h3 {
+  text-align: right;
+}
+.testimonial .fa-quote-left {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+.testimonial .fa-quote-right {
+  position: absolute;
+  right: 0;
+  top: 175px;
+}
+
+.treatments {
+  text-align: center;
+}
+.treatments .pricing {
+  margin-bottom: 50px;
+}
+.treatments .pricing-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  border: solid #0f68b7 1px;
+}
+.treatments .pricing-table .pricing-tier {
+  width: 25%;
+  height: 520px;
+  border: solid #0f68b7 1px;
+  padding: 20px 12px;
+}
+.treatments .pricing-table .pricing-tier .treatment-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 50px;
+}
+.treatments .pricing-table .pricing-tier .treatment-words {
+  margin: 30px 0;
+  font-size: 1.1em;
+}
+.treatments .pricing-table .pricing-tier h2, .treatments .pricing-table .pricing-tier h3 {
+  margin-bottom: 3px;
+}
+.treatments .pricing-table .pricing-tier h4 {
+  margin-top: 0;
+  font-weight: lighter;
+  color: #545454;
+  font-size: 0.7em;
+}
+.treatments .pricing-table .pricing-tier .delivery {
+  height: 30px;
+  padding: 20px 0;
+  margin: 0;
+  font-size: 0.9em;
+}
+.treatments .pricing-table .pricing-tier .checklist {
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.treatments .pricing-table .pricing-tier .checklist i {
+  width: 20%;
+  font-size: 1.5em;
+  color: #0f68b7;
+}
+.treatments .pricing-table .pricing-tier .checklist h3 {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.treatments .social-media-table .pricing-tier {
+  height: 540px;
+}
+
+.additional-information h2 {
+  text-align: center;
+}
+.additional-information li {
+  padding: 4px;
 }
 
 .contact-outer-container {
@@ -674,7 +769,7 @@ header .navigation a {
 }
 .contact-outer-container .contact-inner-container {
   margin: auto;
-  max-width: 50em;
+  width: 50em;
 }
 .contact-outer-container .contact-inner-container .contact-top-row {
   display: flex;
@@ -704,13 +799,13 @@ header .navigation a {
 }
 .contact-outer-container .submit-row button {
   padding: 10px 20px;
-  background-color: #0f68b7;
+  background-color: #0f68b7 !important;
   color: white;
   border: none;
   border-radius: 5px;
 }
 .contact-outer-container .submit-row button:hover {
-  background-color: #034985;
+  background-color: #e7a640 !important;
   cursor: pointer;
 }
 
@@ -1013,15 +1108,33 @@ header .navigation a {
   background-color: #e2f2ff;
 }
 .top-section-services h3 {
-  font-size: 1.7em;
-  font-weight: bolder;
+  font-size: 1em;
+  font-family: josefin-sans-300, sans-serif;
 }
 
 .middle-section-services {
   background-color: transparent;
 }
-.middle-section-services .text-align-center {
-  text-align: center;
+.middle-section-services h3 {
+  font-size: 1em;
+  font-family: josefin-sans-300, sans-serif;
+}
+
+.steps h3 {
+  font-weight: 400;
+}
+
+.testimonial {
+  font-size: 1.4em;
+}
+.testimonial .testimonial-author-title {
+  color: #0f68b7;
+}
+.testimonial .fas {
+  color: #0f68b7;
+}
+.testimonial .fas {
+  color: #0f68b7;
 }
 
 .treatment {

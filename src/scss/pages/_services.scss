@@ -5,15 +5,35 @@
 .top-section-services {
   background-color: $secondarySkyBlue;
   h3 {
-    font-size: 1.7em;
-    font-weight: bolder;
+    font-size: 1em;
+    font-family: $josefinSansLight;
   }
 }
 
 .middle-section-services {
   background-color: transparent;
-  .text-align-center {
-    text-align: center;
+  h3 {
+    font-size: 1em;
+    font-family: $josefinSansLight;
+  }
+}
+
+.steps {
+  h3 {
+    font-weight: 400;
+  }
+}
+
+.testimonial {
+  font-size: 1.4em;
+    .testimonial-author-title {
+      color: $primaryBlue;
+    }  
+  .fas {
+    color: $primaryBlue;
+  }
+  .fas {
+    color: $primaryBlue;
   }
 }
 

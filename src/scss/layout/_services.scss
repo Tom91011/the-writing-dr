@@ -1,6 +1,9 @@
-.hero-services {
-  height: 85vh;
-  max-height: 800px;
+.services {
+  .hero {
+    text-align: center;
+    height: 75vh;
+    padding-top: 80px;
+  }
 }
 
 .top-section-services {
@@ -13,32 +16,124 @@
   background-color: $secondarySkyBlue;
 }
 
-.treatment-title {
+.steps-title {
   text-align: center;
   margin-bottom: 40px;
 }
 
+.steps {
+  h3 {
+    text-align: left !important;
+  }
+}
+
+.testimonial {
+  @include flex-row(row, space-between);
+  text-align: center;
+  padding: 40px 0 10px 0;
+  .testimonial-content {
+    .testimonial-author {
+      margin-bottom: 0;
+    }
+    .testimonial-author-title {
+      margin-top: 0;
+    }
+    h2 {
+      padding: 0 20px 20px 0;
+      margin: 0;
+      line-height: 1.3em;
+    }
+    h3 {
+      text-align: right;
+    }
+  }
+  .fa-quote-left {
+    position: absolute;
+    left: 0;
+    top: 10px;
+  }
+  .fa-quote-right {
+    position: absolute;
+    right: 0;
+    top: 175px;
+  }
+}
+
 .treatments {
-  @include flex-row(column, centre);
-  .treatment {
-    @include flex-row(row, centre);
-    margin-bottom: 20px;
-    .treatment-description {
-      padding: 0 20px;
-      width:  60%;
-      p {
+  text-align: center;
+  .pricing {
+    margin-bottom: 50px;
+  }
+  .pricing-table {
+    @include flex-row(row, space-between);
+    text-align: left;
+    border: solid $primaryBlue 1px;
+    .pricing-tier {
+      width: 25%;
+      height: 520px;
+      border: solid $primaryBlue 1px;
+      padding: 20px 12px;
+      .treatment-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        height: 50px;
+      }
+      .treatment-words {
+        margin: 30px 0;
+        font-size: 1.1em;
+      }
+      h2, h3 {
+        margin-bottom: 3px;
+      }
+      h4 {
+        margin-top: 0;
+        font-weight: lighter;
+        color: $additionalSlate;
+        font-size: 0.7em;
+      }
+      .delivery {
+        height: 30px;
+        padding: 20px 0;
         margin: 0;
-        font-size: 1em;
+        font-size: 0.9em;
+      }
+      .checklist {
+        height: 55px;
+        @include flex-row(row, space-around);
+        i {
+          width: 20%;
+          font-size: 1.5em;
+          color: $primaryBlue;
+        }
+        h3 {
+          width: 100%;
+          margin-bottom: 16px;
+        }
       }
     }
   }
+  .social-media-table {
+    .pricing-tier {
+      height: 540px;
+    }
+  }
 }
+
+.additional-information {
+  h2 {
+    text-align: center;
+  }
+  li {
+    padding: 4px;
+  }
+}
+
 
 .contact-outer-container {
   margin: auto;
   .contact-inner-container {
     margin: auto;
-    max-width: 50em;
+    width: 50em;
     .contact-top-row {
       @include flex-row(row, space-between);
       input {
@@ -61,12 +156,12 @@
     @include flex-row(row, space-between);
     button {
       padding: 10px 20px;
-      background-color: $primaryBlue;
+      background-color: $primaryBlue !important;
       color: $primaryWhite;
       border: none;
       border-radius: 5px;
       &:hover {
-        background-color: $additionalNavy;
+        background-color: $additionalGold !important;
         cursor: pointer;
 
       }
