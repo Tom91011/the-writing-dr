@@ -5,12 +5,33 @@
 
 .top-section-about {
   padding-bottom: 80px;
+  .bio {
+     @include flex-row(row, center);
+     height: 350px;
+     width: 100%;
+    .bio-image {
+      height: 100%;
+      width: 300px;
+      padding-right: 15px;;
+    }
+    .bio-text {
+      height: 100%;      
+      @include flex-row(column, space-between);
+      align-items: flex-start;
+      p {
+        margin: 0;
+        text-align: justify;
+        .align-left {
+          text-align: left;
+        }
+      };
+    }
+  }
 }
 
 .middle-section-about {
   margin: auto;
   position: relative;
-  height: 700px;
   max-width: 50em;
   z-index: 1;
   .content-about-top {

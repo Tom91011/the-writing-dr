@@ -4,9 +4,15 @@ body{
   font-size: 16px;
 }
 
+p {
+  font-size: 1em;
+  font-family: $josefinSansRegular;
+  font-weight: lighter;
+}
+
 h2 {
   font-size: 1.5em;
-  font-family: $argentRegular;
+  font-family: $josefinSansRegular;
 }
 
 h3 {
@@ -63,7 +69,7 @@ main {
       font-size: 1.6em;
     }
     p {
-      font-size: 1.3em;
+      // font-size: 1.3em;
     }
     h2 {
       text-align: center;
@@ -93,6 +99,10 @@ main {
 
 .highlight-pink {
   color: $primaryPink;
+}
+
+.highlight-bold {
+  font-weight: bold;
 }
 
 .handwriting {

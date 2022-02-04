@@ -49,9 +49,15 @@ body {
   font-size: 16px;
 }
 
+p {
+  font-size: 1em;
+  font-family: Josefin-Sans-Regular, sans-serif;
+  font-weight: lighter;
+}
+
 h2 {
   font-size: 1.5em;
-  font-family: Argent-CF, sans-serif;
+  font-family: Josefin-Sans-Regular, sans-serif;
 }
 
 h3 {
@@ -115,9 +121,6 @@ main .content-section .headings {
   text-align: center;
   font-size: 1.6em;
 }
-main .content-section p {
-  font-size: 1.3em;
-}
 main .content-section h2 {
   text-align: center;
 }
@@ -144,6 +147,10 @@ main .content-section .middle-p {
 
 .highlight-pink {
   color: #ff91c2;
+}
+
+.highlight-bold {
+  font-weight: bold;
 }
 
 .handwriting {
@@ -325,8 +332,8 @@ header .navigation a {
   justify-content: centre;
   align-items: center;
   padding: 0 300px;
-  height: 85vh;
-  min-height: 850px;
+  height: 80vh;
+  min-height: 550px;
   background-color: #1fcda8;
   transform: skewY(-3deg);
 }
@@ -345,16 +352,21 @@ header .navigation a {
 .hero-main .hero-slogan {
   position: relative;
   top: -40px;
+  width: 60%;
 }
 .hero-main .hero-slogan h1 {
   margin: 50px 0 10px 0;
 }
+.hero-main .hero-slogan h2 {
+  line-height: 1.3;
+}
 .hero-main .hero-image {
   position: relative;
   top: 90px;
+  height: 600px;
 }
 .hero-main .hero-image .silohoutte {
-  max-width: 100%;
+  height: 80%;
   filter: drop-shadow(16px 16px 10px #545454);
 }
 
@@ -365,11 +377,14 @@ header .navigation a {
   box-sizing: border-box;
 }
 
+.home .line {
+  border: solid #1fcda8 1px;
+  background-color: #1fcda8;
+}
+
 .line {
   position: relative;
   top: -25px;
-  border: solid #1fcda8 1px;
-  background-color: #1fcda8;
   margin: auto;
   width: 0;
   height: 50px;
@@ -378,40 +393,64 @@ header .navigation a {
 
 .content-section {
   position: relative;
-  top: -50px;
   padding-bottom: 40px;
   background-color: #e0fff8;
   transform: skewY(-3deg);
 }
 .content-section .content {
   margin: auto;
-  width: calc(100% - 2rem);
+  width: 100%;
   max-width: 50em;
   transform: skewY(3deg);
 }
 .content-section .content P {
-  padding: 10px 0S;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .logo-section {
+  margin: auto;
+  text-align: center;
+  width: calc(100% - 2rem);
   position: relative;
-  top: -50px;
+  transform: skewY(-3deg);
 }
-.logo-section .brands {
+.logo-section img {
+  margin: auto;
+  height: 80px;
+}
+.logo-section H2 {
+  margin: 80px 0 0 0;
+  background-color: white;
+  transform: skewY(3deg);
+  font-family: Josefin-Sans-Regular, sans-serif;
+}
+.logo-section .logos {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  background-color: white;
   top: -40px;
-  width: 50em;
+  width: calc(66% - 2rem);
+  max-width: 50em;
   margin: auto;
+  padding: 50px 0;
+  transform: skewY(3deg);
 }
-.logo-section .brands img {
-  width: 10em;
+.logo-section .logos .icon {
+  padding: 0 12px;
+  height: 300px;
+  font-size: 1em;
+}
+.logo-section .logos .icon h3 {
+  font-size: 1.2em;
+  height: 25%;
 }
 
 .bottom-section {
   top: 0;
+  width: calc(100% - 2rem);
   transform: skewY(0);
 }
 .bottom-section .content {
@@ -551,11 +590,38 @@ header .navigation a {
 .top-section-about {
   padding-bottom: 80px;
 }
+.top-section-about .bio {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 100%;
+}
+.top-section-about .bio .bio-image {
+  height: 100%;
+  width: 300px;
+  padding-right: 15px;
+}
+.top-section-about .bio .bio-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-items: flex-start;
+}
+.top-section-about .bio .bio-text p {
+  margin: 0;
+  text-align: justify;
+}
+.top-section-about .bio .bio-text p .align-left {
+  text-align: left;
+}
 
 .middle-section-about {
   margin: auto;
   position: relative;
-  height: 700px;
   max-width: 50em;
   z-index: 1;
 }
@@ -607,9 +673,10 @@ header .navigation a {
   margin: auto;
 }
 
-.hero-services {
-  height: 85vh;
-  max-height: 800px;
+.services .hero {
+  text-align: center;
+  height: 75vh;
+  padding-top: 80px;
 }
 
 .top-section-services h3 {
@@ -620,31 +687,117 @@ header .navigation a {
   background-color: #e2f2ff;
 }
 
-.treatment-title {
+.steps-title {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.treatments {
-  display: flex;
-  flex-direction: column;
-  justify-content: centre;
-  align-items: center;
+.steps h3 {
+  text-align: left !important;
 }
-.treatments .treatment {
+
+.testimonial {
   display: flex;
   flex-direction: row;
-  justify-content: centre;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  text-align: center;
+  padding: 40px 0 10px 0;
 }
-.treatments .treatment .treatment-description {
-  padding: 0 20px;
-  width: 60%;
+.testimonial .testimonial-content .testimonial-author {
+  margin-bottom: 0;
 }
-.treatments .treatment .treatment-description p {
+.testimonial .testimonial-content .testimonial-author-title {
+  margin-top: 0;
+}
+.testimonial .testimonial-content h2 {
+  padding: 0 20px 20px 0;
   margin: 0;
-  font-size: 1em;
+  line-height: 1.3em;
+}
+.testimonial .testimonial-content h3 {
+  text-align: right;
+}
+.testimonial .fa-quote-left {
+  position: absolute;
+  left: -20px;
+  top: 10px;
+}
+.testimonial .fa-quote-right {
+  position: absolute;
+  right: 0;
+  top: 170px;
+}
+
+.treatments {
+  text-align: center;
+}
+.treatments .pricing {
+  margin-bottom: 50px;
+}
+.treatments .pricing-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  border: solid #0f68b7 1px;
+}
+.treatments .pricing-table .pricing-tier {
+  width: 25%;
+  height: 520px;
+  border: solid #0f68b7 1px;
+  padding: 20px 12px;
+}
+.treatments .pricing-table .pricing-tier .treatment-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  height: 50px;
+}
+.treatments .pricing-table .pricing-tier .treatment-words {
+  margin: 30px 0;
+  font-size: 1.1em;
+}
+.treatments .pricing-table .pricing-tier h2, .treatments .pricing-table .pricing-tier h3 {
+  margin-bottom: 3px;
+}
+.treatments .pricing-table .pricing-tier h4 {
+  margin-top: 0;
+  font-weight: lighter;
+  color: #545454;
+  font-size: 0.7em;
+}
+.treatments .pricing-table .pricing-tier .delivery {
+  height: 30px;
+  padding: 20px 0;
+  margin: 0;
+  font-size: 0.9em;
+}
+.treatments .pricing-table .pricing-tier .checklist {
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.treatments .pricing-table .pricing-tier .checklist i {
+  width: 20%;
+  font-size: 1.5em;
+  color: #0f68b7;
+}
+.treatments .pricing-table .pricing-tier .checklist h3 {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.treatments .social-media-table .pricing-tier {
+  height: 540px;
+}
+
+.additional-information h2 {
+  text-align: center;
+}
+.additional-information li {
+  padding: 4px;
 }
 
 .contact-outer-container {
@@ -652,7 +805,7 @@ header .navigation a {
 }
 .contact-outer-container .contact-inner-container {
   margin: auto;
-  max-width: 50em;
+  width: 50em;
 }
 .contact-outer-container .contact-inner-container .contact-top-row {
   display: flex;
@@ -682,25 +835,27 @@ header .navigation a {
 }
 .contact-outer-container .submit-row button {
   padding: 10px 20px;
-  background-color: #0f68b7;
+  background-color: #0f68b7 !important;
   color: white;
   border: none;
   border-radius: 5px;
 }
 .contact-outer-container .submit-row button:hover {
-  background-color: #034985;
+  background-color: #e7a640 !important;
   cursor: pointer;
 }
 
 .hero-contact {
-  min-height: 500px;
+  min-height: 600px;
   height: 40vh;
 }
 .hero-contact .hero-slogan {
   top: 0;
 }
-.hero-contact .hero-slogan h3 {
-  margin: 0;
+
+.contact-inner-container .contact-message {
+  margin-bottom: 0;
+  text-align: left;
 }
 
 .articles-container {
@@ -945,7 +1100,7 @@ header .navigation a {
 }
 
 .top-section-about {
-  background-color: #fff4e4;
+  background-color: white;
 }
 
 .middle-section-about {
@@ -976,7 +1131,7 @@ header .navigation a {
   font-size: 2em;
 }
 
-.line-about-me {
+.about .line {
   border: solid #ffbd59 1px;
   background-color: #ffbd59;
 }
@@ -989,15 +1144,24 @@ header .navigation a {
   background-color: #e2f2ff;
 }
 .top-section-services h3 {
-  font-size: 1.7em;
-  font-weight: bolder;
+  font-size: 1em;
+  font-family: josefin-sans-300, sans-serif;
 }
 
 .middle-section-services {
   background-color: transparent;
 }
-.middle-section-services .text-align-center {
-  text-align: center;
+.middle-section-services h3 {
+  font-size: 1em;
+  font-family: josefin-sans-300, sans-serif;
+}
+
+.steps h3 {
+  font-weight: 400;
+}
+
+.testimonial {
+  font-size: 1.4em;
 }
 
 .treatment {
@@ -1034,23 +1198,24 @@ header .navigation a {
   color: #545454;
 }
 
-.line-services {
+.services .line {
   border: solid #0f68b7 1px;
   background-color: #0f68b7;
 }
 
 .hero-contact {
-  background-color: RGB(88, 189, 207);
+  background-color: white;
 }
 .hero-contact .hero-slogan {
   text-align: center;
 }
 .hero-contact .hero-slogan h1 {
   font-size: 4em;
+  color: #1fcda8;
 }
 .hero-contact .hero-slogan h3 {
-  font-family: Argent-CF, sans-serif;
   font-size: 3.5em;
+  color: #e7a640;
 }
 
 .line {
@@ -1058,8 +1223,14 @@ header .navigation a {
   background-color: RGB(88, 189, 207);
 }
 
-.top-section-contact {
-  background-color: #c3eaf1;
+.contact-inner-container {
+  background-color: white;
+}
+.contact-inner-container .submit-row button {
+  background-color: #e7a640;
+}
+.contact-inner-container .submit-row button:hover {
+  background-color: #1fcda8;
 }
 
 .articles-hero-title {
